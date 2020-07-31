@@ -3,16 +3,27 @@
 <head>
 	<meta charset="UTF-8">
 	<title>json type files</title>
-<!--	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js></script>-->
-<!--	<script type="text/javascript" src="jquery.cookie.js"></script>-->
-
 	<style>
         body {
-			background-color: #87CEFA;
+			font-size: 5em;
+			border-radius: 15px;
+			box-shadow: inset 2px 2px .22em 1px #05688e, inset 3px 3px .5em 1px #a2cdea;
+			padding: 30px;
+			/*background-color: #87CEFA;*/
+            /*background:*/
+			/*		repeating-linear-gradient(to bottom, transparent, transparent 10px, #cccef1 10px, #cccef1 11px),*/
+			/*		repeating-linear-gradient(to right, transparent, transparent 10px, #cccef1 10px, #cccef1 11px);*/
+            background: linear-gradient(90deg,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.2) 25%,
+            rgba(255, 255, 255, 0.2) 75%,
+            rgba(255, 255, 255, 0) 100%),
+            repeating-linear-gradient(to bottom, transparent, transparent 10px, #cccef1 10px, #cccef1 11px),
+            repeating-linear-gradient(to right, transparent, transparent 10px, #cccef1 10px, #cccef1 11px), #87CEFA;
 		}
 	</style>
 </head>
-<body>
+<body onstorage="fun()">
 <section id="cover">
 	<div class="shell"></div>
 </section>
@@ -27,6 +38,17 @@
     let obj = {a: 'aaa', b: 'bbb'};
     obj = JSON.stringify(obj, ["a", "b"]);
     shell.innerHTML += '<br>' + `'${obj}'`;
+    
+    function fun(event){
+        let key = event.key; //ключ изменяемых данных
+		console.log(key)
+        let oldValue = event.oldValue; //старое значение
+        console.log(oldValue)
+        let newValue = event.newValue; //новое значение
+        console.log(newValue)
+        let storageArea = event.storageArea; //storageArea
+        console.log(storageArea)
+	}
     
 </script>
 </body>
