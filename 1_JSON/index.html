@@ -3,6 +3,14 @@
 <head>
 	<meta charset="UTF-8">
 	<title>json type files</title>
+<!--	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js></script>-->
+<!--	<script type="text/javascript" src="jquery.cookie.js"></script>-->
+
+	<style>
+        body {
+			background-color: #87CEFA;
+		}
+	</style>
 </head>
 <body>
 <section id="cover">
@@ -10,7 +18,16 @@
 </section>
 
 <script>
-
+	const shell = document.querySelector('.shell');
+	
+	let name = '["Коля", "Вася", "Петя"]';
+    name = JSON.parse(name);
+    shell.innerHTML = name[2];
+    
+    let obj = {a: 'aaa', b: 'bbb'};
+    obj = JSON.stringify(obj, ["a", "b"]);
+    shell.innerHTML += '<br>' + `'${obj}'`;
+    
 </script>
 </body>
 </html>

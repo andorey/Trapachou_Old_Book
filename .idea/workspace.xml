@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="74023db5-c1bb-4577-96dc-080e17d9e9bb" name="Default Changelist" comment="" />
+    <list default="true" id="74023db5-c1bb-4577-96dc-080e17d9e9bb" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_JSON/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/1_JSON/index.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,7 +17,11 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1fNGnBaCsNM72M4qlBHoLkstqQ1" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -24,6 +31,12 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
   </component>
@@ -36,10 +49,31 @@
       <option name="presentableId" value="Default" />
       <updated>1596051300583</updated>
       <workItem from="1596051301857" duration="463000" />
+      <workItem from="1596051782285" duration="5172000" />
+      <workItem from="1596120988901" duration="477000" />
+      <workItem from="1596145700909" duration="746000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="140" y="23" key="#Plugins" timestamp="1596151631791">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="140" y="23" key="#Plugins/0.23.1280.777@0.23.1280.777" timestamp="1596151631791" />
+    <state x="424" y="321" key="Github.CreateGistDialog" timestamp="1596052535854">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="424" y="321" key="Github.CreateGistDialog/0.23.1280.777@0.23.1280.777" timestamp="1596052535854" />
+    <state x="457" y="292" key="Github.ShareDialog" timestamp="1596052626263">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="457" y="292" key="Github.ShareDialog/0.23.1280.777@0.23.1280.777" timestamp="1596052626263" />
+    <state x="365" y="57" key="Github.UntrackedFilesDialog" timestamp="1596052690085">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="365" y="57" key="Github.UntrackedFilesDialog/0.23.1280.777@0.23.1280.777" timestamp="1596052690085" />
   </component>
 </project>
