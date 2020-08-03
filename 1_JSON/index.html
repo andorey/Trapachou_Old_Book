@@ -4,15 +4,19 @@
 	<meta charset="UTF-8">
 	<title>json type files</title>
 	<style>
-        body {
-			font-size: 5em;
+		body{
+            background:
+            		repeating-linear-gradient(to bottom, transparent, transparent 10px, #cccef1 10px, #cccef1 11px),
+            		repeating-linear-gradient(to right, transparent, transparent 10px, #cccef1 10px, #cccef1 11px),
+                    #87CEFA;
+		}
+        section {
+			font-size: 2em;
 			border-radius: 15px;
 			box-shadow: inset 2px 2px .22em 1px #05688e, inset 3px 3px .5em 1px #a2cdea;
 			padding: 30px;
-			/*background-color: #87CEFA;*/
-            /*background:*/
-			/*		repeating-linear-gradient(to bottom, transparent, transparent 10px, #cccef1 10px, #cccef1 11px),*/
-			/*		repeating-linear-gradient(to right, transparent, transparent 10px, #cccef1 10px, #cccef1 11px);*/
+			margin: 10px;
+			text-align: center;
             background: linear-gradient(90deg,
             rgba(255, 255, 255, 0) 0%,
             rgba(255, 255, 255, 0.2) 25%,
@@ -20,6 +24,11 @@
             rgba(255, 255, 255, 0) 100%),
             repeating-linear-gradient(to bottom, transparent, transparent 10px, #cccef1 10px, #cccef1 11px),
             repeating-linear-gradient(to right, transparent, transparent 10px, #cccef1 10px, #cccef1 11px), #87CEFA;
+			text-decoration: underline;
+		}
+		table, col, colgroup, thead, tbody, tfoot, tr, th, td{
+			border: darkblue 1px solid;
+			text-align: center;
 		}
 	</style>
 </head>
@@ -27,6 +36,10 @@
 <section id="cover">
 	<div class="shell"></div>
 </section>
+
+<section><label><input type='checkbox'>Chackbox</label></section>
+<section><label><input type='radio'>Radio</label></section>
+<section><label><input type='button' value="Button"></label></section>
 
 <script>
 	const shell = document.querySelector('.shell');
@@ -49,7 +62,7 @@
         let storageArea = event.storageArea; //storageArea
         console.log(storageArea)
 	}
-    
+ 
 </script>
 </body>
 </html>

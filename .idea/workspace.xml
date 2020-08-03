@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="74023db5-c1bb-4577-96dc-080e17d9e9bb" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/1_JSON/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/1_JSON/index.html" afterDir="false" />
     </list>
@@ -27,8 +28,10 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -54,7 +57,12 @@
       <workItem from="1596145700909" duration="746000" />
       <workItem from="1596156637731" duration="394000" />
       <workItem from="1596188975365" duration="272000" />
-      <workItem from="1596205141112" duration="4927000" />
+      <workItem from="1596205141112" duration="5990000" />
+      <workItem from="1596318437045" duration="124000" />
+      <workItem from="1596325315880" duration="136000" />
+      <workItem from="1596327184007" duration="431000" />
+      <workItem from="1596365870709" duration="4581000" />
+      <workItem from="1596373865259" duration="110000" />
     </task>
     <servers />
   </component>
@@ -62,10 +70,14 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="140" y="23" key="#Plugins" timestamp="1596151631791">
+    <state x="270" y="83" key="#Inspections" timestamp="1596366137921">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state x="140" y="23" key="#Plugins/0.23.1280.777@0.23.1280.777" timestamp="1596151631791" />
+    <state x="270" y="83" key="#Inspections/0.23.1280.777@0.23.1280.777" timestamp="1596366137921" />
+    <state x="140" y="23" key="#Plugins" timestamp="1596313291120">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="140" y="23" key="#Plugins/0.23.1280.777@0.23.1280.777" timestamp="1596313291120" />
     <state x="424" y="321" key="Github.CreateGistDialog" timestamp="1596052535854">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
