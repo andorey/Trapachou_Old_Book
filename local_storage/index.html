@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>textarea in local</title>
+	<style>
+		body{
+			text-align: center;
+		}
+		
+		textarea{
+			font-size: 1.5em;
+			color:darkblue;
+		}
+	</style>
+</head>
+<body>
+	<h3>Write text here:</h3>
+	<label>
+		<textarea id="localText" cols="40" rows="5"></textarea>
+	</label>
+
+	<script>
+		(function (){
+			const textArea = document.getElementById('localText');
+			
+			textArea.addEventListener('blur', function (){
+				localStorage.setItem('text', this.value)
+			})
+
+            text();
+			
+			function text(){
+				if(localStorage.text){
+					textArea.value = localStorage.text
+				}
+			}
+		
+        })();
+	</script>
+</body>
+</html>

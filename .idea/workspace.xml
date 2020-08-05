@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="74023db5-c1bb-4577-96dc-080e17d9e9bb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local_storage/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/1_JSON/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/1_JSON/index.html" afterDir="false" />
     </list>
@@ -41,7 +41,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -63,6 +63,10 @@
       <workItem from="1596327184007" duration="431000" />
       <workItem from="1596365870709" duration="4581000" />
       <workItem from="1596373865259" duration="110000" />
+      <workItem from="1596465013078" duration="334000" />
+      <workItem from="1596537875804" duration="3631000" />
+      <workItem from="1596550567755" duration="23000" />
+      <workItem from="1596652528882" duration="1957000" />
     </task>
     <servers />
   </component>
@@ -90,5 +94,13 @@
       <screen x="0" y="23" width="1280" height="777" />
     </state>
     <state x="365" y="57" key="Github.UntrackedFilesDialog/0.23.1280.777@0.23.1280.777" timestamp="1596052690085" />
+    <state x="32" y="23" key="SettingsEditor" timestamp="1596540349606">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="32" y="23" key="SettingsEditor/0.23.1280.777@0.23.1280.777" timestamp="1596540349606" />
+    <state x="221" y="23" width="838" height="1032" key="search.everywhere.popup" timestamp="1596546548349">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="221" y="23" width="838" height="1032" key="search.everywhere.popup/0.23.1280.777@0.23.1280.777" timestamp="1596546548349" />
   </component>
 </project>
