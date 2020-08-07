@@ -6,6 +6,7 @@
 	<style>
 		body{
 			text-align: center;
+			user-select: none;
 		}
 
         .left, .write{
@@ -58,14 +59,14 @@
 		})
 
         write.addEventListener('click', function (){
-            let key = Object.keys(texts).find(el => texts[el] === textArea.value);
-            console.log('key = '+ key + ' texts = ' + Object.values(texts) )
-            if (key < Object.keys(texts).length){
-                textArea.value = texts[key + 1];
-                left.classList.add('active_arrow');
-            }else{
+            let key = +Object.keys(texts).find(el => texts[el] === textArea.value);
+            console.log('key = '+ key + ' texts = ' + Object.keys(texts).length )
+            if (key === Object.keys(texts).length - 1){
                 textArea.value = texts[key];
                 write.classList.remove('active_arrow')
+            }else{
+                textArea.value = texts[key + 1];
+                left.classList.add('active_arrow');
             }
 
         })
