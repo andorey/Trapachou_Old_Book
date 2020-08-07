@@ -33,44 +33,42 @@
 	</label>
 
 	<script>
-		const texts = {
-		
-		}
-	 
-		const textArea = document.getElementById('localText');
-		let write = document.querySelector('.write');
-		let left = document.querySelector('.left');
-		
-		textArea.addEventListener('blur', function (){
-			let count = Object.keys(texts).length;
-			texts[count] = this.value;
-			if(count > 0) left.classList.add('active_arrow')
-		})
-		
-		left.addEventListener('click', function (){
-            let key = Object.keys(texts).find(el => texts[el] === textArea.value);
-		    if (key > 0){
-                textArea.value = texts[key - 1];
-                write.classList.add('active_arrow')
-			}else{
-			    textArea.value = texts[0];
-				left.classList.remove('active_arrow')
-			}
-		})
-
-        write.addEventListener('click', function (){
-            let key = +Object.keys(texts).find(el => texts[el] === textArea.value);
-            console.log('key = '+ key + ' texts = ' + Object.keys(texts).length )
-            if (key === Object.keys(texts).length - 1){
-                textArea.value = texts[key];
-                write.classList.remove('active_arrow')
-            }else{
-                textArea.value = texts[key + 1];
-                left.classList.add('active_arrow');
-            }
-
-        })
-		
+		(function (){
+			const texts = []
+		 
+			const textArea = document.getElementById('localText');
+			let write = document.querySelector('.write');
+			let left = document.querySelector('.left');
+			
+			textArea.addEventListener('blur', function (){
+				let count = texts.length;
+				texts[count] = this.value;
+				if(count > 0) left.classList.add('active_arrow')
+			})
+			
+			left.addEventListener('click', function (){
+				let key = texts.indexOf(textArea.value);
+				if (key > 0){
+					textArea.value = texts[key - 1];
+					write.classList.add('active_arrow')
+				}else{
+					textArea.value = texts[0];
+					left.classList.remove('active_arrow')
+				}
+			})
+	
+			write.addEventListener('click', function (){
+				let key = texts.indexOf(textArea.value);
+				if (key === texts.length - 1){
+					textArea.value = texts[key];
+					write.classList.remove('active_arrow')
+				}else{
+					textArea.value = texts[key + 1];
+					left.classList.add('active_arrow');
+				}
+	
+			})
+        })();
 		
 	</script>
 </body>
