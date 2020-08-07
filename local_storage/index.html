@@ -34,19 +34,38 @@
 
 	<script>
 		(function (){
-			const texts = []
-		 
+		    function set(value){
+		        localStorage.setItem('texts', JSON.stringify(value))
+			}
+			
+			function get(){
+		        return JSON.parse(localStorage.getItem('texts'))
+			}
+			
 			const textArea = document.getElementById('localText');
 			let write = document.querySelector('.write');
 			let left = document.querySelector('.left');
 			
+			if(!get()){
+                set([]);
+			}else{
+			    textArea.value = get()[get().length-1]
+                left.classList.add('active_arrow')
+			}
+			
 			textArea.addEventListener('blur', function (){
+			    let texts = get();
+			    console.log(texts)
 				let count = texts.length;
-				texts[count] = this.value;
-				if(count > 0) left.classList.add('active_arrow')
+				if (this.value.trim() !== '' && !texts.includes(this.value)){
+				    texts[count] = this.value;
+                    if(count > 0) left.classList.add('active_arrow')
+                    set(texts)
+                }
 			})
 			
 			left.addEventListener('click', function (){
+                let texts = get();
 				let key = texts.indexOf(textArea.value);
 				if (key > 0){
 					textArea.value = texts[key - 1];
@@ -58,8 +77,9 @@
 			})
 	
 			write.addEventListener('click', function (){
+                let texts = get();
 				let key = texts.indexOf(textArea.value);
-				if (key === texts.length - 1){
+				if (key === texts.length-1){
 					textArea.value = texts[key];
 					write.classList.remove('active_arrow')
 				}else{
