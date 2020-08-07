@@ -7,6 +7,16 @@
 		body{
 			text-align: center;
 		}
+
+        .left, .write{
+            margin: 0 20px 0 20px;
+            color: white;
+		}
+		
+		.active_arrow{
+			color: black;
+			cursor: pointer;
+		}
 		
 		textarea{
 			font-size: 1.5em;
@@ -16,27 +26,51 @@
 </head>
 <body>
 	<h3>Write text here:</h3>
+	<div class="arrows"><span class="left">←</span><span class="write">→</span></div>
 	<label>
 		<textarea id="localText" cols="40" rows="5"></textarea>
 	</label>
 
 	<script>
-		(function (){
-			const textArea = document.getElementById('localText');
-			
-			textArea.addEventListener('blur', function (){
-				localStorage.setItem('text', this.value)
-			})
-
-            text();
-			
-			function text(){
-				if(localStorage.text){
-					textArea.value = localStorage.text
-				}
-			}
+		const texts = {
 		
-        })();
+		}
+	 
+		const textArea = document.getElementById('localText');
+		let write = document.querySelector('.write');
+		let left = document.querySelector('.left');
+		
+		textArea.addEventListener('blur', function (){
+			let count = Object.keys(texts).length;
+			texts[count] = this.value;
+			if(count > 0) left.classList.add('active_arrow')
+		})
+		
+		left.addEventListener('click', function (){
+            let key = Object.keys(texts).find(el => texts[el] === textArea.value);
+		    if (key > 0){
+                textArea.value = texts[key - 1];
+                write.classList.add('active_arrow')
+			}else{
+			    textArea.value = texts[0];
+				left.classList.remove('active_arrow')
+			}
+		})
+
+        write.addEventListener('click', function (){
+            let key = Object.keys(texts).find(el => texts[el] === textArea.value);
+            console.log('key = '+ key + ' texts = ' + Object.values(texts) )
+            if (key < Object.keys(texts).length){
+                textArea.value = texts[key + 1];
+                left.classList.add('active_arrow');
+            }else{
+                textArea.value = texts[key];
+                write.classList.remove('active_arrow')
+            }
+
+        })
+		
+		
 	</script>
 </body>
 </html>
