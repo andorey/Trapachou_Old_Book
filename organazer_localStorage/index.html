@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Check List</title>
+	<title>Check List localSrorage</title>
 	<style>
 		body {
 			text-align: center;
@@ -37,7 +37,7 @@
 		}
 		
 		#list span {
-			margin-left: 5px;
+			margin-left: 7px;
 		}
 		
 		#list .remove, #list .mark {
@@ -72,6 +72,7 @@
 
 <script>
     (function () {
+        
         let input = document.querySelector('#input');
         let list = document.querySelector('#list');
         
@@ -86,12 +87,12 @@
         let arr = get() || [];
 
         arr.forEach(function (el) {
-            
             let li = document.createElement('li');
 
             let task = document.createElement('span');
             task.classList.add('task');
-            task.innerHTML = el;
+            task.innerHTML = el[0];
+            li.classList = el[1]
 
             task.addEventListener('dblclick', function () {
                 let text = this.innerHTML;
@@ -112,15 +113,17 @@
             remove.innerHTML = 'remove';
             remove.classList.add('remove');
             remove.addEventListener('click', function () {
-                let indx = arr.indexOf(li.firstChild.innerHTML)
-                arr.splice(indx, 1)
-                set(arr)
+
+                let indx = arr.map(el => el[0] === task.innerHTML).indexOf(true);
+                arr.splice(indx, 1);
+                set(arr);
+
                 list.removeChild(li);
             });
             li.appendChild(remove);
 
             let mark = document.createElement('span');
-            mark.innerHTML = 'done';
+            mark.innerHTML = el[2];
             mark.classList.add('mark');
             mark.addEventListener('click', function () {
                 li.classList.toggle('done');
@@ -130,22 +133,27 @@
                 } else {
                     mark.innerHTML = 'renew';
                 }
-            });
-            li.appendChild(mark);
 
+                let indx = arr.map(el => el[0] === task.innerHTML).indexOf(true);
+                arr[indx] = [task.innerHTML, li.classList[0] || '', mark.innerHTML];
+                set(arr);
+            });
+
+            li.appendChild(mark);
             list.appendChild(li);
         })
         
         input.addEventListener('keypress', function (event) {
             if (event.key === 'Enter') {
-                arr.push(this.value)
-				set(arr);
 				
                 let li = document.createElement('li');
 
                 let task = document.createElement('span');
                 task.classList.add('task');
                 task.innerHTML = this.value;
+				
+                arr.push([task.innerHTML, li.classList[0] || '', 'done']);
+                set(arr);
                 
                 task.addEventListener('dblclick', function () {
                     let text = this.innerHTML;
@@ -166,9 +174,11 @@
                 remove.innerHTML = 'remove';
                 remove.classList.add('remove');
                 remove.addEventListener('click', function () {
-                    let indx = arr.indexOf(li.firstChild.innerHTML)
-					arr.splice(indx, 1)
-					set(arr)
+                    
+                    let indx = arr.map(el => el[0] === task.innerHTML).indexOf(true);
+					arr.splice(indx, 1);
+					set(arr);
+					
                     list.removeChild(li);
                 });
                 li.appendChild(remove);
@@ -178,17 +188,20 @@
                 mark.classList.add('mark');
                 mark.addEventListener('click', function () {
                     li.classList.toggle('done');
-
+                    
                     if (mark.innerHTML === 'renew') {
                         mark.innerHTML = 'done';
                     } else {
                         mark.innerHTML = 'renew';
                     }
+
+                    let indx = arr.map(el => el[0] === task.innerHTML).indexOf(true);
+                    arr[indx] = [task.innerHTML, li.classList[0] || '', mark.innerHTML];
+                    set(arr);
                 });
+                
                 li.appendChild(mark);
-
                 list.appendChild(li);
-
                 this.value = '';
             }
         });
