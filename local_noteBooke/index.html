@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>notebook</title>
+	<style>
+		#wrapper {
+			width: 500px;
+			margin: 0 auto;
+			position: relative;
+		}
+		
+		#menu {
+			width: 150px;
+			position: absolute;
+			right: 105%;
+		}
+		
+		#notes {
+			padding: 0;
+			margin: 0;
+		}
+		
+		#notes li {
+			padding: 5px;
+			text-align: center;
+			margin-bottom: 10px;
+			border: 1px dashed gray;
+			list-style-type: none;
+			cursor: pointer;
+		}
+		
+		#notes li:hover, #notes li.active {
+			background: #c9f2ff;
+		}
+		
+		#create button {
+			width: 100%;
+			padding: 5px;
+			background-color: #11c40b;
+			margin-bottom: 5px;
+			font-size: 1em;
+			border-radius: .5em;
+			color: white;
+		}
+		
+		#delete button {
+			width: 100%;
+			padding: 5px;
+			background-color: #cd0f0f;
+			font-size: 1em;
+			border-radius: .5em;
+			color: white;
+		}
+		
+		#text textarea {
+			width: 100%;
+			height: 400px;
+			box-sizing: border-box;
+			padding: 10px;
+			margin-bottom: 10px;
+			font-size: 1.5em;
+		}
+		
+		#text button {
+			width: 100%;
+			height: 30px;
+			background-color: darkblue;
+			font-size: 1em;
+			color: white;
+			border-radius: 1em;
+		}
+	</style>
+</head>
+<body>
+<div id="wrapper">
+	<div id="menu">
+		<ul id="notes"></ul>
+		<div id="create">
+			<button>новая запись</button>
+		</div>
+		<div id="delete">
+			<button>удалить запись</button>
+		</div>
+	</div>
+	<div id="text">
+		<label>
+			<textarea></textarea>
+		</label>
+		<button>сохранить</button>
+	</div>
+</div>
+<script>
+    (function () {
+        
+        function set(value) {
+            localStorage.setItem('notebook', JSON.stringify(value))
+        }
+
+        function get() {
+            return JSON.parse(localStorage.getItem('notebook'))
+        }
+        
+        function createdEvents(){
+            document.querySelectorAll('#notes li').forEach(function (el) {
+                el.addEventListener('click', function () {
+                    if (texts[el.dataset.key]) {
+                        textarea.value = texts[el.dataset.key];
+                    } else {
+                        textarea.value = '';
+                    }
+                })
+            })
+
+            document.querySelectorAll('#notes li').forEach(function (el) {
+                el.addEventListener('click', function () {
+                    document.querySelectorAll('#notes li').forEach(function (element) {
+                        element.classList.remove('active')
+                    })
+
+                    el.classList.add('active');
+                })
+            })
+		}
+
+		let texts;
+        let create = document.getElementById('create');
+        let buttonDel = document.getElementById('delete');
+        let notes = document.getElementById('notes');
+        let buttonSave = document.querySelector('#text button');
+        let textarea = document.querySelector('#text textarea');
+		
+		if (!localStorage.notebook) {
+			set([]);
+            texts = get();
+		} else {
+			texts = get();
+			texts.forEach(function (el, i) {
+				let li = document.createElement('li');
+				li.dataset.key = i;
+				notes.appendChild(li)
+				li.innerHTML = 'Заметка ' + (i + 1)
+
+				createdEvents();
+			})
+		}
+        
+
+        create.addEventListener('click', function () {
+            texts = get();
+            let li = document.createElement('li');
+			
+            if (document.querySelectorAll('#notes li').length === texts.length) {
+                li.dataset.key = texts.length;
+                
+                if (textarea.value.trim() !== '') {
+                    texts[li.dataset.key] = textarea.value;
+                    textarea.value = '';
+                    notes.appendChild(li)
+                    li.innerHTML = 'Заметка ' + (texts.length);
+                }else{
+                    notes.appendChild(li)
+                    li.innerHTML = 'Заметка ' + (texts.length+1);
+				}
+                
+                document.querySelectorAll('#notes li').forEach(function (element) {
+                    element.classList.remove('active')
+                })
+                li.classList.add('active');
+            }
+            
+            createdEvents();
+			set(texts);
+        })
+
+        buttonSave.addEventListener('click', function () {
+            texts = get();
+            document.querySelectorAll('#notes li').forEach(function (element) {
+                if (element.classList.contains('active')) {
+                    let num = element.dataset.key;
+                    if (textarea.value.trim() !== '') {
+                        texts[num] = textarea.value;
+                        textarea.value = '';
+                    }
+                }
+            })
+            set(texts);
+        })
+
+        textarea.addEventListener('blur', function () {
+            document.querySelectorAll('#notes li').forEach(function (element) {
+                if (element.classList.contains('active')) {
+                    let num = element.dataset.key;
+                    if (textarea.value.trim() !== '') {
+                        texts[num] = textarea.value;
+                        textarea.value = '';
+                    }
+                }
+            })
+            set(texts);
+        })
+
+        buttonDel.addEventListener('click', function (event) {
+            let liAll = document.querySelectorAll('#notes li')
+            liAll.forEach(function (element) {
+                if (element.classList.contains('active')) {
+                    let num = element.dataset.key;
+                    texts.splice(num, 1);
+                }
+                element.classList.remove('active')
+            })
+            delete texts[liAll.length]
+			texts = texts.filter(el => el !== null )
+            textarea.value = '';
+            notes.removeChild(liAll[liAll.length - 1]);
+            set(texts)
+        })
+		
+    })();
+</script>
+</body>
+</html>
