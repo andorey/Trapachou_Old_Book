@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>check list</title>
+	<style>
+		body {
+			text-align: center;
+			font-family: 'Barlow Condensed', sans-serif;
+		}
+		
+		h2{
+			margin-bottom: -5px;
+		}
+		
+		#input {
+			margin: 0.5em 0;
+		}
+		
+		input {
+			font-size: 1em;
+		}
+		
+		.name {
+			font-size: 1.2em;
+		}
+		
+		ul {
+			display: contents;
+		}
+		
+		li {
+			list-style-type: none;
+			display: block ruby;
+		}
+		
+		.close, .done {
+			margin-left: 5px;
+			color: blueviolet;
+		}
+		
+		.close:hover, .done:hover {
+			text-decoration: underline;
+			cursor: pointer;
+		}
+		
+		.off {
+			color: lightsteelblue;
+			text-decoration: line-through;
+		}
+	</style>
+</head>
+<body>
+<h2>To Do List :</h2>
+<label>
+	<input type="text" id="input" autofocus>
+</label>
+<ul id="out"></ul>
+<script>
+    (function () {
+        let input = document.getElementById('input');
+        let out = document.getElementById('out');
+
+        input.addEventListener('keypress', function (event) {
+            if (event.key === 'Enter') {
+                let li = document.createElement('li');
+                li.classList.add('task');
+
+                let div = document.createElement('div');
+                div.classList.add('name')
+                li.appendChild(div)
+                div.innerHTML = input.value;
+
+                let close = document.createElement('span');
+                close.classList.add('close');
+                li.appendChild(close);
+                close.innerHTML = 'remove';
+
+                close.addEventListener('click', function () {
+                    out.removeChild(li)
+                })
+
+                let done = document.createElement('span');
+                done.classList.add('done');
+                li.appendChild(done);
+                done.innerHTML = 'done';
+
+                done.addEventListener('click', function () {
+                    div.classList.toggle('off')
+                    if (this.innerHTML === 'done') {
+                        this.innerHTML = 'renew'
+                    } else {
+                        this.innerHTML = 'done'
+                    }
+                })
+
+                div.addEventListener('dblclick', function () {
+                    let nameEvent = this.innerText;
+
+                    let inputEdit = document.createElement('input');
+                    div.innerHTML = '';
+                    div.appendChild(inputEdit)
+                    inputEdit.value = nameEvent;
+
+                    inputEdit.addEventListener('blur', function () {
+                        div.innerHTML = inputEdit.value;
+                    })
+
+                    inputEdit.addEventListener('keypress', function (event) {
+                        if (event.key === 'Enter') {
+                            div.innerHTML = inputEdit.value;
+                        }
+                    })
+                })
+                out.appendChild(li)
+                input.value = '';
+            }
+        })
+    })();
+</script>
+</body>
+</html>

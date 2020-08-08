@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Check List</title>
+	<style>
+		body {
+			text-align: center;
+		}
+		
+		h2{
+			margin-bottom: -5px;
+		}
+		
+		input {
+			font-size: 18px;
+		}
+		
+		li {
+			margin: 2px 0;
+			padding: 1px 5px 1px;
+		}
+		
+		li .task {
+			font-size: 20px;
+			background: #f0ffef;
+			padding: .3em;
+		}
+		
+		#input, #list {
+			display: inline-block;
+		}
+		
+		#list {
+			padding: 0;
+			list-style-type: none;
+		}
+		
+		#list span {
+			margin-left: 5px;
+		}
+		
+		#list .remove, #list .mark {
+			color: blue;
+			text-align: right;
+			cursor: pointer;
+		}
+		
+		#list .remove:hover, #list .mark:hover {
+			text-decoration: underline;
+		}
+		
+		#list .done .task {
+			text-decoration: line-through;
+			font-size: 19px;
+			border: white;
+			color: #c0bfbf;
+			background-color: white;
+		}
+	</style>
+</head>
+<body>
+
+<h2>Write your task:</h2>
+
+<div id="wrapper">
+	<label>
+		<input id="input"><br>
+	</label>
+	<ul id="list"></ul>
+</div>
+
+<script>
+    (function () {
+        let input = document.querySelector('#input');
+        let list = document.querySelector('#list');
+        
+        function set(arr) {
+			localStorage.setItem('dates', JSON.stringify(arr))
+        }
+        
+        function get() {
+			return JSON.parse(localStorage.getItem('dates'))
+        }
+        
+        let arr = get() || [];
+
+        arr.forEach(function (el) {
+            
+            let li = document.createElement('li');
+
+            let task = document.createElement('span');
+            task.classList.add('task');
+            task.innerHTML = el;
+
+            task.addEventListener('dblclick', function () {
+                let text = this.innerHTML;
+                this.innerHTML = '';
+
+                let edit = document.createElement('input');
+                edit.value = text;
+                this.appendChild(edit);
+
+                let self = this;
+                edit.addEventListener('blur', function () {
+                    self.innerHTML = edit.value;
+                });
+            });
+            li.appendChild(task);
+
+            let remove = document.createElement('span');
+            remove.innerHTML = 'remove';
+            remove.classList.add('remove');
+            remove.addEventListener('click', function () {
+                let indx = arr.indexOf(li.firstChild.innerHTML)
+                arr.splice(indx, 1)
+                set(arr)
+                list.removeChild(li);
+            });
+            li.appendChild(remove);
+
+            let mark = document.createElement('span');
+            mark.innerHTML = 'done';
+            mark.classList.add('mark');
+            mark.addEventListener('click', function () {
+                li.classList.toggle('done');
+
+                if (mark.innerHTML === 'renew') {
+                    mark.innerHTML = 'done';
+                } else {
+                    mark.innerHTML = 'renew';
+                }
+            });
+            li.appendChild(mark);
+
+            list.appendChild(li);
+        })
+        
+        input.addEventListener('keypress', function (event) {
+            if (event.key === 'Enter') {
+                arr.push(this.value)
+				set(arr);
+				
+                let li = document.createElement('li');
+
+                let task = document.createElement('span');
+                task.classList.add('task');
+                task.innerHTML = this.value;
+                
+                task.addEventListener('dblclick', function () {
+                    let text = this.innerHTML;
+                    this.innerHTML = '';
+
+                    let edit = document.createElement('input');
+                    edit.value = text;
+                    this.appendChild(edit);
+
+                    let self = this;
+                    edit.addEventListener('blur', function () {
+                        self.innerHTML = edit.value;
+                    });
+                });
+                li.appendChild(task);
+
+                let remove = document.createElement('span');
+                remove.innerHTML = 'remove';
+                remove.classList.add('remove');
+                remove.addEventListener('click', function () {
+                    let indx = arr.indexOf(li.firstChild.innerHTML)
+					arr.splice(indx, 1)
+					set(arr)
+                    list.removeChild(li);
+                });
+                li.appendChild(remove);
+
+                let mark = document.createElement('span');
+                mark.innerHTML = 'done';
+                mark.classList.add('mark');
+                mark.addEventListener('click', function () {
+                    li.classList.toggle('done');
+
+                    if (mark.innerHTML === 'renew') {
+                        mark.innerHTML = 'done';
+                    } else {
+                        mark.innerHTML = 'renew';
+                    }
+                });
+                li.appendChild(mark);
+
+                list.appendChild(li);
+
+                this.value = '';
+            }
+        });
+    })();
+</script>
+</body>
+</html>

@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="74023db5-c1bb-4577-96dc-080e17d9e9bb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/local_noteBooke/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local_noteBooke/local_notebook.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/organazer_localStorage/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local_noteBooke/local_notebook.zip" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +44,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.tabs" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.postfix.templates" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -77,7 +77,9 @@
       <workItem from="1596652528882" duration="5787000" />
       <workItem from="1596732963418" duration="603000" />
       <workItem from="1596824118573" duration="1521000" />
-      <workItem from="1596826814233" duration="28295000" />
+      <workItem from="1596826814233" duration="30588000" />
+      <workItem from="1596905233930" duration="784000" />
+      <workItem from="1596908945740" duration="4915000" />
     </task>
     <servers />
   </component>
@@ -108,10 +110,10 @@
       <screen x="0" y="23" width="1280" height="777" />
     </state>
     <state x="365" y="57" key="Github.UntrackedFilesDialog/0.23.1280.777@0.23.1280.777" timestamp="1596052690085" />
-    <state x="32" y="23" key="SettingsEditor" timestamp="1596733677479">
+    <state x="32" y="23" key="SettingsEditor" timestamp="1596909063177">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state x="32" y="23" key="SettingsEditor/0.23.1280.777@0.23.1280.777" timestamp="1596733677479" />
+    <state x="32" y="23" key="SettingsEditor/0.23.1280.777@0.23.1280.777" timestamp="1596909063177" />
     <state x="221" y="23" width="838" height="1032" key="search.everywhere.popup" timestamp="1596546548349">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
