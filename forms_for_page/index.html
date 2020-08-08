@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>forms for page</title>
+	<style>
+		body{
+			text-align: center;
+		}
+		fieldset{
+			width: 40%;
+			margin: 10px 0 10px 0;
+            text-align: center;
+		}
+		input{
+			margin: 10px 4px 10px 10px;
+			font-size: 1em;
+		}
+		section{
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            background: white;
+			padding: 2em;
+			border: dotted;
+		}
+	</style>
+</head>
+<body>
+<section>
+	<fieldset>
+		<legend>Forms</legend>
+			<label>
+				Choose Page Color: <input type="color"><br>
+				Input your name: <input type="text"><br>
+				Input your e-mail: <input type="email"><br>
+				*****Check data: <input type="date"><br>
+			</label>
+	</fieldset>
+	
+	<fieldset>
+		<legend>Radiobutton Control</legend>
+			<label><input type="radio" name="radioB" value="1">Radio 1</label><br>
+			<label><input type="radio" name="radioB" value="2">Radio 2</label><br>
+			<label><input type="radio" name="radioB" value="3">Radio 3</label><br>
+	</fieldset>
+	
+	<fieldset>
+		<legend>Checkbox Control</legend>
+			<label><input type='checkbox' class="check" checked value="1">Value - 1</label>
+			<label><input type="checkbox" class="chack" value="2">Value - 2</label>
+			<label><input type="checkbox" class="check" value="3">Value - 3</label>
+	</fieldset>
+</section>
+
+<script>
+	(function () {
+
+        function set(value) {
+            localStorage.setItem('input', JSON.stringify(value))
+        }
+
+        function get() {
+            return JSON.parse(localStorage.getItem('input'))
+        }
+
+        let body = document.querySelector('body');
+        let buttons = document.querySelectorAll('input')
+        let arr = get();
+        body.style.background = arr[0][0]
+
+        if (!localStorage.input || get().filter(e => e[1]).length === 0) {
+            set(Array(10).fill(['', '']));
+        } else {
+            buttons.forEach(function (el, i) {
+                el.value = arr[i][0];
+                el.checked = arr[i][1];
+            })
+        }
+		
+        body.addEventListener('change', function () {
+            let arr = [...buttons].map(el => [el.value, el.checked])
+            body.style.background = arr[0][0]
+            set(arr);
+        })
+    })();
+</script>
+</body>
+</html>
