@@ -11,7 +11,7 @@
 			width: 50px;
 			height: 50px;
 			border-radius: 50%;
-			background: tomato;
+			background: #14dee9;
 			cursor: pointer;
 			user-select: none;
 		}
@@ -24,7 +24,7 @@
 	(function () {
 
         let ball = document.getElementById('square')
-        const random = () => Math.floor(Math.random() * 6)
+        const random = () => Math.round(Math.random() * 6)
         let x = random();
         let y = random();
         let z = 1;
