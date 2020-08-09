@@ -21,66 +21,89 @@
 <div id="square"></div>
 
 <script>
-    let ball = document.getElementById('square')
-	let toggle = true
-    let x = 0, y = 0;
+	(function () {
 
-    ball.addEventListener('click', function () {
-        let start = Date.now();
+        let ball = document.getElementById('square')
+        const random = () => Math.floor(Math.random() * 6)
+        let x = random();
+        let y = random();
+        let z = 1;
+        let zz = 1;
 
-        let timer = setInterval(function() {
-            
-            let timePassed = Date.now() - start;
-            
-            if(x > 800 || x < 0) toggle = !toggle
-            
-			if (toggle){
-			    x += 5
-                ball.style.left = x + 'px';
-			    
-			}else{
-			    x -= 5
-                ball.style.left = x + 'px';
-			    y += 1
-                ball.style.top = y + 'px';
-            }
-   
-			
-			
-            if (timePassed > 20000) clearInterval(timer);
+        ball.onmousedown = function (e) { // 1. отследить нажатие
 
-        }, 20);
-    })
-
-    ball.onmousedown = function(e) { // 1. отследить нажатие
-
-        // подготовить к перемещению
-        // 2. разместить на том же месте, но в абсолютных координатах
-        ball.style.position = 'absolute';
-        moveAt(e);
-        // переместим в body, чтобы мяч был точно не внутри position:relative
-        document.body.appendChild(ball);
-
-        ball.style.zIndex = 10; // показывать мяч над другими элементами
-
-        // передвинуть мяч под координаты курсора
-        // и сдвинуть на половину ширины/высоты для центрирования
-        function moveAt(e) {
-            ball.style.left = e.pageX - ball.offsetWidth / 2 + 'px';
-            ball.style.top = e.pageY - ball.offsetHeight / 2 + 'px';
-        }
-
-        // 3, перемещать по экрану
-        document.onmousemove = function(e) {
+            // подготовить к перемещению
+            // 2. разместить на том же месте, но в абсолютных координатах
+            ball.style.position = 'absolute';
             moveAt(e);
+            // переместим в body, чтобы мяч был точно не внутри position:relative
+            document.body.appendChild(ball);
+
+
+            ball.style.zIndex = 10; // показывать мяч над другими элементами
+
+            // передвинуть мяч под координаты курсора
+            // и сдвинуть на половину ширины/высоты для центрирования
+            function moveAt(e) {
+                ball.style.left = e.pageX - ball.offsetWidth / 2 + 'px';
+                ball.style.top = e.pageY - ball.offsetHeight / 2 + 'px';
+            }
+
+            // 3, перемещать по экрану
+            document.onmousemove = function (e) {
+                moveAt(e);
+            }
+
+            // 4. отследить окончание переноса
+            ball.onmouseup = function () {
+                document.onmousemove = null;
+                ball.onmouseup = null;
+            }
+
+            ball.ondragstart = function () {
+                return false;
+            };
         }
 
-        // 4. отследить окончание переноса
-        ball.onmouseup = function() {
-            document.onmousemove = null;
-            ball.onmouseup = null;
-        }
-    }
+
+        ball.addEventListener('click', function () {
+            let start = Date.now();
+
+            let timer = setInterval(function () {
+
+                let timePassed = Date.now() - start;
+
+                if (Math.round(ball.offsetLeft) > 1000 || Math.round(ball.offsetLeft) < 1) {
+                    z *= -1;
+                    if(Math.floor(ball.offsetLeft) > 1000) ball.style.left = '999px';
+                    if(Math.floor(ball.offsetLeft) < 1) ball.style.left = '1px';
+                    
+                    x = random();
+                    y = random();
+                    
+                    if (y === 0) x = 5;
+                }
+
+                if (Math.round(ball.offsetTop) > 650 || Math.round(ball.offsetTop) < 1) {
+                    zz *= -1;
+                    if(Math.floor(ball.offsetTop) > 650) ball.style.top = '649px';
+                    if(Math.floor(ball.offsetTop) < 1) ball.style.top = '1px';
+					
+                    y = random();
+                    x = random();
+                    
+                    if (x === 0) y = 5;
+                }
+
+                ball.style.left = (Math.floor(ball.offsetLeft) + x * z) + 'px';
+                ball.style.top = (Math.floor(ball.offsetTop) + y * zz) + 'px';
+
+                if (timePassed > 20000) clearInterval(timer);
+
+            }, 10);
+        })
+
+    })();
 </script>
 </body>
 </html>
