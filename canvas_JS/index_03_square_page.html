@@ -9,7 +9,21 @@
 
 <script>
     let ctx = document.getElementById('canvas').getContext('2d');
-	
+
+    ctx.lineWidth = 0.2;
+    ctx.strokeStyle = 'royalblue'
+
+    for (let i = 0; i < 700; i += 15){
+        ctx.moveTo(0, i)
+        ctx.lineTo(1200, i)
+
+        ctx.moveTo(i, 0)
+        ctx.lineTo(i, 700)
+
+        ctx.moveTo(i + 700, 0)
+        ctx.lineTo(i + 700, 700)
+    }
+    ctx.stroke()
 </script>
 </body>
 </html>

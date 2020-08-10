@@ -3,25 +3,28 @@
 <head>
 	<meta charset="UTF-8">
 	<title>canvas JS</title>
-	<style>body{color: cornflowerblue}</style>
+	<style>body{color: royalblue}</style>
 </head>
 <body>
-<canvas id="canvas" width="1200" height="700"></canvas>
+<canvas id="canvas" width="1200" height="500"></canvas>
 
 <script>
     let ctx = document.getElementById('canvas').getContext('2d');
 	
-	for (let i = 0; i < 1200; i += 10){
-        ctx.beginPath()
-		ctx.lineWidth = .2;
-		ctx.strokeStyle = 'cornflowerblue'
+    ctx.lineWidth = 0.2;
+    ctx.strokeStyle = 'cornflowerblue'
+	
+	for (let i = 0; i < 600; i += 10){
         ctx.moveTo(0, i)
         ctx.lineTo(1200, i)
 		
 		ctx.moveTo(i, 0)
-		ctx.lineTo(i, 700)
-        ctx.stroke()
+		ctx.lineTo(i, 500)
+
+        ctx.moveTo(i + 600, 0)
+        ctx.lineTo(i + 600, 500)
 	}
+    ctx.stroke()
 </script>
 </body>
 </html>
