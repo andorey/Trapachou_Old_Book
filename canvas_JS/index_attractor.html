@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Attractor Serpinski</title>
+	<style>
+		body{
+			color: #01435b;
+			font-size: 1.1em;
+		}
+		input{
+			font-size: 1em;
+			margin-bottom: 10px;
+		}
+		
+		#place{
+			display: flex;
+			justify-content: space-around;
+		}
+		aside{
+			width: 45%;
+			margin-left: 30px;
+			color: #05688e;
+			font-family: 'Barlow Condensed', sans-serif;
+		}
+		li{
+			padding:  5px;
+		}
+	</style>
+</head>
+<body>
+<div id="triangle" >
+	<h2>Set The Vertices Of The Triangle</h2>
+	<label >The Apex #1 ( Top )&nbsp;&nbsp;&nbsp;
+		X1 : <input class="x1" type="number" min="0">&nbsp;&nbsp;&nbsp;
+		Y1 : <input class="y1" type="number" min="0"> &nbsp;&nbsp;&nbsp;
+	</label><br>
+	<label >The Apex #2 (Left-Down)&nbsp;&nbsp;&nbsp;
+		X2 : <input class="x2" type="number" min="0">&nbsp;&nbsp;&nbsp;
+		Y2 : <input class="y2" type="number" min="0">&nbsp;&nbsp;&nbsp;
+	</label><br>
+	<label >The Apex #3 (Right-Down)&nbsp;&nbsp;&nbsp;
+		X3 : <input class="x3" type="number" min="0">&nbsp;&nbsp;&nbsp;&nbsp;
+		Y3 : <input class="y3" type="number" min="0">&nbsp;&nbsp;&nbsp;&nbsp;
+		Choose color of Vertices<input class="color_triangle" type="color">
+		<input type="button" class="button_triangle" value="Press for Create">
+	</label>
+</div>
+
+<div id="point" hidden>
+	<h2>Set Coordinates Point Start</h2>
+	<label >
+		X : <input class="x" type="number" min="0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		Y : <input class="y" type="number" min="0"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			Choose color<input class="color" type="color">
+		<input type="button" class="button" value="Press for Start">
+	</label>
+</div>
+<div id="place">
+<canvas id="canvas" width="500" height="500"></canvas>
+
+<aside>
+	<h2>Треугольник Серпинского</h2>
+	<div>Треугольник Серпинского — фрактал, один из двумерных аналогов множества Кантора, предложенный польским математиком Вацлавом Серпинским в 1915 году. Также известен как «салфетка» Серпинского.</div>
+	<ol>
+		<li>Задаются координаты 3 вершин исходного треугольника</li>
+		<li>Пользователем задается некоторая начальная точка (имеющая ЛЮБЫЕ координаты) на плоскости поля</li>
+		<li>Случайным способом выбирается одна из вершин обозначенного ПОЛЬЗОВАТЕЛЕМ треугольника и откладывается ровно половина пути до нее от начальной точи. </li>
+		<li>На этом месте ставиться новая точка, которая берется теперь за начальную</li>
+		<li>Цикл повторяется </li>
+	</ol>
+	<div>Вы можете строить ЛЮБОЙ теугольник и запускать цикл СКОЛЬКО УГОДНО раз</div>
+	<p>Приятного удивления при наблюдении постройки фрактала</p>
+</aside>
+</div>
+
+<script>
+	(function () {
+        let canvas = document.getElementById('canvas');
+        let ctx = canvas.getContext('2d');
+        let button = document.querySelector('.button');
+
+        // coordinate grid
+        ctx.lineWidth = 0.2;
+        ctx.strokeStyle = 'cornflowerblue'
+
+        for (let i = 0; i < 500; i += 10) {
+            ctx.moveTo(0, i)
+            ctx.lineTo(500, i)
+
+            ctx.moveTo(i, 0)
+            ctx.lineTo(i, 500)
+        }
+        ctx.stroke();
+
+
+        document.querySelector('.button_triangle').addEventListener('click', function () {
+            // create triangle
+            let x1 = +document.querySelector('.x1').value;
+            let y1 = +document.querySelector('.y1').value;
+            let x2 = +document.querySelector('.x2').value;
+            let y2 = +document.querySelector('.y2').value;
+            let x3 = +document.querySelector('.x3').value;
+            let y3 = +document.querySelector('.y3').value;
+
+            document.getElementById('point').hidden = false
+            document.getElementById('triangle').hidden = true
+
+            ctx.fillStyle = document.querySelector('.color_triangle').value;
+            for (let i of [[x1, y1], [x2, y2], [x3, y3]]) {
+                ctx.fillRect(i[0], i[1], 6, 6)
+            }
+        })
+
+        button.addEventListener('click', function () {
+            // create triangle
+            let x1 = +document.querySelector('.x1').value;
+            let y1 = +document.querySelector('.y1').value;
+            let x2 = +document.querySelector('.x2').value;
+            let y2 = +document.querySelector('.y2').value;
+            let x3 = +document.querySelector('.x3').value;
+            let y3 = +document.querySelector('.y3').value;
+
+            ctx.fillStyle = document.querySelector('.color').value;
+            let x = +document.querySelector('.x').value;
+            let y = +document.querySelector('.y').value;
+
+            let start = Date.now();
+
+            if (button.value === 'RESET') location.reload();
+            if (button.value === 'Press for Start') button.value = 'RESET';
+
+            const randomAngle = function () {
+                const angles = [[x1, y1], [x2, y2], [x3, y3]];
+                const indx = Math.floor(Math.random() * 3);
+                return angles[indx];
+            }
+
+            function triangle(x, y) {
+                let arr = randomAngle()
+                return [(x + arr[0]) / 2, (y + arr[1]) / 2]
+            }
+
+            let timer = setInterval(function () {
+
+                let timePassed = Date.now() - start;
+
+                let arr = triangle(x, y);
+                ctx.fillRect(arr[0], arr[1], 3, 3)
+                x = arr[0]
+                y = arr[1]
+
+                if (timePassed > 100000) clearInterval(timer);
+
+            }, 5);
+        })
+    })();
+</script>
+</body>
+</html>
