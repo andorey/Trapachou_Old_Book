@@ -19,6 +19,7 @@
     function getRadians(degrees) {
         return (Math.PI/180)*degrees;
     }
+    // const radValue = degrees => (Math.PI/180)*degrees
 
     ctx.fillRect(100, 100, 200, 200);
     ctx.clearRect(135, 135, 130, 130)
@@ -46,6 +47,61 @@
     ctx.arc(500, 350, 150, getRadians(270), getRadians(90), true);
     ctx.fill();
 
+    const arrColor = {'yellowgreen': 1, 'orange': 1.35};
+
+    for (let i in arrColor){
+        ctx.beginPath()
+        ctx.strokeStyle = i;
+        ctx.moveTo(50, 50 * arrColor[i]);
+        ctx.lineTo(150, 50 * arrColor[i]);
+        ctx.stroke();
+    }
+    
+    // arrow with loop
+    const arrArrow = [[550, 50], [550, 150], [450, 150]];
+
+    ctx.beginPath()
+    ctx.moveTo(650, 250)
+    for (let i of arrArrow){
+        ctx.lineTo(i[0], i[1])
+    }
+    ctx.closePath()
+    ctx.fillStyle = 'blue';
+    ctx.fill()
+
+    // arrow with loop
+    const arrSquare = [[540, 40], [540, 140], [440, 140]];
+
+    ctx.beginPath()
+    ctx.moveTo(440, 40)
+    for (let i of arrSquare){
+        ctx.lineTo(i[0], i[1])
+    }
+    ctx.closePath()
+    ctx.fillStyle = 'red';
+    ctx.fill()
+    
+	// two square
+    for (let i in arrColor){
+        ctx.beginPath()
+        ctx.fillStyle = i;
+        ctx.fillRect(50, 350 * arrColor[i], 100, 100);
+        ctx.fill()
+    }
+    
+    // net with loop
+    for (let i = 300; i < 400; i += 10){
+        ctx.beginPath()
+		ctx.lineWidth = 2;
+        ctx.strokeStyle = 'magenta'
+        ctx.moveTo(450, i)
+        ctx.lineTo(560, i)
+
+        ctx.moveTo(i + 160, 290)
+        ctx.lineTo(i + 160, 400)
+        ctx.stroke()
+    }
+    
 </script>
 </body>
 </html>

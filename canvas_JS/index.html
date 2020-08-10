@@ -3,45 +3,25 @@
 <head>
 	<meta charset="UTF-8">
 	<title>canvas JS</title>
-	
+	<style>body{color: cornflowerblue}</style>
 </head>
 <body>
-<canvas id="canvas" width="1000" height="650"></canvas>
+<canvas id="canvas" width="1200" height="700"></canvas>
 
 <script>
-	let canvas = document.getElementById('canvas');
-	let ctx = canvas.getContext('2d');
+    let ctx = document.getElementById('canvas').getContext('2d');
 	
-    function getRadians(degrees) {
-        return (Math.PI/180)*degrees;
-    }
-
-    ctx.fillRect(100, 100, 200, 200);
-    ctx.clearRect(135, 135, 130, 130)
-
-    ctx.arc(500, 350, 150, getRadians(90), getRadians(450));
-    ctx.fillStyle = 'navy'
-    ctx.fill();
-
-    ctx.arc(500, 350, 100, getRadians(90), getRadians(450))
-    ctx.lineWidth = 5;
-	ctx.strokeStyle = 'lightcyan'
-	ctx.stroke()
-	
-
-    for (var i = 1; i <= 60; i++) {
-        ctx.moveTo(250 * i, 15);
-        ctx.lineTo(50, 15 * i);
-    }
-    ctx.stroke();
-
-    ctx.fillRect(700, 100, 200, 200);
-    ctx.clearRect(735, 135, 130, 130)
-	
-    ctx.moveTo(500, 350)
-    ctx.arc(500, 350, 150, getRadians(270), getRadians(90), true);
-    ctx.fill();
-
+	for (let i = 0; i < 1200; i += 10){
+        ctx.beginPath()
+		ctx.lineWidth = .2;
+		ctx.strokeStyle = 'cornflowerblue'
+        ctx.moveTo(0, i)
+        ctx.lineTo(1200, i)
+		
+		ctx.moveTo(i, 0)
+		ctx.lineTo(i, 700)
+        ctx.stroke()
+	}
 </script>
 </body>
 </html>
