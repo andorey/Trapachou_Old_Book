@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="74023db5-c1bb-4577-96dc-080e17d9e9bb" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/canvas_JS/index_teach.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/canvas_JS/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/canvas_JS/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/canvas_JS/index_03_square_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/canvas_JS/index_03_square_page.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +83,7 @@
       <workItem from="1596826814233" duration="30588000" />
       <workItem from="1596905233930" duration="784000" />
       <workItem from="1596908945740" duration="28967000" />
-      <workItem from="1597003382600" duration="27826000" />
+      <workItem from="1597003382600" duration="34736000" />
     </task>
     <servers />
   </component>

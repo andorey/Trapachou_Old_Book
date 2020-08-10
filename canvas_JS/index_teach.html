@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas JS</title>
+	<style>body{color: royalblue}</style>
+</head>
+<body>
+<canvas id="canvas" width="500" height="500"></canvas>
+
+<script>
+	
+    let canvas = document.getElementById('canvas');
+    let ctx = canvas.getContext('2d');
+
+    for (let i of [[250, 50], [50, 396], [450, 396]]) { ctx.fillRect(i[0], i[1], 5, 5) }
+    
+    const randomAngle = function () {
+        const angles = [[250, 50], [50, 396], [450, 396]];
+        const indx = Math.floor(Math.random() * 3);
+        return angles[indx];
+    }
+	
+	function triangle(x, y){
+        let arr = randomAngle()
+		return [(x + arr[0]) / 2, (y + arr[1]) / 2]
+	}
+
+    ctx.fillStyle = 'red';
+    let x = 189;
+	let y = 345;
+    for (let i = 0; i < 10000; i++){
+        let arr = triangle(x, y);
+        ctx.fillRect(arr[0], arr[1], 5, 5)
+		x = arr[0]
+		y = arr[1]
+	}
+
+ 
+ 
+</script>
+</body>
+</html>
