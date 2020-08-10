@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas JS</title>
+	<style>
+		#canvas{
+			/*border: dotted black .1em;*/
+		}
+	</style>
+</head>
+<body>
+<canvas id="canvas" width="1000" height="650"></canvas>
+
+<script>
+	let canvas = document.getElementById('canvas');
+	let ctx = canvas.getContext('2d');
+	
+    // ctx.fillRect(50, 50, 150, 150)
+    // ctx.clearRect(75, 75, 100, 100);
+
+    canvas.addEventListener('click', function () {
+        let start = Date.now();
+        // ctx.beginPath();
+        // ctx.moveTo(450, 300);
+
+        let timer = setInterval(function () {
+
+            let timePassed = Date.now() - start;
+
+            // ctx.lineTo(10 + (timePassed % 780) , 600 - (timePassed % 590));
+            // ctx.lineTo(450, 300);
+
+            ctx.fillRect(600 - (timePassed % 580) , 500-(timePassed % 480), 150, 150)
+            ctx.clearRect(625 - (timePassed % 580), 525-(timePassed % 480), 100, 100);
+
+            if (timePassed > 20000) clearInterval(timer);
+
+            // ctx.closePath()
+            // ctx.stroke();
+            
+        }, 30);
+
+    })
+
+</script>
+</body>
+</html>
