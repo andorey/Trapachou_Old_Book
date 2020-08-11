@@ -3,71 +3,153 @@
 <head>
 	<meta charset="UTF-8">
 	<title>square</title>
+	<style>
+		body{
+			font-family: 'Barlow Condensed', sans-serif;
+			font-size: 1em;
+		}
+		input{
+			margin: 0 10px 10px 0;
+			font-size: 1em;
+			color: navy;
+			font-family: 'Barlow Condensed', sans-serif;
+			width: 70px;
+		}
+		#button_start,
+		#button_restart{
+            font-size: 1em;
+			padding: 5px;
+			width: 150px;
+		}
+		#button_start{
+			background: green;
+			color: snow;
+		}
+		#button_restart{
+			background: red;
+			color: snow;
+		}
+		label{
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+		}
+	</style>
 </head>
 <body>
-	<canvas id="canvas" width="1200" height="600"></canvas>
+<div id="square">
+	<h2>Set the Size & Color of the Squares</h2>
+	<label >
+		The Size of the Sides of the Squares : <input class="size" type="number" min="1" max="300" value="250">
+		Choose width of lines : <input class="width" type="number" min="0.1" max="10.0" step="0.1" value="1.0">
+		Choose Animation Duration : <input class="duration" type="number" min="1000" max="10000" step="100" value="5000">
+		Set Speed Animation : <input class="speed" type="number" min="1" max="1000" step="1" value="50">
+		Set Step : <input class="step" type="number" min="1.1" max="10.0" step="0.1" value="3">
+		Set Tilt Factor : <input class="tilt" type="number" min="0" value="19">
+		Color of lines : <input class="color" type="color">
+		<input type="button" id="button_start" value="Press for Start">
+		<input type="button" id="button_restart" value="Press for Restart">
+	</label>
+</div>
+<canvas id="canvas" width="1100" height="600"></canvas>
 <script>
 	
-    let ctx = document.getElementById("canvas").canvas.getContext("2d");
-    let size = 350; //размер квадратов
-    let angle = 0; //угол поворота квадрата
-
-    function drawSquare (p0, p1, p2, p3) { //функция для отрисовки квадрата
+    let ctx = document.getElementById("canvas").getContext("2d");
+	
+    function buildSquare (apexA, apexB, apexC, apexD) { //функция для отрисовки квадрата
         ctx.beginPath();
-        ctx.moveTo(p0.x, p0.y);
-        ctx.lineTo(p1.x, p1.y);
-        ctx.lineTo(p2.x, p2.y);
-        ctx.lineTo(p3.x, p3.y);
-        ctx.lineTo(p0.x, p0.y);
+        ctx.moveTo(apexA.x, apexA.y);
+        ctx.lineTo(apexB.x, apexB.y);
+        ctx.lineTo(apexC.x, apexC.y);
+        ctx.lineTo(apexD.x, apexD.y);
+        ctx.lineTo(apexA.x, apexA.y);
         ctx.stroke();
     }
     
-    function drawPyramid (){ //функция для отрисовки вложенных квадратов
-        let pA = { //координаты вершин квадрата
-                x: (250 + size * Math.cos(Math.PI / 4)),
+    // построение сетки
+    ctx.lineWidth = 0.1;
+    ctx.strokeStyle = 'cornflowerblue';
+
+    for (let i = 0; i < 500; i += 10) {
+        ctx.moveTo(0, i);
+        ctx.lineTo(1000, i);
+
+        ctx.moveTo(i + 500, 0);
+        ctx.lineTo(i + 500, 500);
+        
+        ctx.moveTo(i, 0);
+        ctx.lineTo(i, 500);
+    }
+    ctx.stroke();
+    
+    function drawSquare (size){ // функция для вложенных квадратов
+        let apexA = { //координаты вершин квадрата
+                x: (220 + size * Math.cos(Math.PI / 4)),
                 y: (250 + size * Math.sin(Math.PI / 4)),
-				};
-		let pB = {
-                x: (250 + size * Math.cos(3 * Math.PI / 4)),
-                y: (250 + size * Math.sin(3 * Math.PI / 4))
             	};
-		let pC = {
-                x: (250 + size * Math.cos(5 * Math.PI / 4)),
-                y: (250 + size * Math.sin(5 * Math.PI / 4))
+        let apexB = {
+                x: (220 + size * Math.cos(3 * Math.PI / 4)),
+                y: (250 + size * Math.sin(3 * Math.PI / 4)),
             	};
-		let pD = {
-                x: (250 + size * Math.cos(7 * Math.PI / 4)),
-                y: (250 + size * Math.sin(7 * Math.PI / 4))
+        let apexC = {
+                x: (220 + size * Math.cos(5 * Math.PI / 4)),
+                y: (250 + size * Math.sin(5 * Math.PI / 4)),
             	};
-        drawSquare(pA, pB, pC, pD);
+        let apexD = {
+                x: (220 + size * Math.cos(7 * Math.PI / 4)),
+                y: (250 + size * Math.sin(7 * Math.PI / 4)),
+            	};
+        buildSquare(apexA, apexB, apexC, apexD);
     }
     
-    function drawSpiralSquare (){ ////функция для отрисовки вложенных спиральных квадратов
-        let pA = {
-                x: (800 + size * Math.cos(angle + Math.PI / 4)),
+    function buildSpiral (size, angle){ //функция для закручивания
+        let apexA = {
+                x: (650 + size * Math.cos(angle + Math.PI / 4)),
                 y: (250 + size * Math.sin(angle + Math.PI / 4)),
             	};
-		let pB = {
-                x: (800 + size * Math.cos(angle + 3 * Math.PI / 4)),
-                y: (250 + size * Math.sin(angle + 3 * Math.PI / 4))
+        let apexB = {
+                x: (650 + size * Math.cos(angle + 3 * Math.PI / 4)),
+                y: (250 + size * Math.sin(angle + 3 * Math.PI / 4)),
             	};
-		let pC = {
-                x: (800 + size * Math.cos(angle + 5 * Math.PI / 4)),
-                y: (250 + size * Math.sin(angle + 5 * Math.PI / 4))
+        let apexC = {
+                x: (650 + size * Math.cos(angle + 5 * Math.PI / 4)),
+                y: (250 + size * Math.sin(angle + 5 * Math.PI / 4)),
             	};
-		let pD = {
-                x: (800 + size * Math.cos(angle + 7 * Math.PI / 4)),
-                y: (250 + size * Math.sin(angle + 7 * Math.PI / 4))
-            };
-        drawSquare(pA, pB, pC, pD);
+        let apexD = {
+                x: (650 + size * Math.cos(angle + 7 * Math.PI / 4)),
+                y: (250 + size * Math.sin(angle + 7 * Math.PI / 4)),
+            	};
+        buildSquare(apexA, apexB, apexC, apexD);
     }
 
-    for (let i = 0; i < 30; i++) { //цикл для построения вложенных квадратов и вложенных спиральных квадратов
-        drawPyramid();
-        drawSpiralSquare();
-        size = size * Math.sin(Math.PI / 3); //с каждым шагом цикла меняется размер квадратов
-        angle = angle + Math.PI / 19; //изменяется угол поворота квадрата
-    }
+    document.getElementById("button_restart").addEventListener('click', function() {
+        location.reload()
+    })
+
+    document.getElementById("button_start").addEventListener('click', function () {
+        let size = document.querySelector('.size').value; //размер квадратов
+        let step = document.querySelector('.step').value; //размер шага
+        let duration = document.querySelector('.duration').value;
+        let speed = document.querySelector('.speed').value;
+        let tilt = document.querySelector('.tilt').value;
+        let angle = 0; // начальный угол поворота квадрата
+        let start = Date.now();
+
+        let timer = setInterval(function () {
+            let timePassed = Date.now() - start;
+
+            ctx.strokeStyle = document.querySelector('.color').value;
+            ctx.lineWidth = document.querySelector('.width').value;
+            drawSquare(size);
+			buildSpiral(size, angle);
+			size = size * Math.sin(Math.PI / step); //с каждым шагом цикла меняется размер квадратов
+			angle = angle + Math.PI / tilt; //изменяется угол поворота квадрата
+
+            if (timePassed > duration) clearInterval(timer);
+
+        }, speed);
+    })
+    
 </script>
 </body>
 </html>
