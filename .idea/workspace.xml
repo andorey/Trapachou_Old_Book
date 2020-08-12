@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="74023db5-c1bb-4577-96dc-080e17d9e9bb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/canvas_JS/Screen Shot 2020-08-11 at 17.24.09.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/canvas_JS/Screen Shot 2020-08-11 at 19.51.58.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/canvas_JS/Screen Shot 2020-08-11 at 21.43.37.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/canvas_JS/draw_square.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/canvas_JS/index_helix.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/canvas_JS/one.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/canvas_JS/index_helix.html" beforeDir="false" afterPath="$PROJECT_DIR$/canvas_JS/index_helix.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/canvas_JS/index_square.html" beforeDir="false" afterPath="$PROJECT_DIR$/canvas_JS/index_square.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -91,6 +86,8 @@
       <workItem from="1596908945740" duration="28967000" />
       <workItem from="1597003382600" duration="35070000" />
       <workItem from="1597088101111" duration="34680000" />
+      <workItem from="1597214721248" duration="557000" />
+      <workItem from="1597237399030" duration="1097000" />
     </task>
     <servers />
   </component>

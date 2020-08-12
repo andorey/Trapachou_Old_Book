@@ -79,6 +79,14 @@
     let ctx = document.getElementById("canvas").getContext("2d");
     let buttonBlack = document.querySelector('.button_black');
     let body = document.querySelector('body');
+    
+    if (localStorage.buttonBlack) {
+        body.classList = localStorage.buttonBlack
+        buttonBlack.value = 'BgColor WHITE'
+        buttonBlack.classList.add('whites')
+    }else{
+        localStorage.setItem('buttonBlack', '')
+	}
 	
     function buildSquare (apexA, apexB, apexC, apexD) { //функция для отрисовки квадрата
         ctx.beginPath();
@@ -121,10 +129,12 @@
 	buttonBlack.addEventListener('click', function () {
 		if(body.classList.contains('blacks')){
 		    body.classList.remove('blacks')
+            localStorage.setItem('buttonBlack', '')
 			buttonBlack.value = 'BgColor BLACK'
             buttonBlack.classList.remove('whites')
 		}else{
 		    body.classList.add('blacks');
+		    localStorage.setItem('buttonBlack', 'blacks')
             buttonBlack.value = 'BgColor WHITE'
 			buttonBlack.classList.add('whites')
 		}
