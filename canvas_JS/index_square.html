@@ -17,7 +17,7 @@
 		}
 		#button_start,
 		#button_restart,
-		#black, #clear{
+		.black, #clear{
             font-size: 1em;
 			padding: 7px;
 			width: 150px;
@@ -30,7 +30,7 @@
 			background: red;
 			color: snow;
 		}
-		#black{
+		.black{
             background: black;
             color: snow;
 		}
@@ -47,6 +47,10 @@
 			background: black;
 			color: white;
 		}
+        .whites{
+            background: snow;
+            color: black;
+        }
 	</style>
 </head>
 <body>
@@ -64,7 +68,7 @@
 		Color of lines : <input class="color" type="color" value="#2b489f">
 		<input type="button" id="button_start" value="Press for Start">
 		<input type="button" id="clear" value="Press for Clear">
-		<input type="button" id="black" value="BgColor Black">
+		<input type="button" class="black" value="BgColor Black">
 		<input type="button" id="button_restart" value="Press for Restart">
 	</label>
 </div>
@@ -72,6 +76,16 @@
 <script>
 	
     let ctx = document.getElementById("canvas").getContext("2d");
+    let body = document.querySelector('body');
+    let button = document.querySelector('.black');
+
+    if (localStorage.buttonBlack) {
+        body.classList = localStorage.buttonBlack
+        button.value = 'BgColor WHITE'
+        button.classList.add('whites')
+    }else{
+        localStorage.setItem('buttonBlack', '')
+    }
 	
     function buildSquare (apexA, apexB, apexC, apexD) { //функция для отрисовки квадрата
         ctx.beginPath();
@@ -147,17 +161,19 @@
         location.reload()
     })
 	
-	document.getElementById('black').addEventListener('click', function () {
-	    let body = document.querySelector('body');
-	    let button = document.getElementById('black');
-			
-		if(body.classList.contains('blacks')){
-		    body.classList.remove('blacks')
-			button.value = 'BgColor Black'
-		}else{
-		    body.classList.add('blacks');
-            button.value = 'BgColor White'
-		}
+	button.addEventListener('click', function () {
+
+        if(body.classList.contains('blacks')){
+            body.classList.remove('blacks')
+            localStorage.setItem('buttonBlack', '')
+            button.value = 'BgColor BLACK'
+            button.classList.remove('whites')
+        }else{
+            body.classList.add('blacks');
+            localStorage.setItem('buttonBlack', 'blacks')
+            button.value = 'BgColor WHITE'
+            button.classList.add('whites')
+        }
     })
 
     document.getElementById("button_start").addEventListener('click', function () {
