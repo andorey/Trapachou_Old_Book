@@ -13,26 +13,57 @@
 	<samp>Результат вывода компьютерной программы/скрипта</samp>
 
 </div>
-<canvas id="canvas" width="200" height="200" style="background: #f4f4f4;"></canvas>
+<canvas id="canvas" width="400" height="200" style="background: #f4f4f4;"></canvas>
 
 <script>
 	const ctx = document.getElementById('canvas').getContext('2d');
 	
-	for (let i = 10; i < 200; i += 10){
+	for (let i = 10; i <= 200; i += 10){
 	    ctx.beginPath()
         ctx.strokeStyle = '#7386ba';
 		ctx.lineWidth = 0.3;
 		ctx.moveTo(i, 0)
 		ctx.lineTo(i, 200)
+
+        ctx.moveTo(i + 200, 0)
+        ctx.lineTo(i + 200, 200)
 		
 		ctx.moveTo(0, i)
-		ctx.lineTo(200, i)
+		ctx.lineTo(400, i)
 		ctx.stroke()
 	}
 
+    ctx.textAlign = 'left';
+	ctx.font = '30px Arial';
+	ctx.textBaseline = 'alphabetic'
+    ctx.fillText('Hello world', 115, 30);
+    
+	ctx.beginPath()
+	ctx.strokeStyle = 'red';
+    ctx.lineWidth = 0.8;
     ctx.font = '30px Arial';
-    ctx.fillText('Hello world', 30, 50);
-	
+    ctx.strokeText('Goodbye my love goodbye', 10, 60)
+
+    //Draw a red line at y = 100
+    ctx.strokeStyle = "red";
+    ctx.moveTo(5, 130);
+    ctx.lineTo(395, 130);
+    ctx.stroke();
+
+    ctx.font = "20px Arial"
+
+    //Place each word at y = 100 with different textBaseline values
+    ctx.textBaseline = "top";
+    ctx.fillText("Top", 5, 130);
+    ctx.textBaseline = "bottom";
+    ctx.fillText("Bottom", 50, 130);
+    ctx.textBaseline = "middle";
+    ctx.fillText("Middle", 120, 130);
+    ctx.textBaseline = "alphabetic";
+    ctx.fillText("Alphabetic", 190, 130);
+    ctx.textBaseline = "hanging";
+    ctx.fillText("Hanging", 290, 130);
+    
 </script>
 </body>
 </html>
