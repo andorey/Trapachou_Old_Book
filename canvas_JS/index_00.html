@@ -39,7 +39,7 @@
     // let button = document.querySelector('button');
     // button.addEventListener('click', copy, false);
 
-	
+	let  angel = 10
     function rotate() {
         let imgwidth = sourceimage.offsetWidth;
         let imgheight = sourceimage.offsetHeight;
@@ -47,14 +47,15 @@
         canvas.height = imgheight;
         ctx.save();
         ctx.translate(imgwidth / 2, imgheight / 2);
-        ctx.rotate(Math.PI/2);
+        ctx.rotate(angel * Math.PI/180);
         ctx.drawImage(
             sourceimage, -(imgwidth / 2), -(imgheight / 2)
         );
         ctx.restore();
+        angel += 10
     }
     let button = document.querySelector('button');
-    button.addEventListener('click', rotate, false);
+    button.addEventListener('click', rotate, true);
 	
 	
 </script>

@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="74023db5-c1bb-4577-96dc-080e17d9e9bb" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/canvas_JS/index_copy_to_canvas.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/canvas_JS/index_rotate.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/canvas_JS/index_attractor.html" beforeDir="false" afterPath="$PROJECT_DIR$/canvas_JS/index_attractor.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/canvas_JS/index_00.html" beforeDir="false" afterPath="$PROJECT_DIR$/canvas_JS/index_00.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,12 +49,12 @@
     <property name="settings.editor.selected.configurable" value="preferences.editor" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/local_noteBooke" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/canvas_JS" />
       <recent name="$PROJECT_DIR$/animation_js" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/local_noteBooke" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -95,7 +97,7 @@
       <workItem from="1597519175522" duration="3992000" />
       <workItem from="1597527644505" duration="892000" />
       <workItem from="1597529151822" duration="142000" />
-      <workItem from="1597529322534" duration="5233000" />
+      <workItem from="1597529322534" duration="10530000" />
     </task>
     <servers />
   </component>

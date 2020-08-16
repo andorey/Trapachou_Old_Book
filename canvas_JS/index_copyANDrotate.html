@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas rotate</title>
+</head>
+<style>
+	body{
+		display: flex;
+		justify-content: center;
+		justify-items: center;
+		align-items: center;
+		margin: 10px;
+		font-size: 1.2em;
+		font-family: Verdana monospace;
+	}
+	.button, .active{
+		font-size: 1em;
+		padding: 5px;
+		margin: 0 20px 10px 10px;
+	}
+	#buttons{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+</style>
+
+<body>
+
+<div>Origin image : </div>
+<img src="./1.png" alt="dollar" height="150" width="150">
+<div id="buttons">
+<label>
+	<input type="button" class="button" value="Copy">
+</label>
+<label>
+	<input type="button" class="active" value="Rotate">
+</label>
+</div>
+<div>The image to canvas ➜ : </div>
+<canvas id="canvas" width="150" height="150" style="color: #eeeeee"></canvas>
+
+<script>
+    const canvas = document.querySelector('canvas');
+	const ctx = canvas.getContext('2d');
+    let img = document.querySelector('img');
+    let button = document.querySelector('.button');
+    let buttonActive = document.querySelector('.active');
+    let  angel = 15
+
+    let imgWidth = img.offsetWidth;
+    let imgHeight = img.offsetHeight;
+	
+    canvas.height = 0;
+	
+    button.addEventListener('click', function () {
+        canvas.width = imgWidth;
+        canvas.height = imgHeight;
+        ctx.drawImage(img, 0, 0);
+    });
+	
+    buttonActive.addEventListener('click', function () {
+        canvas.width = imgWidth;
+        canvas.height = imgHeight;
+        
+        ctx.save();
+        ctx.translate(imgWidth / 2, imgHeight / 2);
+        ctx.rotate(angel * Math.PI/180);
+        ctx.drawImage(
+            img, -(imgWidth / 2), -(imgHeight / 2)
+        );
+        ctx.restore();
+        angel += 15
+    });
+	
+</script>
+</body>
+</html>
