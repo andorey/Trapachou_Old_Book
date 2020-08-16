@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="74023db5-c1bb-4577-96dc-080e17d9e9bb" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/canvas_JS/1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/canvas_JS/index_00.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/canvas_JS/index_02.html" beforeDir="false" afterPath="$PROJECT_DIR$/canvas_JS/index_02.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/canvas_JS/index_text.html" beforeDir="false" afterPath="$PROJECT_DIR$/canvas_JS/index_text.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/canvas_JS/index_attractor.html" beforeDir="false" afterPath="$PROJECT_DIR$/canvas_JS/index_attractor.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/canvas_JS/one.png" beforeDir="false" afterPath="$PROJECT_DIR$/canvas_JS/one.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,6 +16,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="JavaScript File" />
         <option value="HTML File" />
       </list>
     </option>
@@ -92,6 +95,10 @@
       <workItem from="1597342143905" duration="76000" />
       <workItem from="1597342385516" duration="400000" />
       <workItem from="1597422244024" duration="4364000" />
+      <workItem from="1597519175522" duration="3992000" />
+      <workItem from="1597527644505" duration="892000" />
+      <workItem from="1597529151822" duration="142000" />
+      <workItem from="1597529322534" duration="4389000" />
     </task>
     <servers />
   </component>

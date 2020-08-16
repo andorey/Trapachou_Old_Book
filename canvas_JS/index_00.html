@@ -1,10 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+	<meta charset="UTF-8">
+	<title>canvas 00</title>
 </head>
 <body>
-$END$
+<img src="./1.png" alt="dollar" height="150" width="150">
+<button>Copy image to canvas ➜</button>
+<canvas id="canvas" width="300" height="300" style="color: #eeeeee"></canvas>
+
+<script>
+	const ctx = document.getElementById('canvas').getContext('2d');
+	
+    let sourceimage = document.querySelector('img');
+    let canvas = document.querySelector('canvas');
+    // canvas.height = canvas.width = 0;
+
+    // grid
+    for (let i = 10; i < 300; i += 10){
+        ctx.beginPath()
+        ctx.strokeStyle = '#0060aa';
+        ctx.lineWidth = 0.1;
+        ctx.moveTo(i, 0)
+        ctx.lineTo(i, 300)
+
+        ctx.moveTo(0, i)
+        ctx.lineTo(300, i)
+        ctx.stroke()
+    }
+    
+    function copy() {
+        let imgwidth = sourceimage.offsetWidth;
+       	let imgheight = sourceimage.offsetHeight;
+        canvas.width = imgwidth;
+        canvas.height = imgheight;
+        ctx.drawImage(sourceimage, 0, 0);
+    }
+    // let button = document.querySelector('button');
+    // button.addEventListener('click', copy, false);
+
+	
+    function rotate() {
+        let imgwidth = sourceimage.offsetWidth;
+        let imgheight = sourceimage.offsetHeight;
+        canvas.width = imgwidth;
+        canvas.height = imgheight;
+        ctx.save();
+        ctx.translate(imgwidth / 2, imgheight / 2);
+        ctx.rotate(Math.PI/2);
+        ctx.drawImage(
+            sourceimage, -(imgwidth / 2), -(imgheight / 2)
+        );
+        ctx.restore();
+    }
+    let button = document.querySelector('button');
+    button.addEventListener('click', rotate, false);
+	
+	
+</script>
 </body>
 </html>
