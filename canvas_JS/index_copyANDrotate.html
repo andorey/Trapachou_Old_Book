@@ -23,9 +23,10 @@
         font-family: Verdana monospace;
     }
 
-    .buttonCopy, .rotateRight,.rotateLeft,
-	#changeColor, #changePhoto{
-        font-size: 0.9em;
+    .buttonCopy, .rotateRight,
+	.rotateLeft, #makeShadow,
+	#changeColor, #makePhoto{
+        font-size: 0.7em;
         padding: 1px;
         margin: 0 5px 5px 5px;
     }
@@ -65,17 +66,20 @@
 		</label>
 		<div>
 			<label>
-				<input type="button" class="rotateLeft" value="<">
+				<input type="button" class="rotateLeft" value="<" disabled>
 			</label>
 			<label>
-				<input type="button" class="rotateRight" value=">">
+				<input type="button" class="rotateRight" value=">" disabled>
 			</label>
 		</div>
 		<label>
 			<input type="button" id="changeColor" value="Change Color">
 		</label>
 		<label>
-			<input type="button" id="changePhoto" value="Make Photo">
+			<input type="button" id="makePhoto" value="Make Photo" disabled>
+		</label>
+		<label>
+			<input type="button" id="makeShadow" value="Add Shadow">
 		</label>
 	</div>
 	<div>The image to canvas ➜ :</div>
@@ -91,96 +95,154 @@
         let rotateRight = document.querySelector('.rotateRight');
         let rotateLeft = document.querySelector('.rotateLeft');
         let colourlist = document.querySelector('section');
+        let buttonShadow = document.getElementById('makeShadow');
+        let changeColor = document.getElementById('changeColor')
+		let makePhoto = document.getElementById('makePhoto')
         let angle = 0
+		let shadowToggle = false;
 
         let imgWidth = img.offsetWidth;
         let imgHeight = img.offsetHeight;
 
+        canvas.width = imgWidth;
+        canvas.height = imgHeight;
+
         canvas.height = 0;
-
-        buttonCopy.addEventListener('click', function () {
-            buttonCopy.disabled = true;
-            
-            canvas.width = imgWidth;
-            canvas.height = imgHeight;
-
+        
+        function makeShadow(){
             ctx.shadowOffsetX = 7;
             ctx.shadowOffsetY = 7;
             ctx.shadowBlur = 4;
             ctx.shadowColor = 'rgba(63,62,62,0.5)';
-            ctx.drawImage(img, 0, 0);
-
-			document.getElementById('changeColor').addEventListener('click', function() {
-                let pixels = ctx.getImageData(0, 0, canvas.width, canvas.height);
-
-                let all = pixels.data.length;
-                let data = pixels.data;
-                for (let i = 0; i < all;i += 4) {
-                    let stash = data[i];
-                    data[i] = data[i+1];
-                    data[i+1] = stash;
-                }
-                ctx.putImageData(pixels, 0, 0);
-                canvas.style.display = 'inline';
-            })
+		}
+		
+		function twisting(x){
+            angle += 15 * x;
 			
-			document.getElementById('changePhoto').addEventListener('click', function () {
-                let arr = [];
-                let data = ctx.getImageData(0, 0, imgWidth, imgHeight).data;
+            canvas.width = imgWidth;
+            canvas.height = imgHeight;
+
+            ctx.save();
+            ctx.translate(imgWidth / 2, imgHeight / 2);
+            ctx.rotate(angle * Math.PI / 180);
+
+            if(shadowToggle){
+                makeShadow()
+                buttonShadow.value = 'Remove Shadow';
+            }else{
+                buttonShadow.value = 'add Shadow';
+            }
+
+            ctx.drawImage(
+                img, -(imgWidth / 2), -(imgHeight / 2)
+            );
+
+            if (+canvas.dataset.key) coloristics()
+            
+            ctx.restore();
+		}
+		
+		function draw(){
+            
+            if(shadowToggle){
+
+                canvas.width = imgWidth;
+                canvas.height = imgHeight;
+
+                ctx.save();
+                ctx.translate(imgWidth / 2, imgHeight / 2);
+                ctx.rotate(angle * Math.PI / 180);
 				
-                let all = data.length;
+                makeShadow();
 
-                for (let i = 0; i < all; i += 4) {
-                    let key = `${data[i]}, ${data[i + 1]}, ${data[i + 2]}, ${data[i + 3]}`;
-                    arr.push(key);
-                }
-			    
-                for (let step of arr) {
-                    let div = document.createElement('div')
-                    let indx = step.split(',')
-                    div.style.background = `rgba(${+indx[0]}, ${+indx[1]}, ${+indx[2]}, ${+indx[3]})`
-                    colourlist.appendChild(div)
-                }
-            });
+                ctx.drawImage(
+                    img, -(imgWidth / 2), -(imgHeight / 2)
+                );
 
-            rotateRight.addEventListener('click', function () {
-                angle += 15;
+                if (+canvas.dataset.key) coloristics()
                 
+                ctx.restore();
+                buttonShadow.value = 'Remove Shadow';
+			}else{
                 canvas.width = imgWidth;
                 canvas.height = imgHeight;
-				
+
                 ctx.save();
                 ctx.translate(imgWidth / 2, imgHeight / 2);
                 ctx.rotate(angle * Math.PI / 180);
-                ctx.shadowOffsetX = 7;
-                ctx.shadowOffsetY = 7;
-                ctx.shadowBlur = 4;
-                ctx.shadowColor = 'rgba(63,62,62,0.5)';
+
                 ctx.drawImage(
                     img, -(imgWidth / 2), -(imgHeight / 2)
                 );
-                ctx.restore();
-            });
 
-            rotateLeft.addEventListener('click', function () {
-                angle -= 15;
-                canvas.width = imgWidth;
-                canvas.height = imgHeight;
-				
-                ctx.save();
-                ctx.translate(imgWidth / 2, imgHeight / 2);
-                ctx.rotate(angle * Math.PI / 180);
-                ctx.shadowOffsetX = 7;
-                ctx.shadowOffsetY = 7;
-                ctx.shadowBlur = 4;
-                ctx.shadowColor = 'rgba(63,62,62,0.5)';
-                ctx.drawImage(
-                    img, -(imgWidth / 2), -(imgHeight / 2)
-                );
+                if (+canvas.dataset.key) coloristics()
+                
                 ctx.restore();
-            });
+                buttonShadow.value = 'add Shadow';
+			}
+		}
+		
+		function coloristics(){
+            let pixels = ctx.getImageData(0, 0, canvas.width, canvas.height);
 
+            let all = pixels.data.length;
+            let data = pixels.data;
+            for (let i = 0; i < all;i += 4) {
+                let stash = data[i];
+                data[i] = data[i+1];
+                data[i+1] = stash;
+            }
+            ctx.putImageData(pixels, 0, 0);
+		}
+		
+
+        buttonCopy.addEventListener('click', function() {
+            buttonCopy.disabled = true;
+            makePhoto.disabled = false;
+            rotateLeft.disabled = false;
+            rotateRight.disabled = false;
+            
+            draw();
         })
+
+        buttonShadow.addEventListener('click', function(){
+            shadowToggle = !shadowToggle;
+			draw();
+        })
+		
+		
+        changeColor.addEventListener('click', function () {
+            if (+canvas.dataset.key){
+                coloristics()
+                canvas.dataset.key = '';
+			}else{
+                coloristics()
+                canvas.dataset.key = 1;
+			}
+        })
+
+        makePhoto.addEventListener('click', function () {
+            let arr = [];
+            let data = ctx.getImageData(0, 0, imgWidth, imgHeight).data;
+
+            let all = data.length;
+
+            for (let i = 0; i < all; i += 4) {
+                let key = `${data[i]}, ${data[i + 1]}, ${data[i + 2]}, ${data[i + 3]}`;
+                arr.push(key);
+            }
+
+            for (let step of arr) {
+                let div = document.createElement('div')
+                let indx = step.split(',')
+                div.style.background = `rgba(${+indx[0]}, ${+indx[1]}, ${+indx[2]}, ${+indx[3]})`
+                colourlist.appendChild(div)
+            }
+        });
+        
+		rotateRight.addEventListener('click', () => twisting(1));
+		rotateLeft.addEventListener('click', () => twisting(-1));
+		
     });
 	
 </script>
