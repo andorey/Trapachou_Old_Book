@@ -23,11 +23,11 @@
         font-family: Verdana monospace;
     }
 
-    .button, .rotateRight,.rotateLeft,
-	#cangeColor, #cangePhoto{
-        font-size: 0.7em;
+    .buttonCopy, .rotateRight,.rotateLeft,
+	#changeColor, #changePhoto{
+        font-size: 0.9em;
         padding: 1px;
-        margin: 0 20px 10px 10px;
+        margin: 0 5px 5px 5px;
     }
 
     #buttons {
@@ -61,7 +61,7 @@
 	<img src="skeleton.png" alt="dollar" height="150" width="150">
 	<div id="buttons">
 		<label>
-			<input type="button" class="button" value="Copy">
+			<input type="button" class="buttonCopy" value="Copy">
 		</label>
 		<div>
 			<label>
@@ -72,10 +72,10 @@
 			</label>
 		</div>
 		<label>
-			<input type="button" id="cangeColor" value="Change Color">
+			<input type="button" id="changeColor" value="Change Color">
 		</label>
 		<label>
-			<input type="button" id="cangePhoto" value="Make Photo">
+			<input type="button" id="changePhoto" value="Make Photo">
 		</label>
 	</div>
 	<div>The image to canvas ➜ :</div>
@@ -87,7 +87,7 @@
         const canvas = document.querySelector('canvas');
         const ctx = canvas.getContext('2d');
         let img = document.querySelector('img');
-        let button = document.querySelector('.button');
+        let buttonCopy = document.querySelector('.buttonCopy');
         let rotateRight = document.querySelector('.rotateRight');
         let rotateLeft = document.querySelector('.rotateLeft');
         let colourlist = document.querySelector('section');
@@ -98,22 +98,9 @@
 
         canvas.height = 0;
 
-
-		function cangeColor() {
-            let pixels = ctx.getImageData(0, 0, canvas.width, canvas.height);
-
-            let all = pixels.data.length;
-            let data = pixels.data;
-            for (let i = 0; i < all;i += 4) {
-                let stash = data[i];
-                data[i] = data[i+1];
-                data[i+1] = stash;
-            }
-            ctx.putImageData(pixels, 0, 0);
-            canvas.style.display = 'inline';
-        }
-
-        button.addEventListener('click', function () {
+        buttonCopy.addEventListener('click', function () {
+            buttonCopy.disabled = true;
+            
             canvas.width = imgWidth;
             canvas.height = imgHeight;
 
@@ -123,9 +110,21 @@
             ctx.shadowColor = 'rgba(63,62,62,0.5)';
             ctx.drawImage(img, 0, 0);
 
-            document.querySelector('#cangeColor').addEventListener('click', cangeColor, false)
+			document.getElementById('changeColor').addEventListener('click', function() {
+                let pixels = ctx.getImageData(0, 0, canvas.width, canvas.height);
+
+                let all = pixels.data.length;
+                let data = pixels.data;
+                for (let i = 0; i < all;i += 4) {
+                    let stash = data[i];
+                    data[i] = data[i+1];
+                    data[i+1] = stash;
+                }
+                ctx.putImageData(pixels, 0, 0);
+                canvas.style.display = 'inline';
+            })
 			
-			document.getElementById('cangePhoto').addEventListener('click', function () {
+			document.getElementById('changePhoto').addEventListener('click', function () {
                 let arr = [];
                 let data = ctx.getImageData(0, 0, imgWidth, imgHeight).data;
 				
@@ -149,9 +148,7 @@
                 
                 canvas.width = imgWidth;
                 canvas.height = imgHeight;
-
-                document.querySelector('#cangeColor').addEventListener('click', cangeColor, false)
-
+				
                 ctx.save();
                 ctx.translate(imgWidth / 2, imgHeight / 2);
                 ctx.rotate(angle * Math.PI / 180);
@@ -169,9 +166,7 @@
                 angle -= 15;
                 canvas.width = imgWidth;
                 canvas.height = imgHeight;
-
-                document.querySelector('#cangeColor').addEventListener('click', cangeColor, false)
-
+				
                 ctx.save();
                 ctx.translate(imgWidth / 2, imgHeight / 2);
                 ctx.rotate(angle * Math.PI / 180);
