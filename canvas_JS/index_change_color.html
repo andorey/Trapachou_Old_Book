@@ -18,15 +18,14 @@
 
 
 <script>
-	(function () {
-		
+    window.addEventListener('load', function() {
         let img = document.querySelector('img');
         let canvas = document.querySelector('canvas');
         let ctx = canvas.getContext('2d');
         canvas.height = img.height;
         canvas.width = img.width;
         ctx.drawImage(img ,0 ,0);
-        canvas.style.display = 'none';
+        // canvas.style.display = 'none';
 
 		document.querySelector('#cangeColor').addEventListener('click', function () {
 			let pixels = ctx.getImageData(0, 0, canvas.width, canvas.height);
