@@ -13,7 +13,7 @@
         align-items: center;
 	}
 	
-    .rotates {
+    .window {
         display: flex;
         justify-content: center;
         justify-items: center;
@@ -23,9 +23,9 @@
         font-family: Verdana monospace;
     }
 
-    .button, .active,
-	#cangeColor{
-        font-size: 0.9em;
+    .button, .rotateRight,.rotateLeft,
+	#cangeColor, #cangePhoto{
+        font-size: 0.7em;
         padding: 1px;
         margin: 0 20px 10px 10px;
     }
@@ -56,17 +56,27 @@
 <div> The Pixel Picture :</div>
 <section ></section>
 
-<div class="rotates">
+<div class="window">
 	<div>Origin image :</div>
 	<img src="skeleton.png" alt="dollar" height="150" width="150">
 	<div id="buttons">
 		<label>
 			<input type="button" class="button" value="Copy">
 		</label>
+		<div>
+			<label>
+				<input type="button" class="rotateLeft" value="<">
+			</label>
+			<label>
+				<input type="button" class="rotateRight" value=">">
+			</label>
+		</div>
 		<label>
-			<input type="button" class="active" value="Rotate">
+			<input type="button" id="cangeColor" value="Change Color">
 		</label>
-		<label><input type="button" id="cangeColor" value="Change Color"></label>
+		<label>
+			<input type="button" id="cangePhoto" value="Make Photo">
+		</label>
 	</div>
 	<div>The image to canvas ➜ :</div>
 	<canvas id="canvas" width="150" height="150" style="color: #eeeeee"></canvas>
@@ -78,9 +88,10 @@
         const ctx = canvas.getContext('2d');
         let img = document.querySelector('img');
         let button = document.querySelector('.button');
-        let buttonActive = document.querySelector('.active');
+        let rotateRight = document.querySelector('.rotateRight');
+        let rotateLeft = document.querySelector('.rotateLeft');
         let colourlist = document.querySelector('section');
-        let angel = 15
+        let angle = 0
 
         let imgWidth = img.offsetWidth;
         let imgHeight = img.offsetHeight;
@@ -101,27 +112,6 @@
             ctx.putImageData(pixels, 0, 0);
             canvas.style.display = 'inline';
         }
-        
-
-        buttonActive.addEventListener('click', function () {
-            canvas.width = imgWidth;
-            canvas.height = imgHeight;
-
-            document.querySelector('#cangeColor').addEventListener('click', cangeColor, false)
-            
-            ctx.save();
-            ctx.translate(imgWidth / 2, imgHeight / 2);
-            ctx.rotate(angel * Math.PI / 180);
-            ctx.shadowOffsetX = 7;
-            ctx.shadowOffsetY = 7;
-            ctx.shadowBlur = 4;
-            ctx.shadowColor = 'rgba(63,62,62,0.5)';
-            ctx.drawImage(
-                img, -(imgWidth / 2), -(imgHeight / 2)
-            );
-            ctx.restore();
-            angel += 15;
-        });
 
         button.addEventListener('click', function () {
             canvas.width = imgWidth;
@@ -134,42 +124,66 @@
             ctx.drawImage(img, 0, 0);
 
             document.querySelector('#cangeColor').addEventListener('click', cangeColor, false)
+			
+			document.getElementById('cangePhoto').addEventListener('click', function () {
+                let arr = [];
+                let data = ctx.getImageData(0, 0, imgWidth, imgHeight).data;
+				
+                let all = data.length;
 
-            //let colours = {};
-            let arr = [];
-            let data = ctx.getImageData(0, 0, imgWidth, imgHeight).data;
-
-            //canvas.style.display = 'none';
-            let all = data.length;
-
-            for (let i = 0; i < all; i += 4) {
-                let key = `${data[i]}, ${data[i + 1]}, ${data[i + 2]}, ${data[i + 3]}`;
-                arr.push(key);
-            }
-
-            /* //part of the function that builds the pixel grid
-            for (let i = 0; i < all; i += 4) {
-                let key = `${data[i]}, ${data[i + 1]}, ${data[i + 2]}, ${data[i + 3]}`;
-                if (colours[key]) {
-                    colours[key]++;
-                } else {
-                    colours[key] = 1;
+                for (let i = 0; i < all; i += 4) {
+                    let key = `${data[i]}, ${data[i + 1]}, ${data[i + 2]}, ${data[i + 3]}`;
+                    arr.push(key);
                 }
-            }
-
-            let sortedcolours = Object.keys(colours).filter(el => colours[el] > 1).sort(
-                function (a, b) {
-                    return colours[b] - colours[a];
+			    
+                for (let step of arr) {
+                    let div = document.createElement('div')
+                    let indx = step.split(',')
+                    div.style.background = `rgba(${+indx[0]}, ${+indx[1]}, ${+indx[2]}, ${+indx[3]})`
+                    colourlist.appendChild(div)
                 }
-            );
-			*/
+            });
 
-            for (let step of arr) {
-                let div = document.createElement('div')
-                let indx = step.split(',')
-                div.style.background = `rgba(${+indx[0]}, ${+indx[1]}, ${+indx[2]}, ${+indx[3]})`
-                colourlist.appendChild(div)
-            }
+            rotateRight.addEventListener('click', function () {
+                angle += 15;
+                
+                canvas.width = imgWidth;
+                canvas.height = imgHeight;
+
+                document.querySelector('#cangeColor').addEventListener('click', cangeColor, false)
+
+                ctx.save();
+                ctx.translate(imgWidth / 2, imgHeight / 2);
+                ctx.rotate(angle * Math.PI / 180);
+                ctx.shadowOffsetX = 7;
+                ctx.shadowOffsetY = 7;
+                ctx.shadowBlur = 4;
+                ctx.shadowColor = 'rgba(63,62,62,0.5)';
+                ctx.drawImage(
+                    img, -(imgWidth / 2), -(imgHeight / 2)
+                );
+                ctx.restore();
+            });
+
+            rotateLeft.addEventListener('click', function () {
+                angle -= 15;
+                canvas.width = imgWidth;
+                canvas.height = imgHeight;
+
+                document.querySelector('#cangeColor').addEventListener('click', cangeColor, false)
+
+                ctx.save();
+                ctx.translate(imgWidth / 2, imgHeight / 2);
+                ctx.rotate(angle * Math.PI / 180);
+                ctx.shadowOffsetX = 7;
+                ctx.shadowOffsetY = 7;
+                ctx.shadowBlur = 4;
+                ctx.shadowColor = 'rgba(63,62,62,0.5)';
+                ctx.drawImage(
+                    img, -(imgWidth / 2), -(imgHeight / 2)
+                );
+                ctx.restore();
+            });
 
         })
     });
