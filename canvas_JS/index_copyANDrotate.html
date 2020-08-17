@@ -23,9 +23,10 @@
         font-family: Verdana monospace;
     }
 
-    .button, .active {
-        font-size: 1em;
-        padding: 5px;
+    .button, .active,
+	#cangeColor{
+        font-size: 0.9em;
+        padding: 1px;
         margin: 0 20px 10px 10px;
     }
 
@@ -65,89 +66,112 @@
 		<label>
 			<input type="button" class="active" value="Rotate">
 		</label>
+		<label><input type="button" id="cangeColor" value="Change Color"></label>
 	</div>
 	<div>The image to canvas ➜ :</div>
 	<canvas id="canvas" width="150" height="150" style="color: #eeeeee"></canvas>
 </div>
 
 <script>
-	
-    const canvas = document.querySelector('canvas');
-    const ctx = canvas.getContext('2d');
-    let img = document.querySelector('img');
-    let button = document.querySelector('.button');
-    let buttonActive = document.querySelector('.active');
-    let colourlist = document.querySelector('section');
-    let angel = 15
+    window.addEventListener('load', function() {
+        const canvas = document.querySelector('canvas');
+        const ctx = canvas.getContext('2d');
+        let img = document.querySelector('img');
+        let button = document.querySelector('.button');
+        let buttonActive = document.querySelector('.active');
+        let colourlist = document.querySelector('section');
+        let angel = 15
 
-    let imgWidth = img.offsetWidth;
-    let imgHeight = img.offsetHeight;
+        let imgWidth = img.offsetWidth;
+        let imgHeight = img.offsetHeight;
 
-    canvas.height = 0;
+        canvas.height = 0;
 
-    buttonActive.addEventListener('click', function () {
-        canvas.width = imgWidth;
-        canvas.height = imgHeight;
 
-        ctx.save();
-        ctx.translate(imgWidth / 2, imgHeight / 2);
-        ctx.rotate(angel * Math.PI / 180);
-        ctx.shadowOffsetX = 7;
-        ctx.shadowOffsetY = 7;
-        ctx.shadowBlur = 4;
-        ctx.shadowColor = 'rgba(63,62,62,0.5)';
-        ctx.drawImage(
-            img, -(imgWidth / 2), -(imgHeight / 2)
-        );
-        ctx.restore();
-        angel += 15;
-    });
-	
-    button.addEventListener('click', function () {
-        canvas.width = imgWidth;
-        canvas.height = imgHeight;
+		function cangeColor() {
+            let pixels = ctx.getImageData(0, 0, canvas.width, canvas.height);
 
-        ctx.shadowOffsetX = 7;
-        ctx.shadowOffsetY = 7;
-        ctx.shadowBlur = 4;
-        ctx.shadowColor = 'rgba(63,62,62,0.5)';
-        ctx.drawImage(img, 0, 0);
-
-        //let colours = {};
-        let arr = [];
-        let data = ctx.getImageData(0, 0, imgWidth, imgHeight).data;
-
-        //canvas.style.display = 'none';
-        let all = data.length;
-
-        for (let i = 0; i < all; i += 4) {
-            let key = `${data[i]}, ${data[i + 1]}, ${data[i + 2]}, ${data[i + 3]}`;
-			arr.push(key);
+            let all = pixels.data.length;
+            let data = pixels.data;
+            for (let i = 0; i < all;i += 4) {
+                let stash = data[i];
+                data[i] = data[i+1];
+                data[i+1] = stash;
+            }
+            ctx.putImageData(pixels, 0, 0);
+            canvas.style.display = 'inline';
         }
+        
 
-        // for (let i = 0; i < all; i += 4) {
-        //     let key = `${data[i]}, ${data[i + 1]}, ${data[i + 2]}, ${data[i + 3]}`;
-        //     if (colours[key]) {
-        //         colours[key]++;
-        //     } else {
-        //         colours[key] = 1;
-        //     }
-        // }
+        buttonActive.addEventListener('click', function () {
+            canvas.width = imgWidth;
+            canvas.height = imgHeight;
 
-        // let sortedcolours = Object.keys(colours).filter(el => colours[el] > 1).sort(
-        //     function (a, b) {
-        //         return colours[b] - colours[a];
-        //     }
-        // );
-		
-		
-        for (let step of arr) {
-            let div = document.createElement('div')
-            let indx = step.split(',')
-            div.style.background = `rgba(${+indx[0]}, ${+indx[1]}, ${+indx[2]}, ${+indx[3]})`
-            colourlist.appendChild(div)
-        }
+            document.querySelector('#cangeColor').addEventListener('click', cangeColor, false)
+            
+            ctx.save();
+            ctx.translate(imgWidth / 2, imgHeight / 2);
+            ctx.rotate(angel * Math.PI / 180);
+            ctx.shadowOffsetX = 7;
+            ctx.shadowOffsetY = 7;
+            ctx.shadowBlur = 4;
+            ctx.shadowColor = 'rgba(63,62,62,0.5)';
+            ctx.drawImage(
+                img, -(imgWidth / 2), -(imgHeight / 2)
+            );
+            ctx.restore();
+            angel += 15;
+        });
 
+        button.addEventListener('click', function () {
+            canvas.width = imgWidth;
+            canvas.height = imgHeight;
+
+            ctx.shadowOffsetX = 7;
+            ctx.shadowOffsetY = 7;
+            ctx.shadowBlur = 4;
+            ctx.shadowColor = 'rgba(63,62,62,0.5)';
+            ctx.drawImage(img, 0, 0);
+
+            document.querySelector('#cangeColor').addEventListener('click', cangeColor, false)
+
+            //let colours = {};
+            let arr = [];
+            let data = ctx.getImageData(0, 0, imgWidth, imgHeight).data;
+
+            //canvas.style.display = 'none';
+            let all = data.length;
+
+            for (let i = 0; i < all; i += 4) {
+                let key = `${data[i]}, ${data[i + 1]}, ${data[i + 2]}, ${data[i + 3]}`;
+                arr.push(key);
+            }
+
+            /* //part of the function that builds the pixel grid
+            for (let i = 0; i < all; i += 4) {
+                let key = `${data[i]}, ${data[i + 1]}, ${data[i + 2]}, ${data[i + 3]}`;
+                if (colours[key]) {
+                    colours[key]++;
+                } else {
+                    colours[key] = 1;
+                }
+            }
+
+            let sortedcolours = Object.keys(colours).filter(el => colours[el] > 1).sort(
+                function (a, b) {
+                    return colours[b] - colours[a];
+                }
+            );
+			*/
+
+            for (let step of arr) {
+                let div = document.createElement('div')
+                let indx = step.split(',')
+                div.style.background = `rgba(${+indx[0]}, ${+indx[1]}, ${+indx[2]}, ${+indx[3]})`
+                colourlist.appendChild(div)
+            }
+
+        })
     });
 	
 </script>

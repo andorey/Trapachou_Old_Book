@@ -25,7 +25,7 @@
         canvas.height = img.height;
         canvas.width = img.width;
         ctx.drawImage(img ,0 ,0);
-        // canvas.style.display = 'none';
+        canvas.style.display = 'none';
 
 		document.querySelector('#cangeColor').addEventListener('click', function () {
 			let pixels = ctx.getImageData(0, 0, canvas.width, canvas.height);
@@ -41,7 +41,7 @@
 			canvas.style.display = 'inline';
 		});
 
-    })();
+    });
 
 
     // window.addEventListener('load', function(ev) {
