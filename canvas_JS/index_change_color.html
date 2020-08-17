@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>image pixels</title>
+	<style>
+		#cangeColor{
+			font-size: 1em;
+			padding: 5px;
+		}
+	</style>
+</head>
+<body>
+
+<img src="dynia.png" alt="">
+<label><input type="button" id="cangeColor" value="Change Color"></label>
+<canvas id="canvas" width="300" height="300"></canvas>
+
+
+<script>
+	(function () {
+		
+        let img = document.querySelector('img');
+        let canvas = document.querySelector('canvas');
+        let ctx = canvas.getContext('2d');
+        canvas.height = img.height;
+        canvas.width = img.width;
+        ctx.drawImage(img ,0 ,0);
+        canvas.style.display = 'none';
+
+		document.querySelector('#cangeColor').addEventListener('click', function () {
+			let pixels = ctx.getImageData(0, 0, canvas.width, canvas.height);
+	
+			let all = pixels.data.length;
+			let data = pixels.data;
+			for (let i = 0; i < all;i += 4) {
+				let stash = data[i];
+				data[i] = data[i+1];
+				data[i+1] = stash;
+			}
+			ctx.putImageData(pixels, 0, 0);
+			canvas.style.display = 'inline';
+		});
+
+    })();
+
+
+    // window.addEventListener('load', function(ev) {
+    //     var sourceimage = document.querySelector('img');
+    //     var canvas = document.querySelector('canvas');
+    //     var context = canvas.getContext('2d');
+    //     canvas.height = sourceimage.height;
+    //     canvas.width = sourceimage.width;
+    //     context.drawImage(sourceimage ,0 ,0);
+    //     canvas.style.display = 'none';
+    //     function shiftcolour() {
+    //         var pixels = context.getImageData(
+    //             0, 0, canvas.width, canvas.height
+    //         );
+    //         var all = pixels.data.length;
+    //         var data = pixels.data;
+    //         for (var i = 0; i < all;i += 4) {
+    //             var stash = data[i];
+    //             data[i] = data[i+1];
+    //             data[i+1] = stash;
+    //         }
+    //         context.putImageData(pixels, 0, 0);
+    //         canvas.style.display = 'inline';
+    //     }
+    //     var button = document.querySelector('#button');
+    //     button.addEventListener('click', shiftcolour, false);
+    // },false);
+</script>
+</body>
+</html>

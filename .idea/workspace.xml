@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="74023db5-c1bb-4577-96dc-080e17d9e9bb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/canvas_JS/index_copy_to_canvas.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/canvas_JS/index_rotate.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/canvas_JS/dynia.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/canvas_JS/index_change_color.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/canvas_JS/1.png" beforeDir="false" afterPath="$PROJECT_DIR$/canvas_JS/skeleton.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/canvas_JS/index_00.html" beforeDir="false" afterPath="$PROJECT_DIR$/canvas_JS/index_00.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/canvas_JS/index_copyANDrotate.html" beforeDir="false" afterPath="$PROJECT_DIR$/canvas_JS/index_copyANDrotate.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +99,7 @@
       <workItem from="1597519175522" duration="3992000" />
       <workItem from="1597527644505" duration="892000" />
       <workItem from="1597529151822" duration="142000" />
-      <workItem from="1597529322534" duration="10530000" />
+      <workItem from="1597529322534" duration="32587000" />
     </task>
     <servers />
   </component>
