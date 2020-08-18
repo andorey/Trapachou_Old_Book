@@ -18,30 +18,29 @@
 
 
 <script>
+	
     window.addEventListener('load', function() {
         let img = document.querySelector('img');
         let canvas = document.querySelector('canvas');
         let ctx = canvas.getContext('2d');
-        canvas.height = img.height;
-        canvas.width = img.width;
+        canvas.height = img.offsetHeight;
+        canvas.width = img.offsetWidth;
         ctx.drawImage(img ,0 ,0);
         canvas.style.display = 'none';
-
+		
 		document.querySelector('#cangeColor').addEventListener('click', function () {
 			let pixels = ctx.getImageData(0, 0, canvas.width, canvas.height);
-	
+
 			let all = pixels.data.length;
 			let data = pixels.data;
 			for (let i = 0; i < all;i += 4) {
-				let stash = data[i];
-				data[i] = data[i+1];
-				data[i+1] = stash;
+				[data[i+2], data[i+3]] = [data[i+3], data[i+2]]
 			}
 			ctx.putImageData(pixels, 0, 0);
 			canvas.style.display = 'inline';
 		});
 
-    });
+    }, true);
 
 
     // window.addEventListener('load', function(ev) {
@@ -66,9 +65,10 @@
     //         context.putImageData(pixels, 0, 0);
     //         canvas.style.display = 'inline';
     //     }
-    //     var button = document.querySelector('#button');
+    //     var button = document.querySelector('#cangeColor');
     //     button.addEventListener('click', shiftcolour, false);
     // },false);
+    
 </script>
 </body>
 </html>
