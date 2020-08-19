@@ -53,6 +53,10 @@
 			background: snow;
 			color: black;
 		}
+		#pattern{
+			background: darkorange;
+			color: snow;
+		}
 		#createPattern{
 			visibility: hidden;
 		}
@@ -80,7 +84,7 @@
 		<input type="button" id="pattern" value="Create Pattern">
 	</label>
 </div>
-<canvas id="canvas" width="1100" height="600"></canvas>
+<canvas id="canvas" width="630" height="630"></canvas>
 
 <script>
 	window.addEventListener('load', function () {
@@ -111,20 +115,20 @@
 
         function buildHelix(size, angle) { //функция для закручивания
             let apexA = {
-                x: (550 + size * Math.cos(angle + Math.PI / 4)),
-                y: (300 + size * Math.sin(angle + Math.PI / 4)),
+                x: (315 + size * Math.cos(angle + Math.PI / 4)),
+                y: (315 + size * Math.sin(angle + Math.PI / 4)),
             };
             let apexB = {
-                x: (550 + size * Math.cos(angle + 3 * Math.PI / 4)),
-                y: (300 + size * Math.sin(angle + 3 * Math.PI / 4)),
+                x: (315 + size * Math.cos(angle + 3 * Math.PI / 4)),
+                y: (315 + size * Math.sin(angle + 3 * Math.PI / 4)),
             };
             let apexC = {
-                x: (550 + size * Math.cos(angle + 5 * Math.PI / 4)),
-                y: (300 + size * Math.sin(angle + 5 * Math.PI / 4)),
+                x: (315 + size * Math.cos(angle + 5 * Math.PI / 4)),
+                y: (315 + size * Math.sin(angle + 5 * Math.PI / 4)),
             };
             let apexD = {
-                x: (550 + size * Math.cos(angle + 7 * Math.PI / 4)),
-                y: (300 + size * Math.sin(angle + 7 * Math.PI / 4)),
+                x: (315 + size * Math.cos(angle + 7 * Math.PI / 4)),
+                y: (315 + size * Math.sin(angle + 7 * Math.PI / 4)),
             };
             buildSquare(apexA, apexB, apexC, apexD);
         }
@@ -179,16 +183,17 @@
         buttonSave.addEventListener('click', function(ev) {
             buttonSave.value = 'Download image';
             buttonSave.style.background = 'cyan';
+            buttonSave.style.color = 'black';
             
             let link = document.createElement('a');
             link.href = "#";
             link.download = "mypattern.png";
             document.body.insertBefore(link, canvas);
+            link.href = canvas.toDataURL()
             buttonSave.addEventListener('click', function (){
-                link.href = canvas.toDataURL()
 				link.click();
-                mousedown = false;
 			})
+            mousedown = false;
         }, false );
     })
 </script>
