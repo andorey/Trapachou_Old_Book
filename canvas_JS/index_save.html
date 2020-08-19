@@ -17,7 +17,6 @@
         let context = canvas.getContext('2d');
         function todownload(event) {
             let t = event.target;
-            console.log( 't =' + t + '  ' + ' t.tagName =' + t.tagName + ' event =' + event + ' t.src.split =' + t.src.split('/') + ' canvas.toDataURL() =' + canvas.toDataURL() )
             if (t.tagName === 'IMG') {
                 shiftredtogreen(t);
                 let name = t.src.split('/');

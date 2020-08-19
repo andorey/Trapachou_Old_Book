@@ -164,6 +164,17 @@
 
             }, speed);
         })
+		
+		
+        canvas.addEventListener('click', function(ev) {
+            let link = document.createElement('a');
+            link.innerHTML = 'download image';
+            link.href = "#";
+            link.download = "mypainting.png";
+            document.body.insertBefore(link, canvas);
+            link.href = canvas.toDataURL();
+            mousedown = false;
+        }, false );
     })
 </script>
 </body>
