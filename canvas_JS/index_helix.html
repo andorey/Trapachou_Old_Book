@@ -17,7 +17,8 @@
 		}
 		#button_start,
 		#button_restart,
-		.button_black, #clear{
+		.button_black, #clear,
+		#pattern {
             font-size: 1em;
 			padding: 7px;
 			width: 150px;
@@ -52,6 +53,9 @@
 			background: snow;
 			color: black;
 		}
+		#createPattern{
+			visibility: hidden;
+		}
 	</style>
 </head>
 <body>
@@ -72,14 +76,20 @@
 		<input type="button" class="button_black" value="BgColor BLACK">
 		<input type="button" id="button_restart" value="RESTART">
 	</label>
+	<label id="createPattern" >If do you like your Pattern, press button :
+		<input type="button" id="pattern" value="Create Pattern">
+	</label>
 </div>
 <canvas id="canvas" width="1100" height="600"></canvas>
+
 <script>
 	window.addEventListener('load', function () {
 
         let ctx = document.getElementById("canvas").getContext("2d");
         let buttonBlack = document.querySelector('.button_black');
         let body = document.querySelector('body');
+        let createPattern = document.getElementById('createPattern');
+        let buttonSave = document.getElementById('pattern');
 
         if (localStorage.buttonBlack) {
             body.classList = localStorage.buttonBlack
@@ -142,6 +152,7 @@
         })
 
         document.getElementById("button_start").addEventListener('click', function () {
+            createPattern.style.visibility = 'visible';
             let size = document.querySelector('.size').value; //размер квадратов
             let step = document.querySelector('.step').value; //размер шага
             let duration = document.querySelector('.duration').value;
@@ -165,15 +176,19 @@
             }, speed);
         })
 		
-		
-        canvas.addEventListener('click', function(ev) {
+        buttonSave.addEventListener('click', function(ev) {
+            buttonSave.value = 'Download image';
+            buttonSave.style.background = 'cyan';
+            
             let link = document.createElement('a');
-            link.innerHTML = 'download image';
             link.href = "#";
-            link.download = "mypainting.png";
+            link.download = "mypattern.png";
             document.body.insertBefore(link, canvas);
-            link.href = canvas.toDataURL();
-            mousedown = false;
+            buttonSave.addEventListener('click', function (){
+                link.href = canvas.toDataURL()
+				link.click();
+                mousedown = false;
+			})
         }, false );
     })
 </script>
