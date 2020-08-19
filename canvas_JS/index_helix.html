@@ -75,95 +75,96 @@
 </div>
 <canvas id="canvas" width="1100" height="600"></canvas>
 <script>
-	
-    let ctx = document.getElementById("canvas").getContext("2d");
-    let buttonBlack = document.querySelector('.button_black');
-    let body = document.querySelector('body');
-    
-    if (localStorage.buttonBlack) {
-        body.classList = localStorage.buttonBlack
-        buttonBlack.value = 'BgColor WHITE'
-        buttonBlack.classList.add('whites')
-    }else{
-        localStorage.setItem('buttonBlack', '')
-	}
-	
-    function buildSquare (apexA, apexB, apexC, apexD) { //функция для отрисовки квадрата
-        ctx.beginPath();
-        ctx.moveTo(apexA.x, apexA.y);
-        ctx.lineTo(apexB.x, apexB.y);
-        ctx.lineTo(apexC.x, apexC.y);
-        ctx.lineTo(apexD.x, apexD.y);
-        ctx.lineTo(apexA.x, apexA.y);
-        ctx.stroke();
-    }
-    
-    function buildHelix (size, angle){ //функция для закручивания
-        let apexA = {
+	window.addEventListener('load', function () {
+
+        let ctx = document.getElementById("canvas").getContext("2d");
+        let buttonBlack = document.querySelector('.button_black');
+        let body = document.querySelector('body');
+
+        if (localStorage.buttonBlack) {
+            body.classList = localStorage.buttonBlack
+            buttonBlack.value = 'BgColor WHITE'
+            buttonBlack.classList.add('whites')
+        } else {
+            localStorage.setItem('buttonBlack', '')
+        }
+
+        function buildSquare(apexA, apexB, apexC, apexD) { //функция для отрисовки квадрата
+            ctx.beginPath();
+            ctx.moveTo(apexA.x, apexA.y);
+            ctx.lineTo(apexB.x, apexB.y);
+            ctx.lineTo(apexC.x, apexC.y);
+            ctx.lineTo(apexD.x, apexD.y);
+            ctx.lineTo(apexA.x, apexA.y);
+            ctx.stroke();
+        }
+
+        function buildHelix(size, angle) { //функция для закручивания
+            let apexA = {
                 x: (550 + size * Math.cos(angle + Math.PI / 4)),
                 y: (300 + size * Math.sin(angle + Math.PI / 4)),
-            	};
-        let apexB = {
+            };
+            let apexB = {
                 x: (550 + size * Math.cos(angle + 3 * Math.PI / 4)),
                 y: (300 + size * Math.sin(angle + 3 * Math.PI / 4)),
-            	};
-        let apexC = {
+            };
+            let apexC = {
                 x: (550 + size * Math.cos(angle + 5 * Math.PI / 4)),
                 y: (300 + size * Math.sin(angle + 5 * Math.PI / 4)),
-            	};
-        let apexD = {
+            };
+            let apexD = {
                 x: (550 + size * Math.cos(angle + 7 * Math.PI / 4)),
                 y: (300 + size * Math.sin(angle + 7 * Math.PI / 4)),
-            	};
-        buildSquare(apexA, apexB, apexC, apexD);
-    }
+            };
+            buildSquare(apexA, apexB, apexC, apexD);
+        }
 
-    document.getElementById("clear").addEventListener('click', function() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        document.getElementById("clear").addEventListener('click', function () {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        })
+
+        document.getElementById("button_restart").addEventListener('click', function () {
+            location.reload()
+        })
+
+        buttonBlack.addEventListener('click', function () {
+            if (body.classList.contains('blacks')) {
+                body.classList.remove('blacks')
+                localStorage.setItem('buttonBlack', '')
+                buttonBlack.value = 'BgColor BLACK'
+                buttonBlack.classList.remove('whites')
+            } else {
+                body.classList.add('blacks');
+                localStorage.setItem('buttonBlack', 'blacks')
+                buttonBlack.value = 'BgColor WHITE'
+                buttonBlack.classList.add('whites')
+            }
+        })
+
+        document.getElementById("button_start").addEventListener('click', function () {
+            let size = document.querySelector('.size').value; //размер квадратов
+            let step = document.querySelector('.step').value; //размер шага
+            let duration = document.querySelector('.duration').value;
+            let speed = document.querySelector('.speed').value;
+            let tilt = document.querySelector('.tilt').value;
+            let angle = 0; // начальный угол поворота квадрата
+            let start = Date.now();
+
+            let timer = setInterval(function () {
+
+                let timePassed = Date.now() - start;
+
+                ctx.strokeStyle = document.querySelector('.color').value;
+                ctx.lineWidth = document.querySelector('.width').value;
+                buildHelix(size, angle);
+                size = size * Math.sin(Math.PI / step); //с каждым шагом цикла меняется размер квадратов
+                angle = angle + Math.PI / tilt; //изменяется угол поворота квадрата
+
+                if (timePassed > duration) clearInterval(timer);
+
+            }, speed);
+        })
     })
-
-    document.getElementById("button_restart").addEventListener('click', function() {
-        location.reload()
-    })
-	
-	buttonBlack.addEventListener('click', function () {
-		if(body.classList.contains('blacks')){
-		    body.classList.remove('blacks')
-            localStorage.setItem('buttonBlack', '')
-			buttonBlack.value = 'BgColor BLACK'
-            buttonBlack.classList.remove('whites')
-		}else{
-		    body.classList.add('blacks');
-		    localStorage.setItem('buttonBlack', 'blacks')
-            buttonBlack.value = 'BgColor WHITE'
-			buttonBlack.classList.add('whites')
-		}
-    })
-
-    document.getElementById("button_start").addEventListener('click', function () {
-        let size = document.querySelector('.size').value; //размер квадратов
-        let step = document.querySelector('.step').value; //размер шага
-        let duration = document.querySelector('.duration').value;
-        let speed = document.querySelector('.speed').value;
-        let tilt = document.querySelector('.tilt').value;
-        let angle = 0; // начальный угол поворота квадрата
-        let start = Date.now();
-
-        let timer = setInterval(function () {
-		
-            let timePassed = Date.now() - start;
-
-            ctx.strokeStyle = document.querySelector('.color').value;
-            ctx.lineWidth = document.querySelector('.width').value;
-			buildHelix(size, angle);
-			size = size * Math.sin(Math.PI / step); //с каждым шагом цикла меняется размер квадратов
-			angle = angle + Math.PI / tilt; //изменяется угол поворота квадрата
-
-            if (timePassed > duration) clearInterval(timer);
-
-        }, speed);
-    })
-    
 </script>
 </body>
 </html>

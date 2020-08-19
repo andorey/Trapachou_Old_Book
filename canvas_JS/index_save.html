@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>save canvas</title>
+</head>
+<body>
+<img src="skeleton.png" alt="skeleton">
+<a href="#" download="dummy.png"><canvas></canvas></a>
+
+<script>
+    window.addEventListener('load', function() {
+        let sourceimage = document.querySelector('img');
+        let canvas = document.querySelector('canvas');
+        canvas.height = 1;
+        let link = document.querySelector('a');
+        let context = canvas.getContext('2d');
+        function todownload(event) {
+            let t = event.target;
+            console.log( 't =' + t + '  ' + ' t.tagName =' + t.tagName + ' event =' + event + ' t.src.split =' + t.src.split('/') + ' canvas.toDataURL() =' + canvas.toDataURL() )
+            if (t.tagName === 'IMG') {
+                shiftredtogreen(t);
+                let name = t.src.split('/');
+                link.download = name[name.length - 1];
+                link.href = canvas.toDataURL('image/png');
+            }
+        }
+        function shiftredtogreen(img) {
+            let width = img.offsetWidth;
+            let height = img.offsetHeight;
+            canvas.width = width;
+            canvas.height = height;
+            context.drawImage(img, 0, 0, width, height);
+            let pixels = context.getImageData(
+                0, 0, width, height
+            );
+            let all = pixels.data.length;
+            let data = pixels.data;
+            for (let i = 0; i < all;i += 4) {
+                let stash = data[i];
+                data[i] = data[i+1];
+                data[i+1] = stash;
+            }
+            context.putImageData(pixels, 0, 0);
+        }
+        document.body.addEventListener(
+            'click', todownload, false
+        );
+    } ,false);
+</script>
+</body>
+</html>
