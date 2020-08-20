@@ -8,7 +8,7 @@
             display: block;
             margin: 100px;
         }
-        #zoom {
+        .zoom {
             position: absolute;
             left: 5px;
             top: 10px;
@@ -17,10 +17,11 @@
         canvas, img {
             position: relative;
             top: 5px;
+			border: dotted slategray 1px;
         }
-        #zoom2 {
+        .zoom2 {
             position: absolute;
-            left: 150px;
+            left: 160px;
             top: 10px;
             z-index: 1;
         }
@@ -29,15 +30,15 @@
 </head>
 <body>
 <img src="skeleton.png" alt="canvas" style="display: none;">
-<canvas id="zoom" height="150" width="150"></canvas>
-<canvas id="zoom2" height="450" width="450"></canvas>
+<canvas class="zoom" height="150" width="150"></canvas>
+<canvas class="zoom2" height="450" width="450"></canvas>
 
 
 <script>
     window.addEventListener('load', function(ev) {
         let sourceimage = document.querySelector('img');
-        let canvas = document.querySelector('#zoom');
-        let zoomcanvas = document.querySelector('#zoom2');
+        let canvas = document.querySelector('.zoom');
+        let zoomcanvas = document.querySelector('.zoom2');
         let context = canvas.getContext('2d');
         let zoomcontext = zoomcanvas.getContext('2d');
         canvas.height = sourceimage.height;
@@ -55,7 +56,7 @@
             let y = ev.layerY;
             zoomcontext.drawImage(
                 canvas, Math.abs(x - 5), Math.abs(y - 5), 15, 15,
-                0, 0, 450, 450
+                0, 0, 600, 600
             );
         }
         canvas.addEventListener('mousemove', pxzoom, false);
