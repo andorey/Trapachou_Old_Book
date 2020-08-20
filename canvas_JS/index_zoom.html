@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>zoom canvas</title>
+	<style>
+		body {
+            display: block;
+            margin: 100px;
+        }
+        #zoom {
+            position: absolute;
+            left: 5px;
+            top: 10px;
+            z-index: 5;
+        }
+        canvas, img {
+            position: relative;
+            top: 5px;
+        }
+        #zoom2 {
+            position: absolute;
+            left: 150px;
+            top: 10px;
+            z-index: 1;
+        }
+		
+	</style>
+</head>
+<body>
+<img src="skeleton.png" alt="canvas" style="display: none;">
+<canvas id="zoom" height="150" width="150"></canvas>
+<canvas id="zoom2" height="450" width="450"></canvas>
+
+
+<script>
+    window.addEventListener('load', function(ev) {
+        let sourceimage = document.querySelector('img');
+        let canvas = document.querySelector('#zoom');
+        let zoomcanvas = document.querySelector('#zoom2');
+        let context = canvas.getContext('2d');
+        let zoomcontext = zoomcanvas.getContext('2d');
+        canvas.height = sourceimage.height;
+        zoomcanvas.height = sourceimage.height * 4;
+        canvas.width = sourceimage.width;
+        zoomcanvas.width = sourceimage.width * 4;
+        zoomcontext.imageSmoothingEnabled = false; //!#
+        zoomcontext.mozImageSmoothingEnabled = false; //!#
+        zoomcontext.webkitImageSmoothingEnabled = false; //!#
+        zoomcontext.msImageSmoothingEnabled = false; //!#
+        context.drawImage(sourceimage, 0, 0);
+        sourceimage.style.display = 'none';
+        function pxzoom(ev) {
+            let x = ev.layerX;
+            let y = ev.layerY;
+            zoomcontext.drawImage(
+                canvas, Math.abs(x - 5), Math.abs(y - 5), 15, 15,
+                0, 0, 450, 450
+            );
+        }
+        canvas.addEventListener('mousemove', pxzoom, false);
+    },false);
+</script>
+</body>
+</html>
