@@ -25,6 +25,21 @@
             top: 10px;
             z-index: 4;
         }
+        div {
+            width: 50px;
+            height: 50px;
+			background: snow;
+			border: solid 1px red;
+        }
+		div{
+            position: absolute;
+            left: 50px;
+            top: 170px;
+			z-index: 4;
+		}
+		div{
+			display: block;
+		}
 		
 	</style>
 </head>
@@ -32,11 +47,13 @@
 <img src="skeleton.png" alt="canvas" style="display: none;">
 <canvas class="zoom" height="150" width="150"></canvas>
 <canvas class="zoom2" height="450" width="450"></canvas>
+<div style="background: floralwhite"></div>
 
 
 <script>
 	
     window.addEventListener('load', function() {
+        let swab = document.querySelector('div');
         let sourceimage = document.querySelector('img');
         let canvas = document.querySelector('.zoom');
         let zoomcanvas = document.querySelector('.zoom2');
@@ -58,6 +75,18 @@
             let y = Math.abs(el.layerY - 11);
             zoomcontext.drawImage( canvas, x, y, 15, 15, 0, 0, 600, 600 );
         }, false)
+
+        function getpixelcolour(el) {
+            let x = Math.abs(el.layerX - 3);
+            let y = Math.abs(el.layerY - 3);
+            let pixeldata = context.getImageData(x, y, 1, 1);
+            return pixeldata.data;
+        }
+        function readcol(el) {
+            let col = getpixelcolour(el);
+            swab.style.background = `rgba(${col[0]}, ${col[1]}, ${col[2]}, ${col[3]})`;
+        }
+        canvas.addEventListener('mousemove', readcol, false);
 		
     },false);
     
