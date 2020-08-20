@@ -7,9 +7,10 @@
 		body{
 			font-family: 'Barlow Condensed', sans-serif;
 			font-size: 1em;
+			display: flex;
 		}
 		input{
-			margin: 0 10px 10px 0;
+			margin: 10px;
 			font-size: 1em;
 			color: navy;
 			font-family: 'Barlow Condensed', sans-serif;
@@ -60,6 +61,9 @@
 		#createPattern{
 			visibility: hidden;
 		}
+		#square{
+			width: 600px;
+		}
 	</style>
 </head>
 <body>
@@ -67,8 +71,14 @@
 	<h2>Set the Size & Color of the Helix</h2>
 	<label >
 		The Size of the Sides of the Helix : <input class="size" type="number" min="1" max="300" value="250">
+	</label>
+	<label>
 		Choose width of lines : <input class="width" type="number" min="0.1" max="10.0" step="0.1" value="1.0">
+	</label>
+	<label>
 		Choose Animation Duration : <input class="duration" type="number" min="1000" step="100" value="5000">
+	</label>
+	<label>
 		Set Speed factor of Animation : <input class="speed" type="number" min="1" max="1000" step="1" value="50">
 	</label>
 	<label>
@@ -80,7 +90,7 @@
 		<input type="button" class="button_black" value="BgColor BLACK">
 		<input type="button" id="button_restart" value="RESTART">
 	</label>
-	<label id="createPattern" >If do you like your Pattern, press button :
+	<label id="createPattern" for="pattern">If do you like your Pattern, press button :
 		<input type="button" id="pattern" value="Create Pattern">
 	</label>
 </div>
@@ -193,7 +203,7 @@
             buttonSave.addEventListener('click', function (){
 				link.click();
 			})
-            mousedown = false;
+            // mousedown = false;
         }, false );
     })
 </script>
