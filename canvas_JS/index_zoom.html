@@ -46,20 +46,17 @@
         zoomcanvas.height = sourceimage.height * 4;
         canvas.width = sourceimage.width;
         zoomcanvas.width = sourceimage.width * 4;
-        zoomcontext.imageSmoothingEnabled = false; //!#
-        zoomcontext.mozImageSmoothingEnabled = false; //!#
-        zoomcontext.webkitImageSmoothingEnabled = false; //!#
-        zoomcontext.msImageSmoothingEnabled = false; //!#
+        zoomcontext.imageSmoothingEnabled = false; 			//!#
+        // zoomcontext.mozImageSmoothingEnabled = false; 		//!#
+        zoomcontext.webkitImageSmoothingEnabled = false; 	//!#
+        zoomcontext.msImageSmoothingEnabled = false; 		//!#
         context.drawImage(sourceimage, 0, 0);
         sourceimage.style.display = 'none';
 
         canvas.addEventListener('mousemove', function (el) {
-            let x = el.layerX;
-            let y = el.layerY;
-            zoomcontext.drawImage(
-                canvas, Math.abs(x - 11), Math.abs(y - 11), 15, 15,
-                0, 0, 600, 600
-            );
+            let x = Math.abs(el.layerX - 11);
+            let y = Math.abs(el.layerY - 11);
+            zoomcontext.drawImage( canvas, x, y, 15, 15, 0, 0, 600, 600 );
         }, false)
 		
     },false);
