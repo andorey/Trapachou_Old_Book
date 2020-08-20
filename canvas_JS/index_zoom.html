@@ -12,7 +12,7 @@
             position: absolute;
             left: 5px;
             top: 10px;
-            z-index: 5;
+            z-index: 4;
         }
         canvas, img {
             position: relative;
@@ -21,9 +21,9 @@
         }
         .zoom2 {
             position: absolute;
-            left: 160px;
+            left: 170px;
             top: 10px;
-            z-index: 1;
+            z-index: 4;
         }
 		
 	</style>
@@ -35,7 +35,8 @@
 
 
 <script>
-    window.addEventListener('load', function(ev) {
+	
+    window.addEventListener('load', function() {
         let sourceimage = document.querySelector('img');
         let canvas = document.querySelector('.zoom');
         let zoomcanvas = document.querySelector('.zoom2');
@@ -51,16 +52,18 @@
         zoomcontext.msImageSmoothingEnabled = false; //!#
         context.drawImage(sourceimage, 0, 0);
         sourceimage.style.display = 'none';
-        function pxzoom(ev) {
-            let x = ev.layerX;
-            let y = ev.layerY;
+
+        canvas.addEventListener('mousemove', function (el) {
+            let x = el.layerX;
+            let y = el.layerY;
             zoomcontext.drawImage(
-                canvas, Math.abs(x - 5), Math.abs(y - 5), 15, 15,
+                canvas, Math.abs(x - 11), Math.abs(y - 11), 15, 15,
                 0, 0, 600, 600
             );
-        }
-        canvas.addEventListener('mousemove', pxzoom, false);
+        }, false)
+		
     },false);
+    
 </script>
 </body>
 </html>
