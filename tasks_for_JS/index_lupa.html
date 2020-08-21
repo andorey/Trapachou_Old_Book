@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+<style>
+    body, html{
+        margin: 0;
+    }
+    #pic{
+        position: absolute;
+        width: 320px;
+        border-style: none
+    }
+    #glass{
+        clip: rect(10px, 100px, 100px, 10px);
+        width: 640px;
+        position: absolute;
+    }
+</style>
+</head>
+<body >
+<img id="pic" src="../canvas_JS/skeleton.png" alt="">
+<img id="glass" src="../canvas_JS/skeleton.png" alt="">
+<script>
+    document.addEventListener('mousemove', function(event){
+        var dx = 0;
+        var dy = 0;
+        var fact = 2;
+        var opp = 70;
+        var x = event.pageX
+        var y = event.pageY
+        dx = window.document.body.scrollLeft;
+        dy = window.document.body.scrollTop;
+        var x1 = (x + dx) * fact;
+        var y1 = (y + dy) * fact;
+        var x2 = 2 * opp + (x + dx) * fact;
+        var y2 = 2 * opp + (y + dy) * fact;
+        document.getElementById("glass").style.clip = "rect(" +y1 +"px," +x2 +"px," +y2 +"px,"+x1 +"px)";
+    });
+</script>
+</body>
+</html>

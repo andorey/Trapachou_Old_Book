@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="74023db5-c1bb-4577-96dc-080e17d9e9bb" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/tasks_for_JS/index_lupa.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/canvas_JS/index_zoom.html" beforeDir="false" afterPath="$PROJECT_DIR$/canvas_JS/index_zoom.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +20,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="NamedScopeManager">
+    <scope name="Git Scope" pattern="" />
   </component>
   <component name="ProjectId" id="1fNGnBaCsNM72M4qlBHoLkstqQ1" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -97,7 +100,9 @@
       <workItem from="1597529151822" duration="142000" />
       <workItem from="1597529322534" duration="32587000" />
       <workItem from="1597643098391" duration="24363000" />
-      <workItem from="1597857629133" duration="21830000" />
+      <workItem from="1597857629133" duration="22375000" />
+      <workItem from="1597965090232" duration="670000" />
+      <workItem from="1598017629985" duration="592000" />
     </task>
     <servers />
   </component>
@@ -112,10 +117,10 @@
       <screen x="0" y="23" width="1280" height="777" />
     </state>
     <state x="270" y="83" key="#Inspections/0.23.1280.777@0.23.1280.777" timestamp="1597936929784" />
-    <state x="140" y="23" key="#Plugins" timestamp="1596313291120">
+    <state x="140" y="23" key="#Plugins" timestamp="1597965755091">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state x="140" y="23" key="#Plugins/0.23.1280.777@0.23.1280.777" timestamp="1596313291120" />
+    <state x="140" y="23" key="#Plugins/0.23.1280.777@0.23.1280.777" timestamp="1597965755091" />
     <state x="424" y="321" key="Github.CreateGistDialog" timestamp="1596052535854">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
