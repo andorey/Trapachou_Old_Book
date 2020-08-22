@@ -2,42 +2,52 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Title</title>
-<style>
-    body, html{
-        margin: 0;
-    }
-    #pic{
-        position: absolute;
-        width: 320px;
-        border-style: none
-    }
-    #glass{
-        clip: rect(10px, 100px, 100px, 10px);
-        width: 640px;
-        position: absolute;
-    }
-</style>
+	<title>Magnifier</title>
+	<style>
+        body, html {
+            margin: 0;
+        }
+
+        #img {
+            position: absolute;
+            top: 10px;
+			left: 10px;
+            width: 190px;
+            border-style: none
+        }
+
+        #magnifier {
+            clip: rect(0px, 100px, 100px, 0px);
+            width: 760px;
+            left: 50px;
+            position: absolute;
+        }
+	</style>
+	<script>
+        window.addEventListener('load', function () {
+
+            document.addEventListener('mousemove', function (ev) {
+                const indent = 50
+                const multiplayer = 3;
+                const side = 220;
+                let x = ev.pageX;
+                let y = ev.pageY;
+
+                let x1 = x * multiplayer - indent;
+                let y1 = y * multiplayer - indent;
+                let x2 = side + x * multiplayer;
+                let y2 = side + y * multiplayer;
+                
+                document.getElementById("magnifier").style.clip = `rect(${y1}px,${x2}px,${y2}px,${x1}px)`;
+            })
+        });
+	</script>
+	
 </head>
-<body >
-<img id="pic" src="../canvas_JS/skeleton.png" alt="">
-<img id="glass" src="../canvas_JS/skeleton.png" alt="">
-<script>
-    document.addEventListener('mousemove', function(event){
-        var dx = 0;
-        var dy = 0;
-        var fact = 2;
-        var opp = 70;
-        var x = event.pageX
-        var y = event.pageY
-        dx = window.document.body.scrollLeft;
-        dy = window.document.body.scrollTop;
-        var x1 = (x + dx) * fact;
-        var y1 = (y + dy) * fact;
-        var x2 = 2 * opp + (x + dx) * fact;
-        var y2 = 2 * opp + (y + dy) * fact;
-        document.getElementById("glass").style.clip = "rect(" +y1 +"px," +x2 +"px," +y2 +"px,"+x1 +"px)";
-    });
-</script>
+<body>
+
+<img id="img" src="http://www.facettenreich.at/wordpress/wp-content/gallery/aarhus2018/P1010906.JPG" alt="">
+<img id="magnifier" src="http://www.facettenreich.at/wordpress/wp-content/gallery/aarhus2018/P1010906.JPG" alt="">
+
 </body>
 </html>

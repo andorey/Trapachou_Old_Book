@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="74023db5-c1bb-4577-96dc-080e17d9e9bb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/tasks_for_JS/index_lupa.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tasks_for_JS/index_lupa.html" beforeDir="false" afterPath="$PROJECT_DIR$/tasks_for_JS/index_lupa.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +102,7 @@
       <workItem from="1597643098391" duration="24363000" />
       <workItem from="1597857629133" duration="22375000" />
       <workItem from="1597965090232" duration="670000" />
-      <workItem from="1598017629985" duration="592000" />
+      <workItem from="1598017629985" duration="5658000" />
     </task>
     <servers />
   </component>
