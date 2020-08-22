@@ -128,10 +128,11 @@
 
 <script>
 	const up = document.getElementById('up')
+	const texts = document.getElementById('text')
 
     document.querySelectorAll('a').forEach(function (el) {
-        el.addEventListener('click', function (e) {
-            e.preventDefault()
+        el.addEventListener('click', function (event) {
+            event.preventDefault()
 
             document.getElementById(el.href.slice(-5)).scrollIntoView({
                 behavior: 'smooth',
@@ -140,10 +141,17 @@
         })
     })
 	
-    // up.addEventListener('click', function () {
-	// 	let start = new Date()
-	//
-    // })
+    up.addEventListener('click', function () {
+		let start = window.scrollY;
+		
+		for (let i=0; i <= start; i++){
+		    setTimeout(function() {
+                window.scrollTo(0, start - i * 3); // ускорить или замедлить меняй множитель
+				// меняя знак можно прокручивать в обратную сторону
+			}, i + 1)
+		}
+
+    })
 	
 </script>
 </body>
