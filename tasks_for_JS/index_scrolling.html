@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Smooth scrolling</title>
+	<style>
+        body{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2em;
+        }
+
+        #text{
+            width: 50%;
+            text-align: center;
+            margin: auto;
+        }
+
+        #top{
+            position: fixed;
+            left: 5px;
+            top: 0;
+
+
+        }
+        span{
+            padding-right: 2vh;
+            font-weight: bold;
+        }
+
+        #up{
+            width: 35px;
+            height: 35px;
+            font-size: 1em;
+            border-radius: 50%;
+            border: solid lightseagreen 2px;
+            justify-self: center;
+
+        }
+        p{
+            width: 90%;
+        }
+        .go-up {
+            position: fixed; /*позиционирование*/
+            z-index: 9999; /*поверх все элементов на странице*/
+            right: 15%; /*положение на странице, если слева - left*/
+            background: #4F4F4F;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+            text-align: center;
+            font: normal normal 42px/42px sans-serif;
+            text-shadow: 0 1px 2px #000;
+            opacity: .5;
+            padding: 3px;
+            margin-bottom: 5px;
+            width: 42px;
+            height: 42px;
+        }
+        .go-up { bottom: 60px; }
+        .go-up:hover {
+            opacity: 1;
+            box-shadow: 0 5px 0.5em -1px #666;
+        }
+	
+	</style>
+</head>
+
+<body >
+
+<ul id="top">
+		<li><a href="#head1">head 1</a></li>
+		<li><a href="#head2">head 2</a></li>
+		<li><a href="#head3">head 3</a></li>
+		<li><a href="#head4">head 4</a></li>
+</ul>
+
+<div class="go-up" title="Вверх" id='ToTop'>⇧</div>
+<div class="go-down" title="Вниз" id='OnBottom'>⇩</div>
+
+<div id="text">
+	<h1>Test Scroll Text</h1>
+	<h4 id="head1">heading 1</h4>
+	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, cum expedita magni molestias necessitatibus nesciunt nostrum quo. Animi delectus, est expedita facere, illum provident quo repudiandae sit suscipit unde velit.<br>
+	
+	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt numquam pariatur quibusdam sit tempore? A amet aperiam dolor expedita ipsum libero modi mollitia perferendis quas, quo sed similique ut voluptas!<br>
+	
+	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aliquam deserunt ducimus ea harum iusto molestiae pariatur, repudiandae sequi sit? Aliquam architecto beatae illum incidunt minus repudiandae temporibus! Enim, sint<br>
+	
+	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium architecto distinctio dolores dolorum id impedit magni mollitia nam non rerum. Ipsum quidem ratione voluptate! Architecto ipsa ipsam qui recusandae temporibus.<br>
+	
+	<h4 id="head2">heading 2</h4>
+	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores consectetur cum delectus dicta dignissimos doloribus earum est facilis illum inventore itaque natus nesciunt non provident quas, quod saepe tempora voluptas?<br>
+	
+	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur deserunt fuga hic incidunt ipsum, labore necessitatibus vitae voluptatem voluptates. Beatae consectetur dignissimos molestias necessitatibus nesciunt nisi, non nostrum reiciendis sunt.<br>
+	
+	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab alias, aliquid cumque cupiditate ea eveniet facilis ipsum provident qui quod repudiandae sunt totam ullam voluptates voluptatum. Atque id neque tenetur!<br>
+	
+	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias beatae consequatur deleniti distinctio dolorem dolorum enim eveniet fugiat, incidunt neque non nostrum praesentium quos sed sequi tempora tenetur totam voluptatem.<br>
+	
+	<h4 id="head3">heading 3</h4>
+	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aspernatur at corporis culpa distinctio dolorem ea eligendi eos hic nesciunt obcaecati, officia, quas quasi quia rerum. Earum hic iure suscipit.<br>
+	
+	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores blanditiis consequuntur, corporis, debitis eius maiores nobis non, pariatur perspiciatis provident quae quaerat rerum sequi sit soluta unde veniam voluptates voluptatum.<br>
+	
+	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusamus animi, distinctio eum expedita facere id impedit laboriosam magni maxime necessitatibus praesentium, quibusdam quidem quis saepe tenetur unde velit voluptatem!<br>
+	
+	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam at cupiditate distinctio dolores dolorum earum eligendi hic ipsum nostrum perferendis quod, repudiandae sint, voluptatem! Commodi eligendi iure necessitatibus recusandae vero?<br>
+	
+	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium amet, cum cumque deserunt dignissimos, dolores error est eum explicabo, fugiat impedit itaque iure molestiae quas quos ratione rem saepe ut!<br>
+	
+	<h4 id="head4">heading 4</h4>
+	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aut culpa distinctio dolores hic id impedit ipsa, laboriosam laborum libero maxime, nesciunt nihil non officia, omnis quidem sit tempora temporibus.<br>
+	
+	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias dignissimos, est laborum quidem vel voluptatibus? Animi cum dolorum est exercitationem impedit ipsum iste, non quibusdam suscipit temporibus velit vero voluptatibus.<br>
+	
+	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium amet, cum cumque deserunt dignissimos, dolores error est eum explicabo, fugiat impedit itaque iure molestiae quas quos ratione rem saepe ut!<br>
+	
+	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium amet, cum cumque deserunt dignissimos, dolores error est eum explicabo, fugiat impedit itaque iure molestiae quas quos ratione rem saepe ut!<br>
+</div>
+<p>
+	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid at dolore doloremque dolores ducimus eligendi enim ex hic illum ipsam libero necessitatibus, omnis quaerat quod repellat suscipit tempora vel veritatis.Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+</p>
+<p>
+	Aliquid at dolore doloremque dolores ducimus eligendi enim ex hic illum ipsam libero necessitatibus, omnis quaerat quod repellat suscipit tempora vel veritatis.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid at dolore doloremque dolores ducimus eligendi enim ex hic illum ipsam libero necessitatibus, omnis quaerat quod repellat suscipit tempora vel veritatis.Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+</p>
+<p>
+	Aliquid at dolore doloremque dolores ducimus eligendi enim ex hic illum ipsam libero necessitatibus, omnis quaerat quod repellat suscipit tempora vel veritatis.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid at dolore doloremque dolores ducimus eligendi enim ex hic illum ipsam libero necessitatibus, omnis quaerat quod repellat suscipit tempora vel veritatis.Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+</p>
+<p>
+	Aliquid at dolore doloremque dolores ducimus eligendi enim ex hic illum ipsam libero necessitatibus, omnis quaerat quod repellat suscipit tempora vel veritatis.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid at dolore doloremque dolores ducimus eligendi enim ex hic illum ipsam libero necessitatibus, omnis quaerat quod repellat suscipit tempora vel veritatis.Lorem ipsum dolor sit amet, consectetur adipisicing elit. <br> Aliquid at dolore doloremque dolores ducimus eligendi enim ex hic illum ipsam libero necessitatibus, omnis quaerat quod repellat suscipit tempora vel veritatis.
+</p>
+
+
+<script>
+    const anchors = document.querySelectorAll('a[href*="#"]')
+
+    for (let anchor of anchors) {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault()
+
+            const blockID = anchor.getAttribute('href').substr(1)
+
+            document.getElementById(blockID).scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            })
+        })
+    }
+	
+	
+</script>
+</body>
+</html>
