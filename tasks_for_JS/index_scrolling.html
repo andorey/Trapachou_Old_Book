@@ -29,23 +29,13 @@
             padding-right: 2vh;
             font-weight: bold;
         }
-
-        #up{
-            width: 35px;
-            height: 35px;
-            font-size: 1em;
-            border-radius: 50%;
-            border: solid lightseagreen 2px;
-            justify-self: center;
-
-        }
         p{
             width: 90%;
         }
-        .go-up {
-            position: fixed; /*позиционирование*/
-            z-index: 9999; /*поверх все элементов на странице*/
-            right: 15%; /*положение на странице, если слева - left*/
+        #up {
+            position: fixed;
+            z-index: 9999;
+            right: 5%;
             background: #4F4F4F;
             border: 1px solid #ccc;
             border-radius: 5px;
@@ -60,8 +50,10 @@
             width: 42px;
             height: 42px;
         }
-        .go-up { bottom: 60px; }
-        .go-up:hover {
+        #up {
+			bottom: 10px;
+		}
+        #up:hover {
             opacity: 1;
             box-shadow: 0 5px 0.5em -1px #666;
         }
@@ -78,8 +70,7 @@
 		<li><a href="#head4">head 4</a></li>
 </ul>
 
-<div class="go-up" title="Вверх" id='ToTop'>⇧</div>
-<div class="go-down" title="Вниз" id='OnBottom'>⇩</div>
+<div id="up" title="Вверх">⇧</div>
 
 <div id="text">
 	<h1>Test Scroll Text</h1>
@@ -136,21 +127,23 @@
 
 
 <script>
-    const anchors = document.querySelectorAll('a[href*="#"]')
+	const up = document.getElementById('up')
 
-    for (let anchor of anchors) {
-        anchor.addEventListener('click', function (e) {
+    document.querySelectorAll('a').forEach(function (el) {
+        el.addEventListener('click', function (e) {
             e.preventDefault()
 
-            const blockID = anchor.getAttribute('href').substr(1)
-
-            document.getElementById(blockID).scrollIntoView({
+            document.getElementById(el.href.slice(-5)).scrollIntoView({
                 behavior: 'smooth',
                 block: 'start'
             })
         })
-    }
+    })
 	
+    // up.addEventListener('click', function () {
+	// 	let start = new Date()
+	//
+    // })
 	
 </script>
 </body>
