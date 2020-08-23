@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Form Validation</title>
+</head>
+<style>
+	body{
+		display: flex;
+		justify-content: center;
+		text-align: center;
+	}
+    form {
+		border: solid lightgray 1px;
+		width: 270px;
+        display: flex;
+        flex-direction: column;
+		border-radius: 20px;
+    }
+    input {
+		font-size: 0.6em;
+        margin: 5px 10px 10px 10px;
+    }
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    input[type=number] {
+        -moz-appearance:textfield;
+    }
+	label{
+		font-family: monospace;
+		font-size: 1.5em;
+		margin-top: 15px;
+	}
+    .false {
+        border:1px solid red;
+        outline: none;
+    }
+    .true {
+        border: 1px solid green;
+        outline: none;
+    }
+</style>
+<body >
+<form>
+	<label>
+	E-mail :<input id="emeil" type="email" placeholder="Введите emeil">
+	</label>
+	<label>
+	Phone number :<input id="phone" type="number" placeholder="Введите телефон">
+	</label>
+	<label>
+	Input date :<input id="data" placeholder="Дата в формате dd/mm/yy">
+	</label>
+	<label>
+	Site address :<input id="web" type="url" placeholder= " http://____ . __">
+	</label>
+	<label>
+	<input id="check" type="button" value="Check Data">
+	</label>
+</form>
+
+<script>
+
+    // $('button').click(function(){
+    //     if(/^[a-z]+\W?_?[a-z]+@[a-z]+\.[a-z]{2,3}$/.test($('#emeil').val())){
+    //         $('#emeil').addClass('ok');
+    //     } else {
+    //         alert('Введите правильную почту');
+    //         $('#emeil').addClass('wrong');
+    //     }
+    //     if(/^\d{11}$/.test($('#phone').val())){
+    //         $('#phone').addClass('ok');
+    //     } else {
+    //         alert('Введите правильный номер');
+    //         $('#phone').addClass('wrong');
+    //     }
+    //     if(/^(0[1-9]|[12]\d|3[01])\.(0[1-9]|1[0-2])\.([12]\d{3})$/.test($('#data').val())){
+    //         $('#data').addClass('ok');
+    //     }else { alert('Введите правильную дату');
+    //         $('#data').addClass('wrong');
+    //     }
+    //     if(/^https?:\/\/[a-z.-_]+\.[a-z]{2,3}$/.test($('#web').val())){
+    //         $('#web').addClass('ok');
+    //     }else { alert('Введите правильный адрес сайта');
+    //         $('#web').addClass('wrong');}
+    //     return false;
+    // });
+</script>
+</body>
+</html>
