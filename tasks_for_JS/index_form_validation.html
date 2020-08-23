@@ -23,39 +23,32 @@
 		padding: 3px;
 		width: 270px;
     }
-    input::-webkit-outer-spin-button,
-    input::-webkit-inner-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-    }
-    input[type=number] {
-        -moz-appearance:textfield;
-    }
 	label{
 		font-family: monospace;
 		font-size: 1.5em;
 		margin-top: 15px;
 	}
     .false {
-        border:1px solid red;
+        border: 1px solid red;
         outline: none;
     }
     .true {
-        border: 1px solid green;
+        border: 1px solid limegreen;
         outline: none;
+        padding: 5px;
     }
 </style>
 <body >
 
 <form>
 	<label>
-		E-mail :<input id="email" type="email" placeholder="Введите emeil">
+		E-mail :<input id="email" type="email" placeholder="Введите E-mail">
 	</label>
 	<label>
-		Phone number :<input id="phone" placeholder="Введите телефон   +_ ___ ___ ____">
+		Phone number :<input id="phone" placeholder="Введите телефон">
 	</label>
 	<label>
-		Input date :<input id="data" placeholder="Введите дату в формате dd/mm/yy">
+		Input date :<input id="data"  placeholder="Введите дату в формате DD.MM.YY">
 	</label>
 	<label>
 		Site address :<input id="web" type="url" placeholder= "Адрес сайта формата http://____ . __">
@@ -66,51 +59,52 @@
 </form>
 
 <script>
-	
-    let email = document.getElementById('email');
-    let phone = document.getElementById('phone');
-	
-	document.getElementById('check').addEventListener('click', function () {
+	(function () {
+        let email = document.getElementById('email');
+        let phone = document.getElementById('phone');
+        let data = document.getElementById('data');
+        let web = document.getElementById('web');
 
-        if(/^[a-z]+\W?_?[a-z]+@[a-z]+\.[a-z]{2,3}$/.test(email.value)){
-            email.classList.add('true');
-		}else{
-            alert('Введите правильную почту');
-            email.classList.add('false')
-		}
+        document.getElementById('check').addEventListener('click', function () {
 
-		if(/^\d{11}$/.test(phone.value.replace(/\D/g, ''))){
-			phone.classList.add('true');
-		} else {
-			alert('Введите правильный номер');
-            phone.classList.add('false');
-		}
-    })
-	
-	
-	phone.addEventListener('input', function (event) {
-	    let arr = phone.value.match(/\d/g) || [];
-	    
-        if(event.inputType === "deleteContentBackward") arr ? arr.pop() : [];
-	    
-	    if (arr.length > 11) arr.length = 11;
-		
-		phone.value = `+${arr[0] || ''} ${arr[1] || ''}${arr[2] || ''}${arr[3] || ''} ${arr[4] || ''}${arr[5] || ''}${arr[6] || ''} ${arr[7] || ''}${arr[8] || ''}${arr[9] || ''}${arr[10] || ''} `;
-    })
+            if (/^[a-z]+\W?_?[a-z]+@[a-z]+\.[a-z]{2,3}$/.test(email.value)) {
+                email.classList.add('true');
+                email.classList.remove('false');
+            } else {
+                alert('Введите правильную почту');
+                email.classList.add('false');
+                email.classList.remove('true');
+            }
 
-    
-    //     if(/^(0[1-9]|[12]\d|3[01])\.(0[1-9]|1[0-2])\.([12]\d{3})$/.test($('#data').val())){
-    //         $('#data').addClass('ok');
-    //     }else { alert('Введите правильную дату');
-    //         $('#data').addClass('wrong');
-    //     }
-    //     if(/^https?:\/\/[a-z.-_]+\.[a-z]{2,3}$/.test($('#web').val())){
-    //         $('#web').addClass('ok');
-    //     }else { alert('Введите правильный адрес сайта');
-    //         $('#web').addClass('wrong');}
-    //     return false;
-    // });
-	
+            if (/^\d{11,12}$/.test(phone.value.replace(/\D/g, ''))) {
+                phone.classList.add('true');
+                phone.classList.remove('false');
+            } else {
+                alert('Введите правильный номер');
+                phone.classList.add('false');
+                phone.classList.remove('true');
+            }
+
+            if (/^(0[1-9]|[12]\d|3[01])\.(0[1-9]|1[0-2])\.([12]\d{3})$/.test(data.value)) {
+                data.classList.add('true');
+                data.classList.remove('false');
+            } else {
+                alert('Введите правильную дату');
+                data.classList.add('false');
+                data.classList.remove('true');
+            }
+
+            if (/^https?:\/\/[a-z.-_]+\.[a-z]{2,3}$/.test(web.value)) {
+                web.classList.add('true');
+                web.classList.remove('false');
+            } else {
+                alert('Введите правильный адрес сайта');
+                web.classList.add('false');
+                web.classList.remove('true');
+            }
+        })
+
+    })();
 </script>
 </body>
 </html>
