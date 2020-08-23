@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Sortable Table</title>
+</head>
+<style>
+    table {
+        border-collapse: collapse;
+        margin: 0 auto;
+    }
+    td, th {
+        border: 1px solid #000000;
+        padding: 10px;
+    }
+    thead {
+        background: #eee;
+        cursor: pointer;
+    }
+</style>
+<body >
+<table id="grid">
+	<thead>
+	<tr>
+		<th>№</th>
+		<th>First Name</th>
+		<th>Second Name</th>
+		<th>Age</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td>2</td>
+		<td>Albert</td>
+		<td>Einstein</td>
+		<td>35</td>
+	</tr>
+	<tr>
+		<td>1</td>
+		<td>Nikola</td>
+		<td>Tesla</td>
+		<td>67</td>
+	</tr>
+	<tr>
+		<td>3</td>
+		<td>Halkida</td>
+		<td>Arystoteles</td>
+		<td>51</td>
+	</tr>
+	<tbody>
+</table>
+<script>
+
+    let grid = document.getElementById('grid');
+    
+    grid.addEventListener('click', sortStart);
+
+    function sortStart(event){
+        if(event.target.tagName !== 'TH') return;
+        sortGrid(event.target);
+    }
+
+    function sortGrid(th){
+        let index = th.cellIndex;
+        let tbody = grid.getElementsByTagName('tbody')[0];
+        let rows = [].slice.call(tbody.rows);
+        
+        sortRows(rows, index);
+        grid.removeChild(tbody);
+        for(let i = 0; i < rows.length; i++){
+            tbody.appendChild(rows[i]);
+        }
+        grid.appendChild(tbody);
+    }
+
+    function sortRows(rows, index){
+        rows.sort(function(a,b){
+            let val_a = a.cells[index].innerHTML;
+            let val_b = b.cells[index].innerHTML;
+            
+            if(parseFloat(val_a)) {
+                parseFloat(val_a);
+                parseFloat(val_b);
+            }
+            return val_a > val_b;
+        });
+    }
+    
+</script>
+</body>
+</html>
