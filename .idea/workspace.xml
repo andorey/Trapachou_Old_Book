@@ -24,6 +24,9 @@
   <component name="NamedScopeManager">
     <scope name="Git Scope" pattern="" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="showPreview" value="true" />
+  </component>
   <component name="ProjectId" id="1fNGnBaCsNM72M4qlBHoLkstqQ1" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -102,7 +105,7 @@
       <workItem from="1597643098391" duration="24363000" />
       <workItem from="1597857629133" duration="22375000" />
       <workItem from="1597965090232" duration="670000" />
-      <workItem from="1598017629985" duration="51142000" />
+      <workItem from="1598017629985" duration="52206000" />
     </task>
     <servers />
   </component>
@@ -141,6 +144,14 @@
       <screen x="0" y="23" width="1280" height="777" />
     </state>
     <state x="32" y="23" key="SettingsEditor/0.23.1280.777@0.23.1280.777" timestamp="1597678009093" />
+    <state x="144" y="88" key="Vcs.Push.Dialog.v2" timestamp="1598210646173">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="144" y="88" key="Vcs.Push.Dialog.v2/0.23.1280.777@0.23.1280.777" timestamp="1598210646173" />
+    <state x="404" y="315" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1598210624995">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="404" y="315" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1280.777@0.23.1280.777" timestamp="1598210624995" />
     <state x="221" y="23" width="838" height="1032" key="search.everywhere.popup" timestamp="1596546548349">
       <screen x="0" y="23" width="1280" height="777" />
     </state>

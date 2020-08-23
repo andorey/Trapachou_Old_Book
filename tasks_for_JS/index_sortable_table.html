@@ -37,41 +37,43 @@
 		<td>Einstein</td>
 		<td>35</td>
 		<td>Plum</td>
-		<td>Windows</td>
+		<td>Linux</td>
 	</tr>
 	<tr>
 		<td>1</td>
 		<td>Nikola</td>
 		<td>Tesla</td>
-		<td>67</td>
+		<td>51</td>
 		<td>Cocos</td>
-		<td>IOS Mack</td>
+		<td>Windows</td>
 	</tr>
 	<tr>
 		<td>3</td>
 		<td>Halkida</td>
-		<td>Arystoteles</td>
-		<td>51</td>
+		<td>Aristotle</td>
+		<td>67</td>
 		<td>Apple</td>
-		<td>Linux</td>
+		<td>macOS</td>
 	</tr>
 	<tbody>
 </table>
 
 <script>
-	(function() {
+	(function() {					//this table is universal for any number of columns and rows
+	    
         let table = document.getElementById('table');
         let th = table.querySelectorAll('th')
-        let td = table.querySelectorAll('tr>td');
+        let td = table.querySelectorAll('td');
 
         table.addEventListener('click', function (event) {
             let index = event.target.cellIndex;
             let arr = [];
 
-            for (let i = 0; i < td.length; i += th.length) {
+            for(let i = 0; i < td.length; i += th.length) {
                 let temp = [];
+                
                 for(let j = 0; j < th.length; j++){
-                    temp.push(td[i+j].innerHTML);
+                    temp.push( td[i + j].innerHTML );
 				}
                 arr.push(temp)
             }
@@ -83,9 +85,9 @@
             td.forEach(function (el, i) {
                 el.innerHTML = arr[i]
             })
+			
         })
     })();
-    
 </script>
 </body>
 </html>
