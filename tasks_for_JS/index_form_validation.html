@@ -11,8 +11,8 @@
 		text-align: center;
 	}
     form {
-		border: solid lightgray 1px;
-		width: 270px;
+		border: dotted lightgray 3px;
+		width: 340px;
         display: flex;
         flex-direction: column;
 		border-radius: 20px;
@@ -20,6 +20,8 @@
     input {
 		font-size: 0.6em;
         margin: 5px 10px 10px 10px;
+		padding: 3px;
+		width: 270px;
     }
     input::-webkit-outer-spin-button,
     input::-webkit-inner-spin-button {
@@ -44,21 +46,22 @@
     }
 </style>
 <body >
+
 <form>
 	<label>
-	E-mail :<input id="emeil" type="email" placeholder="Введите emeil">
+		E-mail :<input id="emeil" type="email" placeholder="Введите emeil">
 	</label>
 	<label>
-	Phone number :<input id="phone" type="number" placeholder="Введите телефон">
+		Phone number :<input id="phone" type="number" placeholder="Введите телефон   +_ ___ ___ ____">
 	</label>
 	<label>
-	Input date :<input id="data" placeholder="Дата в формате dd/mm/yy">
+		Input date :<input id="data" placeholder="Введите дату в формате dd/mm/yy">
 	</label>
 	<label>
-	Site address :<input id="web" type="url" placeholder= " http://____ . __">
+		Site address :<input id="web" type="url" placeholder= "Адрес сайта формата http://____ . __">
 	</label>
 	<label>
-	<input id="check" type="button" value="Check Data">
+		<input id="check" type="button" value="Check Data">
 	</label>
 </form>
 
@@ -88,6 +91,7 @@
     //         $('#web').addClass('wrong');}
     //     return false;
     // });
+	
 </script>
 </body>
 </html>
