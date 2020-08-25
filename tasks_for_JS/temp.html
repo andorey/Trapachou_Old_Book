@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
 	<meta charset="UTF-8">
-	<title>календарь с инпутом</title>
+	<title>note book</title>
 	<style>
         textarea{
             width: 300px;
@@ -35,9 +35,10 @@
 	<textarea> </textarea>
 </label>
 
+<input type="button" value="DELETE">
 <div>
 	<h4>Сохраненые записи</h4>
-	<input type="button" value="DELETE">
+	
 </div>
 
 
@@ -46,11 +47,11 @@
 
         let locals = Object.keys(localStorage) || [];
         let textarea = document.querySelector('textarea');
+        textarea.focus();
         let div = document.querySelector('div');
-
+        
         if (locals) locals.forEach((el) => div.innerHTML += `<a href="#">${el}</a>`)
-
-
+		
         div.addEventListener('click', function (event) {
             if (event.target.tagName === 'A') {
                 textarea.value = '';
@@ -59,7 +60,7 @@
         });
 
         textarea.addEventListener('keyup', function (event) {
-            if (event.key === 'Enter') {
+            if (event.key === 'Enter' && event.shiftKey === false) {
                 let d = new Date;
                 let dayY = d.getFullYear();
                 let dayM = d.getMonth() + 1;
@@ -82,18 +83,24 @@
                 textarea.value = '';
                 div.innerHTML += `<a href="#">${dateD}</a>`
                 localStorage.setItem(dateD, dateVal);
+                locals = Object.keys(localStorage)
             }
         });
         
-        document.querySelector('input').addEventListener('click', function () {
+        document.querySelector('input').addEventListener('click', function (event) {
+            let textarea = document.querySelector('textarea');
 			let text = textarea.value;
-			console.log(this)
+			
 			for (let i of locals){
 			    if (localStorage.getItem(i) === text){
+                    textarea.value = ''
 			        delete localStorage[i];
+                    location.reload()
 				}
 			}
+			
         })
+		
     })();
 </script>
 </body>
