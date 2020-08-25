@@ -19,6 +19,13 @@
         a{
             display: block;
         }
+		input{
+			font-size: .7em;
+			margin: 5px;
+			padding: 3px;
+			color: snow;
+			background: #012532;
+		}
 	</style>
 
 </head>
@@ -30,38 +37,64 @@
 
 <div>
 	<h4>Сохраненые записи</h4>
+	<input type="button" value="DELETE">
 </div>
 
 
 <script>
-	
-	let textarea = document.querySelector('textarea');
-	let div = document.querySelector('div');
-	
-    div.addEventListener('click', function(event){
-        console.log(event)
-        if (event.target.tagName !== 'A') return;
-        textarea.value = '';
-        textarea.value = localStorage.getItem(event.target.innerHTML);
-    });
+	(function () {
 
-    textarea.addEventListener('keyup', function(event){
-        if (event.key === 'Enter'){
-            let d = new Date;
-            let dayY = d.getFullYear();
-            let dayM = d.getMonth()+1;
-            let dayD = d.getDate();
-            let dayH = d.getHours();
-            let dayMn = d.getMinutes();
-            let dayS = d.getSeconds();
-            let dateD = `${dayY}.${dayM}.${dayD}-${dayH}:${dayM}n:${dayS}`;
-            let dateVal = textarea.value;
-            textarea.value = '';
-            div.innerHTML += `<a href="#"> ${dateD} </a>`
-            localStorage.setItem(dateD, dateVal);
-        }
-    });
-    
+        let locals = Object.keys(localStorage) || [];
+        let textarea = document.querySelector('textarea');
+        let div = document.querySelector('div');
+
+        if (locals) locals.forEach((el) => div.innerHTML += `<a href="#">${el}</a>`)
+
+
+        div.addEventListener('click', function (event) {
+            if (event.target.tagName === 'A') {
+                textarea.value = '';
+                textarea.value = localStorage.getItem(event.target.innerHTML);
+            }
+        });
+
+        textarea.addEventListener('keyup', function (event) {
+            if (event.key === 'Enter') {
+                let d = new Date;
+                let dayY = d.getFullYear();
+                let dayM = d.getMonth() + 1;
+                dayM = dayM < 10 ? '0' + dayM : dayM;
+
+                let dayD = d.getDate();
+                dayD = dayD < 10 ? '0' + dayD : dayD;
+
+                let dayH = d.getHours();
+                dayH = dayH < 10 ? '0' + dayH : dayH;
+
+                let dayMn = d.getMinutes();
+                dayMn = dayMn < 10 ? '0' + dayMn : dayMn;
+
+                let dayS = d.getSeconds();
+                dayS = dayS < 10 ? '0' + dayS : dayS;
+
+                let dateD = `${dayY}.${dayM}.${dayD}-${dayH}:${dayMn}:${dayS}`;
+                let dateVal = textarea.value;
+                textarea.value = '';
+                div.innerHTML += `<a href="#">${dateD}</a>`
+                localStorage.setItem(dateD, dateVal);
+            }
+        });
+        
+        document.querySelector('input').addEventListener('click', function () {
+			let text = textarea.value;
+			console.log(this)
+			for (let i of locals){
+			    if (localStorage.getItem(i) === text){
+			        delete localStorage[i];
+				}
+			}
+        })
+    })();
 </script>
 </body>
 </html>
