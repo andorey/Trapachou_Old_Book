@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>календарь с инпутом</title>
+	<style>
+        textarea{
+            width: 300px;
+            height: 200px;
+            float: left;
+        }
+        div{
+            float: left;
+            margin-left: 20px;
+        }
+        div h4{
+            margin: 0;
+        }
+        a{
+            display: block;
+        }
+	</style>
+
+</head>
+<body>
+
+<label>
+	<textarea> </textarea>
+</label>
+
+<div>
+	<h4>Сохраненые записи</h4>
+</div>
+
+
+<script>
+	
+	let textarea = document.querySelector('textarea');
+	let div = document.querySelector('div');
+	
+    div.addEventListener('click', function(event){
+        console.log(event)
+        if (event.target.tagName !== 'A') return;
+        textarea.value = '';
+        textarea.value = localStorage.getItem(event.target.innerHTML);
+    });
+
+    textarea.addEventListener('keyup', function(event){
+        if (event.key === 'Enter'){
+            let d = new Date;
+            let dayY = d.getFullYear();
+            let dayM = d.getMonth()+1;
+            let dayD = d.getDate();
+            let dayH = d.getHours();
+            let dayMn = d.getMinutes();
+            let dayS = d.getSeconds();
+            let dateD = `${dayY}.${dayM}.${dayD}-${dayH}:${dayM}n:${dayS}`;
+            let dateVal = textarea.value;
+            textarea.value = '';
+            div.innerHTML += `<a href="#"> ${dateD} </a>`
+            localStorage.setItem(dateD, dateVal);
+        }
+    });
+    
+</script>
+</body>
+</html>

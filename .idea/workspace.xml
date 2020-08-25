@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="74023db5-c1bb-4577-96dc-080e17d9e9bb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tasks_for_JS/index_sortable_column.html" beforeDir="false" afterPath="$PROJECT_DIR$/tasks_for_JS/index_sortable_column.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tasks_for_JS/index_sortable_table.html" beforeDir="false" afterPath="$PROJECT_DIR$/tasks_for_JS/index_sortable_table.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tasks_for_JS/temp.html" beforeDir="false" afterPath="$PROJECT_DIR$/tasks_for_JS/temp.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -107,7 +105,8 @@
       <workItem from="1597643098391" duration="24363000" />
       <workItem from="1597857629133" duration="22375000" />
       <workItem from="1597965090232" duration="670000" />
-      <workItem from="1598017629985" duration="58941000" />
+      <workItem from="1598017629985" duration="66004000" />
+      <workItem from="1598377086865" duration="3637000" />
     </task>
     <servers />
   </component>
@@ -118,10 +117,10 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="270" y="83" key="#Inspections" timestamp="1597936929784">
+    <state x="270" y="83" key="#Inspections" timestamp="1598379812405">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state x="270" y="83" key="#Inspections/0.23.1280.777@0.23.1280.777" timestamp="1597936929784" />
+    <state x="270" y="83" key="#Inspections/0.23.1280.777@0.23.1280.777" timestamp="1598379812405" />
     <state x="140" y="23" key="#Plugins" timestamp="1597965755091">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
