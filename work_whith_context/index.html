@@ -7,15 +7,28 @@
 <body>
 <label>
 	<input type="text" class="inp_1">
-	<input type="text" class="inp_2">
+<!--	<input type="text" class="inp_2">-->
 </label>
 
 <script>
-	const func = function() { alert(this.value) }
 	
-	document.querySelectorAll('input').forEach(function (el) {
-		el.addEventListener('blur', func)
-    })
+	const input = document.querySelector('input');
+	
+	const func = function(count = 0) {
+		let times =	setInterval(() => {
+			console.log(this.value + count)
+			count++
+            if (count > 3) clearTimeout(times)
+		}, 1000)
+	}
+	
+	// input.forEach(function (el) {
+	// 	el.addEventListener('blur', func)
+    // })
+	
+	func.call(input)
+	// func.bind(input)
+	func.apply(input)
 	
 </script>
 
