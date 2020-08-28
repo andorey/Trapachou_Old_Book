@@ -31,19 +31,19 @@
 	let parent = document.getElementById('parent');
 	let count = 0
 	
-	elem.addEventListener('dragend', function () {
-	    // elem.style.borderColor = 'green';
-		// console.log(this)
-    })
 	
-	parent.addEventListener('dragover', function (event) {
-	    // parent.style.border = 'green dotted 4px';
-		// console.log(count++)
-		event.preventDefault();
+	elem.addEventListener('drag', function (event) {
+	    parent.style.border = 'green dotted 4px';
+		console.log(count++)
+		// event.preventDefault();
+    })
+
+    parent.addEventListener('dragover', function (event) {
+        event.preventDefault();
     })
 
     parent.addEventListener('drop', function () {
-        parent.style.border = 'green dotted 4px';
+        parent.style.border = 'dotted blue 2px';
         console.log(count++)
     })
 
