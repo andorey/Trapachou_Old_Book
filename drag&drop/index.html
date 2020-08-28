@@ -5,40 +5,24 @@
 	<title>drag and droop</title>
 	<style>
 		#elem{
-			width: 100px;
-			height: 100px;
+			width: 150px;
+			height: 40px;
 			border: dotted red 4px;
 
             position: absolute;
 		}
-		/*#parent{*/
-		/*	position: absolute;*/
-		/*	left: 30px;*/
-		/*	top: 100px;*/
-		/*	width: 20em;*/
-		/*	height: 20em;*/
-		/*	border: dotted blue 2px;*/
-		/*}*/
 	</style>
 </head>
 <body>
-
-<div id="elem" draggable="true">
-	Goodbye my love goodbye
-</div>
-
-<!--<div id="parent">-->
-<!--	<var>-->
-<!--		-->
-<!--	</var>-->
-<!--</div>-->
+<label id="elem" draggable="true">
+	<input value="Goodbye my love goodbye">
+</label>
 
 <script>
 	let elem = document.getElementById('elem');
-	let mouseL, mouseR;
+	let mouseL;
+	let mouseR;
 	
-
-
     window.addEventListener('dragover', function (event) {
         event.preventDefault();
 	})
@@ -53,7 +37,6 @@
         mouseL = event.offsetX
         mouseR = event.offsetY
     })
-
 	
 </script>
 
