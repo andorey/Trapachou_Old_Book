@@ -2,34 +2,53 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Title</title>
+	<title>drag and droop</title>
+	<style>
+		#elem{
+			width: 10em;
+			height: 3em;
+			border: dotted red 4px;
+		}
+		#parent{
+			position: absolute;
+			left: 30px;
+			top: 100px;
+			width: 20em;
+			height: 20em;
+			border: dotted blue 2px;
+		}
+	</style>
 </head>
 <body>
 <label>
-	<input type="text" class="inp_1">
-<!--	<input type="text" class="inp_2">-->
+	<input id="elem" value="привет" draggable="true">
 </label>
 
+<div id="parent"></div>
+
 <script>
+	let elem = document.getElementById('elem');
+	let parent = document.getElementById('parent');
+	let count = 0
 	
-	const input = document.querySelector('input');
+	elem.addEventListener('dragend', function () {
+	    // elem.style.borderColor = 'green';
+		// console.log(this)
+    })
 	
-	const func = function(count = 0) {
-		let times =	setInterval(() => {
-			console.log(this.value + count)
-			count++
-            if (count > 3) clearTimeout(times)
-		}, 1000)
-	}
-	
-	// input.forEach(function (el) {
-	// 	el.addEventListener('blur', func)
-    // })
-	
-	func.call(input)
-	// func.bind(input)
-	func.apply(input)
-	
+	parent.addEventListener('dragover', function (event) {
+	    // parent.style.border = 'green dotted 4px';
+		// console.log(count++)
+		event.preventDefault();
+    })
+
+    parent.addEventListener('drop', function () {
+        parent.style.border = 'green dotted 4px';
+        console.log(count++)
+    })
+
+
+
 </script>
 
 </body>
