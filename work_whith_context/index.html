@@ -5,50 +5,56 @@
 	<title>drag and droop</title>
 	<style>
 		#elem{
-			width: 10em;
-			height: 3em;
+			width: 100px;
+			height: 100px;
 			border: dotted red 4px;
+
+            position: absolute;
 		}
-		#parent{
-			position: absolute;
-			left: 30px;
-			top: 100px;
-			width: 20em;
-			height: 20em;
-			border: dotted blue 2px;
-		}
+		/*#parent{*/
+		/*	position: absolute;*/
+		/*	left: 30px;*/
+		/*	top: 100px;*/
+		/*	width: 20em;*/
+		/*	height: 20em;*/
+		/*	border: dotted blue 2px;*/
+		/*}*/
 	</style>
 </head>
 <body>
-<label>
-	<input id="elem" value="привет" draggable="true">
-</label>
 
-<div id="parent"></div>
+<div id="elem" draggable="true">
+	Goodbye my love goodbye
+</div>
+
+<!--<div id="parent">-->
+<!--	<var>-->
+<!--		-->
+<!--	</var>-->
+<!--</div>-->
 
 <script>
 	let elem = document.getElementById('elem');
-	let parent = document.getElementById('parent');
-	let count = 0
+	let mouseL, mouseR;
 	
-	
-	elem.addEventListener('drag', function (event) {
-	    parent.style.border = 'green dotted 4px';
-		console.log(count++)
-		// event.preventDefault();
-    })
 
-    parent.addEventListener('dragover', function (event) {
+
+    window.addEventListener('dragover', function (event) {
         event.preventDefault();
+	})
+	
+	window.addEventListener('drop', function (event) {
+		
+        elem.style.left = event.pageX - mouseL + 'px';
+        elem.style.top = event.pageY - mouseR + 'px';
+	})
+
+    elem.addEventListener('mousedown', function (event) {
+        mouseL = event.offsetX
+        mouseR = event.offsetY
     })
 
-    parent.addEventListener('drop', function () {
-        parent.style.border = 'dotted blue 2px';
-        console.log(count++)
-    })
-
-
-
+	
 </script>
 
 </body>
