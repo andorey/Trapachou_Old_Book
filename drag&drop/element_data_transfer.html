@@ -8,7 +8,7 @@
 			width: 40px;
 			height: 40px;
 			border: dotted #1900ff 2px;
-			margin: 5px 5px 0 5px;
+			margin: 0 5px;
 		}
 		#panel{
 			position: absolute;
@@ -16,8 +16,9 @@
 			top: 5px;
 			left: 10px;
 			width: 300px;
-			height: 90px;
+			height: 60px;
 			border: solid #57b657 2px;
+			align-items: center;
 		}
 		#base{
 			margin-top: 150px;
@@ -28,8 +29,9 @@
 			display: flex;
 		}
 		#output{
-			margin: 0 auto;
-			text-align: center;
+			position: absolute;
+			top: 115px;
+			left: 210px;
 			color: red;
 			font-size: 2em;
 			
@@ -47,14 +49,18 @@
 <div id="output"></div>
 
 <script>
-	let elem = document.querySelectorAll('.elem');
+	let elems = document.querySelectorAll('.elem');
 	let base = document.getElementById('base');
-    let output = document.getElementById('output')
-	let element;
+	let output = document.getElementById('output')
+	let current;
+	
+    elems.forEach(function (el, indx) {
+        el.addEventListener('dragstart', function (event) {
+			//event.dataTransfer.setData('text', 'block ' + indx) // solution for Firefox
+			// event.dataTransfer.setData('text', indx) // usual solution
 
-    elem.forEach(function (el) {
-        el.addEventListener('dragstart', function () {
-			element = this;
+            this.dataset.key = indx; // with added variable
+            current = this;
         })
     })
 
@@ -62,11 +68,14 @@
         event.preventDefault();
     })
 
-    base.addEventListener('drop', function () {
-        this.appendChild(element)
-        output.innerText = element.innerHTML
+    base.addEventListener('drop', function (event) {
+        //this.appendChild(elems[(event.dataTransfer.getData('text')).match(/\d/)[0]]) // for Firefox
+        //this.appendChild(elems[event.dataTransfer.getData('text')]) // usual solution
+		// output.innerText = event.dataTransfer.getData('text')
+		
+		this.appendChild(current)
+        output.innerText = current.dataset.key // with added variable
     })
-	
 		
 </script>
 
