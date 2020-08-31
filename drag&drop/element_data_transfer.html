@@ -4,14 +4,71 @@
 	<meta charset="UTF-8">
 	<title>element data transfer</title>
 	<style>
-	
+		.elem{
+			width: 40px;
+			height: 40px;
+			border: dotted #1900ff 2px;
+			margin: 5px 5px 0 5px;
+		}
+		#panel{
+			position: absolute;
+			display: flex;
+			top: 5px;
+			left: 10px;
+			width: 300px;
+			height: 90px;
+			border: solid #57b657 2px;
+		}
+		#base{
+			margin-top: 150px;
+			position: relative;
+			width: 300px;
+			height: 300px;
+			border: dotted 3px coral;
+			display: flex;
+		}
+		#output{
+			margin: 0 auto;
+			text-align: center;
+			color: red;
+			font-size: 2em;
+			
+		}
 	</style>
 </head>
 <body>
-<div></div>
+<div id="panel">
+	<div class="elem" draggable="true">111</div>
+	<div class="elem" draggable="true">222</div>
+	<div class="elem" draggable="true">333</div>
+	<div class="elem" draggable="true">444</div>
+</div>
+<div id="base"></div>
+<div id="output"></div>
 
 <script>
+	let elem = document.querySelectorAll('.elem');
+	let base = document.getElementById('base');
+    let output = document.getElementById('output')
+	let element;
 
+    elem.forEach(function (el) {
+        el.addEventListener('dragstart', function () {
+			element = this;
+        })
+    })
+
+    base.addEventListener('dragover', function (event) {
+        event.preventDefault();
+    })
+
+    base.addEventListener('drop', function () {
+        this.appendChild(element)
+        output.innerText = element.innerHTML
+    })
+	
+		
 </script>
+
 </body>
 </html>
