@@ -45,9 +45,8 @@
 
     elem.forEach(function (el) {
         el.addEventListener('dragstart', function () {
-			element = el;
+			element = this;
         })
-		
     })
 
     base.addEventListener('dragover', function (event) {
