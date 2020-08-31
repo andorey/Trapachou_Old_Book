@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="74023db5-c1bb-4577-96dc-080e17d9e9bb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/work_whith_context/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/work_whith_context/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,12 +52,12 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/local_noteBooke" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/canvas_JS" />
       <recent name="$PROJECT_DIR$/animation_js" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/local_noteBooke" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -108,7 +108,7 @@
       <workItem from="1598377086865" duration="11688000" />
       <workItem from="1598433351651" duration="3237000" />
       <workItem from="1598466888211" duration="1087000" />
-      <workItem from="1598553499004" duration="13076000" />
+      <workItem from="1598553499004" duration="13836000" />
     </task>
     <servers />
   </component>
