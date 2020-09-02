@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Multiple Dragged Objects</title>
+	<style>
+        .elem{
+            width: 40px;
+            height: 40px;
+            border: dotted #1900ff 2px;
+            margin: 0 5px;
+        }
+        #panel{
+            position: absolute;
+            display: flex;
+            top: 5px;
+            left: 10px;
+            width: 300px;
+            height: 60px;
+            border: solid #57b657 2px;
+            align-items: center;
+        }
+        #base{
+            margin-top: 150px;
+            position: relative;
+            width: 300px;
+            height: 300px;
+            border: dotted 3px coral;
+            display: flex;
+        }
+        #output{
+            position: absolute;
+            top: 115px;
+            left: 210px;
+            color: red;
+            font-size: 2em;
+
+        }
+	</style>
+</head>
+<body>
+<div id="panel">
+	<div class="elem" draggable="true">111</div>
+	<div class="elem" draggable="true">222</div>
+	<div class="elem" draggable="true">333</div>
+	<div class="elem" draggable="true">444</div>
+</div>
+<div id="base"></div>
+<div id="output"></div>
+
+<script>
+    let elems = document.querySelectorAll('.elem');
+    let base = document.getElementById('base');
+    let output = document.getElementById('output')
+    let current;
+
+    elems.forEach(function (el, indx) {
+        el.addEventListener('dragstart', function (event) {
+            //event.dataTransfer.setData('text', 'block ' + indx) // solution for Firefox
+            // event.dataTransfer.setData('text', indx) // usual solution
+
+            this.dataset.key = indx; // with added variable
+            current = this;
+        })
+    })
+
+    base.addEventListener('dragover', function (event) {
+        event.preventDefault();
+    })
+
+    base.addEventListener('drop', function (event) {
+        //this.appendChild(elems[(event.dataTransfer.getData('text')).match(/\d/)[0]]) // for Firefox
+        //this.appendChild(elems[event.dataTransfer.getData('text')]) // usual solution
+        // output.innerText = event.dataTransfer.getData('text')
+
+        this.appendChild(current)
+        output.innerText = current.dataset.key // with added variable
+    })
+
+</script>
+
+</body>
+</html>
