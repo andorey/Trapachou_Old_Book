@@ -41,6 +41,7 @@
 		}
 		span>div{
 			background-color: cyan;
+			font-weight: bolder;
 		}
 	</style>
 </head>
@@ -58,7 +59,6 @@
 
 <script>
     let elems = document.querySelectorAll('.elem');
-    let base = document.getElementById('base');
     let lend = base.querySelectorAll('span')
     let current;
 
@@ -84,9 +84,9 @@
 				elem.style.borderColor = 'red';
 			    elem.style.backgroundColor = 'yellow';
 			}else{
-			    if(elem.dataset.text === '0'){elem.innerHTML = 'B\n777'}
+			    if(elem.dataset.text === '2'){elem.innerHTML = 'B\n777'}
 			    if(elem.dataset.text === '1'){elem.innerHTML = 'C\n888'}
-			    if(elem.dataset.text === '2'){elem.innerHTML = 'D\n999'}
+			    if(elem.dataset.text === '0'){elem.innerHTML = 'D\n999'}
 			}
         })
     })
