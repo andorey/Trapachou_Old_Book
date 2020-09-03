@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="74023db5-c1bb-4577-96dc-080e17d9e9bb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag&amp;drop/multiple_dragged_objects.html" beforeDir="false" afterPath="$PROJECT_DIR$/drag&amp;drop/multiple_dragged_objects.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,6 +114,8 @@
       <workItem from="1598553499004" duration="13836000" />
       <workItem from="1598861812838" duration="4550000" />
       <workItem from="1598867385450" duration="8526000" />
+      <workItem from="1599078562225" duration="408000" />
+      <workItem from="1599130881710" duration="4791000" />
     </task>
     <servers />
   </component>

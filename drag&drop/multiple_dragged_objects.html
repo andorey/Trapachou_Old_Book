@@ -4,38 +4,44 @@
 	<meta charset="UTF-8">
 	<title>Multiple Dragged Objects</title>
 	<style>
+		body{
+			display: flex;
+			text-align: center;
+		}
         .elem{
+            display: flex;
+            justify-content: center;
+            align-items: center;
             width: 40px;
             height: 40px;
             border: dotted #1900ff 2px;
             margin: 0 5px;
         }
         #panel{
-            position: absolute;
             display: flex;
-            top: 5px;
-            left: 10px;
+            align-items: center;
+            justify-content: space-around;
             width: 300px;
             height: 60px;
             border: solid #57b657 2px;
-            align-items: center;
         }
         #base{
             margin-top: 150px;
             position: relative;
-            width: 300px;
-            height: 300px;
-            border: dotted 3px coral;
+            height: 50px;
             display: flex;
         }
-        #output{
-            position: absolute;
-            top: 115px;
-            left: 210px;
-            color: red;
-            font-size: 2em;
-
-        }
+		span{
+            justify-content: center;
+            display: flex;
+			width: 70px;
+			height: 50px;
+			margin-left: 10px;
+            border-bottom: 4px dotted grey;
+		}
+		span>div{
+			background-color: cyan;
+		}
 	</style>
 </head>
 <body>
@@ -45,36 +51,44 @@
 	<div class="elem" draggable="true">333</div>
 	<div class="elem" draggable="true">444</div>
 </div>
-<div id="base"></div>
-<div id="output"></div>
+<div id="base">
+	<span></span><span></span><span></span><span></span>
+</div>
+
 
 <script>
     let elems = document.querySelectorAll('.elem');
     let base = document.getElementById('base');
-    let output = document.getElementById('output')
+    let lend = base.querySelectorAll('span')
     let current;
 
     elems.forEach(function (el, indx) {
         el.addEventListener('dragstart', function (event) {
-            //event.dataTransfer.setData('text', 'block ' + indx) // solution for Firefox
-            // event.dataTransfer.setData('text', indx) // usual solution
-
-            this.dataset.key = indx; // with added variable
             current = this;
+            current.dataset.text = indx;
         })
     })
 
-    base.addEventListener('dragover', function (event) {
-        event.preventDefault();
+    lend.forEach(function (el) {
+        el.addEventListener('dragover', function (event) {
+            event.preventDefault();
+        })
     })
 
-    base.addEventListener('drop', function (event) {
-        //this.appendChild(elems[(event.dataTransfer.getData('text')).match(/\d/)[0]]) // for Firefox
-        //this.appendChild(elems[event.dataTransfer.getData('text')]) // usual solution
-        // output.innerText = event.dataTransfer.getData('text')
-
-        this.appendChild(current)
-        output.innerText = current.dataset.key // with added variable
+    lend.forEach(function (el) {
+        el.addEventListener('drop', function (event) {
+            this.appendChild(current)
+            let elem = el.querySelector('div');
+			if(elem.innerText === '444'){
+			    elem.innerHTML = 'A\n555'
+				elem.style.borderColor = 'red';
+			    elem.style.backgroundColor = 'yellow';
+			}else{
+			    if(elem.dataset.text === '0'){elem.innerHTML = 'B\n777'}
+			    if(elem.dataset.text === '1'){elem.innerHTML = 'C\n888'}
+			    if(elem.dataset.text === '2'){elem.innerHTML = 'D\n999'}
+			}
+        })
     })
 
 </script>
