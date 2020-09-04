@@ -15,7 +15,7 @@
 		}
 		#panel{
 			display: flex;
-            justify-content: space-around;
+            justify-content: center;
 			width: 300px;
 			height: 60px;
 			border: solid #57b657 2px;
@@ -71,7 +71,8 @@
     })
 
     base.addEventListener('drop', function (event) {
-		this.removeChild()
+		this.appendChild(current)
+		this.removeChild(current)
     })
 		
 </script>
