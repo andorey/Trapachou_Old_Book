@@ -5,36 +5,29 @@
 	<title>element data transfer</title>
 	<style>
 		.elem{
+			display: flex;
+			align-items: center;
+			justify-content: center;
 			width: 40px;
 			height: 40px;
 			border: dotted #1900ff 2px;
 			margin: 0 5px;
 		}
 		#panel{
-			position: absolute;
 			display: flex;
-			top: 5px;
-			left: 10px;
+            justify-content: space-around;
 			width: 300px;
 			height: 60px;
 			border: solid #57b657 2px;
 			align-items: center;
 		}
-		#base{
-			margin-top: 150px;
-			position: relative;
-			width: 300px;
-			height: 300px;
-			border: dotted 3px coral;
-			display: flex;
-		}
-		#output{
+		#basket{
 			position: absolute;
-			top: 115px;
-			left: 210px;
-			color: red;
-			font-size: 2em;
-			
+			left: 420px;
+			top: 10px;
+			width: 100px;
+			height: 100px;
+			/*border: dotted 3px coral;*/
 		}
 	</style>
 </head>
@@ -44,22 +37,31 @@
 	<div class="elem" draggable="true">222</div>
 	<div class="elem" draggable="true">333</div>
 	<div class="elem" draggable="true">444</div>
+	<div class="elem" draggable="true">555</div>
 </div>
-<div id="base"></div>
-<div id="output"></div>
+<canvas id="basket"></canvas>
 
 <script>
 	let elems = document.querySelectorAll('.elem');
-	let base = document.getElementById('base');
-	let output = document.getElementById('output')
+	let base = document.getElementById('basket');
+	let basket = base.getContext('2d')
+
+    basket.beginPath()
+    basket.strokeStyle = '#021d33';
+    basket.lineWidth = 30;
+    basket.moveTo(25, 25);
+    basket.lineTo(220, 25);
+    basket.lineTo(195, 120);
+    basket.lineTo(55, 120);
+    basket.closePath()
+	basket.stroke()
+	basket.fillStyle = 'cyan';
+    basket.fill()
+	
 	let current;
 	
-    elems.forEach(function (el, indx) {
+    elems.forEach(function (el) {
         el.addEventListener('dragstart', function (event) {
-			//event.dataTransfer.setData('text', 'block ' + indx) // solution for Firefox
-			// event.dataTransfer.setData('text', indx) // usual solution
-
-            this.dataset.key = indx; // with added variable
             current = this;
         })
     })
@@ -69,12 +71,7 @@
     })
 
     base.addEventListener('drop', function (event) {
-        //this.appendChild(elems[(event.dataTransfer.getData('text')).match(/\d/)[0]]) // for Firefox
-        //this.appendChild(elems[event.dataTransfer.getData('text')]) // usual solution
-		// output.innerText = event.dataTransfer.getData('text')
-		
-		this.appendChild(current)
-        output.innerText = current.dataset.key // with added variable
+		this.removeChild()
     })
 		
 </script>

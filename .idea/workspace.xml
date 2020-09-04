@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="74023db5-c1bb-4577-96dc-080e17d9e9bb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drag&amp;drop/multiple_dragged_objects.html" beforeDir="false" afterPath="$PROJECT_DIR$/drag&amp;drop/multiple_dragged_objects.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag&amp;drop/delet_elems.html" beforeDir="false" afterPath="$PROJECT_DIR$/drag&amp;drop/delet_elems.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,14 +53,14 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/local_storage" />
+      <recent name="$PROJECT_DIR$/local_noteBooke" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/drag&amp;drop" />
       <recent name="$PROJECT_DIR$/canvas_JS" />
       <recent name="$PROJECT_DIR$/animation_js" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/local_storage" />
-      <recent name="$PROJECT_DIR$/local_noteBooke" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -116,6 +116,8 @@
       <workItem from="1598867385450" duration="8526000" />
       <workItem from="1599078562225" duration="408000" />
       <workItem from="1599130881710" duration="5845000" />
+      <workItem from="1599138235618" duration="235000" />
+      <workItem from="1599228353910" duration="3372000" />
     </task>
     <servers />
   </component>
