@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="74023db5-c1bb-4577-96dc-080e17d9e9bb" name="Default Changelist" comment="" />
+    <list default="true" id="74023db5-c1bb-4577-96dc-080e17d9e9bb" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/drag&amp;drop/2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/drag&amp;drop/3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/drag&amp;drop/4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/drag&amp;drop/5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/drag&amp;drop/6.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag&amp;drop/dragge_image.html" beforeDir="false" afterPath="$PROJECT_DIR$/drag&amp;drop/dragge_image.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -114,7 +122,9 @@
       <workItem from="1599078562225" duration="408000" />
       <workItem from="1599130881710" duration="5845000" />
       <workItem from="1599138235618" duration="235000" />
-      <workItem from="1599228353910" duration="4601000" />
+      <workItem from="1599228353910" duration="5073000" />
+      <workItem from="1599530433370" duration="117000" />
+      <workItem from="1599571806567" duration="713000" />
     </task>
     <servers />
   </component>

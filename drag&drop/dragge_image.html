@@ -2,30 +2,46 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>drag and droop</title>
+	<title>Multiple Dragged Objects</title>
 	<style>
+        body{
+            display: flex;
+            text-align: center;
+        }
         .elem{
+            display: flex;
+            justify-content: center;
+            align-items: center;
             width: 40px;
             height: 40px;
             border: dotted #1900ff 2px;
-            margin: 5px 5px 0 5px;
+            margin: 0 5px;
         }
         #panel{
-            position: absolute;
             display: flex;
-            top: 5px;
-            left: 10px;
+            align-items: center;
+            justify-content: space-around;
             width: 300px;
-            height: 90px;
+            height: 60px;
             border: solid #57b657 2px;
         }
         #base{
-            margin-top: 150px;
+            margin-top: 170px;
             position: relative;
-            width: 300px;
-            height: 300px;
-            border: dotted 3px coral;
+            height: 50px;
             display: flex;
+        }
+        span{
+            justify-content: center;
+            display: flex;
+            width: 70px;
+            height: 50px;
+            margin-left: 10px;
+            border-bottom: 4px dotted grey;
+        }
+        span>div{
+            background-color: cyan;
+            font-weight: bolder;
         }
 	</style>
 </head>
@@ -35,26 +51,55 @@
 	<div class="elem" draggable="true">222</div>
 	<div class="elem" draggable="true">333</div>
 	<div class="elem" draggable="true">444</div>
+	<div class="elem" draggable="true">555</div>
 </div>
-<div id="base"></div>
+<div id="base">
+	<span></span>
+	<span></span>
+	<span></span>
+	<span></span>
+	<span></span>
+</div>
+
 
 <script>
-    let elem = document.querySelectorAll('.elem');
-    let base = document.getElementById('base');
-    let element;
+    const arrImg = ['2.png', '3.png', '4.png', '5.png','6.png'];
+    let elems = document.querySelectorAll('.elem');
+    let lend = base.querySelectorAll('span');
+    let img = new Image();
+    
+    let current;
 
-    elem.forEach(function (el) {
-        el.addEventListener('dragstart', function () {
-            element = this;
+    elems.forEach(function (el, indx) {
+        el.addEventListener('dragstart', function (event) {
+            current = this;
+            current.dataset.text = indx;
+            img.src = arrImg[indx];
+            event.dataTransfer.setDragImage(img, 10, 10);
         })
     })
 
-    base.addEventListener('dragover', function (event) {
-        event.preventDefault();
+    lend.forEach(function (el) {
+        el.addEventListener('dragover', function (event) {
+            event.preventDefault();
+        })
     })
 
-    base.addEventListener('drop', function () {
-        this.appendChild(element)
+    lend.forEach(function (el) {
+        el.addEventListener('drop', function (event) {
+            this.appendChild(current)
+            let elem = el.querySelector('div');
+            if(elem.innerText === '444'){
+                elem.innerHTML = 'A\n555'
+                elem.style.borderColor = 'red';
+                elem.style.backgroundColor = 'yellow';
+            }else{
+                if(elem.dataset.text === '2'){elem.innerHTML = 'C\n777'}
+                if(elem.dataset.text === '1'){elem.innerHTML = 'D\n888'}
+                if(elem.dataset.text === '0'){elem.innerHTML = 'F\n999'}
+                if(elem.dataset.text === '4'){elem.innerHTML = 'B\n666'}
+            }
+        })
     })
 
 </script>
