@@ -66,16 +66,16 @@
     const arrImg = ['2.png', '3.png', '4.png', '5.png','6.png'];
     let elems = document.querySelectorAll('.elem');
     let lend = base.querySelectorAll('span');
-    let img = new Image();
-    
     let current;
+
 
     elems.forEach(function (el, indx) {
         el.addEventListener('dragstart', function (event) {
             current = this;
             current.dataset.text = indx;
+            let img = new Image();
             img.src = arrImg[indx];
-            event.dataTransfer.setDragImage(img, 10, 10);
+            event.dataTransfer.setDragImage(img, 100, 100);
         })
     })
 
