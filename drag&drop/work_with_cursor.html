@@ -62,10 +62,12 @@
     let elems = document.querySelectorAll('.elem');
     let lend = base.querySelectorAll('span')
     let current;
+    let index;
 
     elems.forEach(function (el, indx) {
         el.addEventListener('dragstart', function (event) {
             current = this;
+            index = indx;
             current.dataset.text = indx;
         })
     })
@@ -73,7 +75,17 @@
     lend.forEach(function (el) {
         el.addEventListener('dragover', function (event) {
             event.preventDefault();
-            event.dataTransfer.dropEffect = 'copy'	// draws a plus symbol
+
+            if(index === 1){event.dataTransfer.dropEffect = 'none'}
+            if(index === 2){event.dataTransfer.dropEffect = 'link'}
+            if(index === 3){event.dataTransfer.dropEffect = 'copy'}
+            if(index === 0){event.dataTransfer.dropEffect = 'copy'}
+            if(index === 4){event.dataTransfer.dropEffect = 'move'}
+			
+            // event.dataTransfer.dropEffect = 'copy'	// draws a plus symbol
+            //event.dataTransfer.dropEffect = 'move'	// ???
+            // event.dataTransfer.dropEffect = 'link'	// changes the cursor to a different arrow
+            //event.dataTransfer.dropEffect = 'none'	// the item may not be dropped
         })
     })
 
