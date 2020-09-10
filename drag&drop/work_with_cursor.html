@@ -61,8 +61,8 @@
 <script>
     let elems = document.querySelectorAll('.elem');
     let lend = base.querySelectorAll('span')
-    let current;
-    let index;
+    let current;									// the variable to define the element
+    let index;										// the variable to define each cursor
 
     elems.forEach(function (el, indx) {
         el.addEventListener('dragstart', function (event) {
