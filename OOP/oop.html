@@ -11,6 +11,10 @@
 	const out = document.getElementById('out');
 	
 	class Tank {
+		constructor() {
+		    alert('create')
+		    this.healthTank = 50
+        }
 		health(){
 		    this.healthTank = this.healthTank - 1;
 		}
@@ -20,11 +24,11 @@
 	}
 	
 	let tank1 = new Tank()
-	tank1.healthTank = 100
 	out.innerHTML = tank1.healthTank;
 	
 	for ( let i = 0; i < 10; i++){
 	    tank1.health();
+	    if (i % 2 === 0){out.innerHTML += '<br>'}
         out.innerHTML += '&nbsp;' + tank1.healthTank;
     }
 	
