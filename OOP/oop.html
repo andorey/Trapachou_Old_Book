@@ -6,29 +6,36 @@
 </head>
 <body>
 <div id="out"></div>
+<div id="dop"></div>
 
 <script>
 	const out = document.getElementById('out');
+	const dop = document.getElementById('dop');
 	
 	class Tank {
-		constructor() {
-		    alert('create')
-		    this.healthTank = 50
+		constructor(massege) {
+			dop.innerHTML = massege+'!';
+		    this.healthTank = 100;
+		    this.amunitions = 10
         }
 		health(){
-		    this.healthTank = this.healthTank - 1;
+		    this.healthTank = this.healthTank - 10;
 		}
-		moveTo(x,y){
-		
+		fireTo(){
+            this.amunitions = this.amunitions - 1;
 		}
 	}
 	
-	let tank1 = new Tank()
+	let tank1 = new Tank('kapec')
 	out.innerHTML = tank1.healthTank;
 	
 	for ( let i = 0; i < 10; i++){
 	    tank1.health();
-	    if (i % 2 === 0){out.innerHTML += '<br>'}
+	    if (i % 2 === 0){
+	        out.innerHTML += '<br>';
+	        tank1.fireTo();
+            dop.innerHTML += '&nbsp;' + tank1.amunitions;
+	    }
         out.innerHTML += '&nbsp;' + tank1.healthTank;
     }
 	
