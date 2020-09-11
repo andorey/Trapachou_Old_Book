@@ -5,5 +5,29 @@
 	<title>oop_start</title>
 </head>
 <body>
+<div id="out"></div>
+
+<script>
+	const out = document.getElementById('out');
+	
+	class Tank {
+		health(){
+		    this.healthTank = this.healthTank - 1;
+		}
+		moveTo(x,y){
+		
+		}
+	}
+	
+	let tank1 = new Tank()
+	tank1.healthTank = 100
+	out.innerHTML = tank1.healthTank;
+	
+	for ( let i = 0; i < 10; i++){
+	    tank1.health();
+        out.innerHTML += '&nbsp;' + tank1.healthTank;
+    }
+	
+</script>
 </body>
 </html>
