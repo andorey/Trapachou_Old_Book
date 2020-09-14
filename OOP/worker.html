@@ -25,9 +25,15 @@
         getSurname(){
             return this._surname
 		}
+		setRate(rate){
+            this._rate = rate
+		}
         getRate(){
             return this._rate
 		}
+        setDays(days){
+            this._days = days
+        }
         getDays(){
             return this._days
 		}
@@ -39,6 +45,12 @@
 
     let Vasia = new Worker('Vasyl', 'Karpenko', 27, 31)
     let Vania = new Worker('Ivan', 'Ivanov', 10, 31)
+	
+	Vasia.setRate(100);
+	Vania.setRate(40);
+	
+	Vasia.setDays(10);
+	Vania.setDays(20);
 	
     out.innerHTML = Vania.getName() + '<br>';
     out.innerHTML += Vania.getSurname() + '<br>';
