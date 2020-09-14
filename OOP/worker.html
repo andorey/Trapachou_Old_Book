@@ -14,22 +14,43 @@
 
     class Worker {
         constructor(name, surname, rate, days) {
-            this.name = name;
-            this.surname = surname;
-            this.rate = rate;
-            this.days = days;
+            this._name = name;
+            this._surname = surname;
+            this._rate = rate;
+            this._days = days;
         }
+        getName(){
+            return this._name
+		}
+        getSurname(){
+            return this._surname
+		}
+        getRate(){
+            return this._rate
+		}
+        getDays(){
+            return this._days
+		}
+        
         getSalary(){
-            return this.rate * this.days;
+            return this._rate * this._days;
         }
     }
 
-    let Vasia = new Worker('Ivan', 'Ivanov', 10, 31)
-    out.innerHTML = Vasia.name + '<br>';
-    out.innerHTML += Vasia.surname + '<br>';
-    out.innerHTML += Vasia.rate + '<br>';
-    out.innerHTML += Vasia.days + '<br>';
-    dop.innerHTML = '<br>' + Vasia.getSalary()
+    let Vasia = new Worker('Vasyl', 'Karpenko', 27, 31)
+    let Vania = new Worker('Ivan', 'Ivanov', 10, 31)
+	
+    out.innerHTML = Vania.getName() + '<br>';
+    out.innerHTML += Vania.getSurname() + '<br>';
+    out.innerHTML += Vania.getRate() + '<br>';
+    out.innerHTML += Vania.getDays() + '<br>';
+    dop.innerHTML = '<br>' + Vania.getSalary()
+
+    out.innerHTML += '<br>' + Vasia.getName() + '<br>';
+    out.innerHTML += Vasia.getSurname() + '<br>';
+    out.innerHTML += Vasia.getRate() + '<br>';
+    out.innerHTML += Vasia.getDays() + '<br>';
+    dop.innerHTML += '<br>' + Vasia.getSalary()
 
 </script>
 </body>
