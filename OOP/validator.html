@@ -12,23 +12,27 @@
     const out = document.getElementById('out');
     const dop = document.getElementById('dop');
 
-    class MyString {
-        reverse(str){
-            return str.split('').reverse().join('')
+    class Validator {
+    	isEmail(str){
+            return /^\w+@\w+\.\w{2,4}$/.test(str);
         }
-        ucFirst(str){
-            return str[0].toUpperCase() + str.slice(1)
+        isDomain(str){
+            return /^\w+\.\w{2,4}$/.test(str);
         }
-        ucWords(str){
-            return str.split(' ').map(el => el[0].toUpperCase() + el.slice(1)).join(' ')
+        isDate(str){
+        	return (/^[0-2][0-9]|[3][0-1]\.[0][0-9]|[1][0-2]\.\d{2}$|\d{4}$/).test(str);
         }
+        isPhone(str){
+            return (/^\+?\d{1,2} ?(\(? ?\d{2,3}\)?)\d{7}$/).test(str);
+		}
     }
 
-    let str = new MyString();
+    let str = new Validator();
 
-    out.innerHTML = str.reverse('abcde') + '<br>';
-    out.innerHTML += str.ucFirst('abcde') + '<br>';
-    dop.innerHTML = str.ucWords('abcde abcde abcde');
+    out.innerHTML = str.isEmail('vasia@gmail.com') + '<br>';
+    out.innerHTML += str.isDomain('google.com') + '<br>';
+    out.innerHTML += str.isDate('31.12.2024') + '<br>';
+    dop.innerHTML = str.isPhone('+38(097)1234567')
 
 </script>
 </body>
