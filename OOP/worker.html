@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>worker</title>
+</head>
+<body>
+<div id="out"></div>
+<div id="dop"></div>
+
+<script>
+    const out = document.getElementById('out');
+    const dop = document.getElementById('dop');
+
+    class Worker {
+        constructor(name, surname, rate, days) {
+            this.name = name;
+            this.surname = surname;
+            this.rate = rate;
+            this.days = days;
+        }
+        getSalary(){
+            return this.rate * this.days;
+        }
+    }
+
+    let Vasia = new Worker('Ivan', 'Ivanov', 10, 31)
+    out.innerHTML = Vasia.name + '<br>';
+    out.innerHTML += Vasia.surname + '<br>';
+    out.innerHTML += Vasia.rate + '<br>';
+    out.innerHTML += Vasia.days + '<br>';
+    dop.innerHTML = '<br>' + Vasia.getSalary()
+
+</script>
+</body>
+</html>
