@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>myString</title>
+	<title>Validator</title>
 </head>
 <body>
 <div id="out"></div>
@@ -15,20 +15,20 @@
     class MyString {
         reverse(str){
             return str.split('').reverse().join('')
-		}
+        }
         ucFirst(str){
             return str[0].toUpperCase() + str.slice(1)
-		}
-    	ucWords(str){
-        	return str.split(' ').map(el => el[0].toUpperCase() + el.slice(1)).join(' ')
-		}
+        }
+        ucWords(str){
+            return str.split(' ').map(el => el[0].toUpperCase() + el.slice(1)).join(' ')
+        }
     }
-    
+
     let str = new MyString();
-	
-	out.innerHTML = str.reverse('abcde') + '<br>';
-	out.innerHTML += str.ucFirst('abcde') + '<br>';
-	dop.innerHTML = str.ucWords('abcde abcde abcde');
+
+    out.innerHTML = str.reverse('abcde') + '<br>';
+    out.innerHTML += str.ucFirst('abcde') + '<br>';
+    dop.innerHTML = str.ucWords('abcde abcde abcde');
 
 </script>
 </body>
