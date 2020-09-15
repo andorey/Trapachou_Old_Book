@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="74023db5-c1bb-4577-96dc-080e17d9e9bb" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/OOP/student.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OOP/validator.html" beforeDir="false" afterPath="$PROJECT_DIR$/OOP/validator.html" afterDir="false" />
     </list>
@@ -41,7 +42,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/drag&amp;drop" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/OOP" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -53,15 +54,16 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/drag&amp;drop" />
-      <recent name="$PROJECT_DIR$/canvas_JS" />
-      <recent name="$PROJECT_DIR$/animation_js" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/drag&amp;drop/images" />
       <recent name="$PROJECT_DIR$/local_storage" />
       <recent name="$PROJECT_DIR$/local_noteBooke" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/OOP" />
+      <recent name="$PROJECT_DIR$/drag&amp;drop" />
+      <recent name="$PROJECT_DIR$/canvas_JS" />
+      <recent name="$PROJECT_DIR$/animation_js" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -127,7 +129,7 @@
       <workItem from="1600019007272" duration="129000" />
       <workItem from="1600079550601" duration="1504000" />
       <workItem from="1600108564315" duration="3970000" />
-      <workItem from="1600123152525" duration="770000" />
+      <workItem from="1600123152525" duration="3188000" />
     </task>
     <servers />
   </component>

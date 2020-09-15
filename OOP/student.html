@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Student</title>
+</head>
+<body>
+<div id="out"></div>
+<div id="dop"></div>
+
+<script>
+    const out = document.getElementById('out');
+    const dop = document.getElementById('dop');
+    
+    class User {
+        constructor(name, surname) {
+            this.name = name;
+            this.surname = surname;
+        }
+        getFullName(){
+            return this.surname + ' ' + this.name;
+		}
+	}
+
+    class Student extends User{
+        constructor(name, surname, year) {
+            super(name, surname);
+            this.year = year;
+        }
+        getCourse(){
+            let curs = new Date().getFullYear() - this.year;
+			if(curs <= 5){
+                dop.innerHTML += `<br>${super.getFullName()} is ${curs}th year student <br>`;
+			}else{
+			    dop.innerHTML += `<br>${super.getFullName()} is completed his studies <br>`
+			}
+		}
+		getFullName() {
+            out.innerHTML += '<br>' + super.getFullName();
+        }
+    }
+
+    let Vasia = new Student('Vasyl', 'Karpenko', 2016)
+    let Vania = new Student('Ivan', 'Ivanov', 2018)
+	
+	out.innerHTML = Vasia.name;
+    out.innerHTML += '<br>' + Vasia.surname;
+    out.innerHTML += '<br>' + Vania.name;
+    out.innerHTML += '<br>' + Vania.surname;
+    
+    Vasia.getFullName();
+    Vania.getFullName();
+    Vasia.getCourse();
+    Vania.getCourse();
+	
+</script>
+</body>
+</html>
