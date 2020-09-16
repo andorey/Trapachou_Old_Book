@@ -6,6 +6,7 @@
 </head>
 <body>
 <div id="out">Out element</div>
+<div id="dop">Dop element</div>
 
 
 <script>
@@ -17,9 +18,11 @@
 		}
 		html(value){
             this._elem.innerHTML = value
+			return this
 		}
 		attr(attribute, value){
             this._elem.setAttribute(attribute, value)
+			return this
 		}
 		add(element, value){
             this.element = document.createElement(element);
@@ -29,9 +32,25 @@
 	}
 	
 	let div = new Elem('ol', '#out');
-    div.html('Hooray! It is works!')
-	div.attr('id', 'inter')
-	div.add('li', 'Hello!')
+    div.html('Hooray! It is works!').attr('id', 'inter').add('li', 'Hello!')
+	
+	
+	class Element{
+        constructor(selector){
+            this.elem = document.querySelector(selector)
+		}
+		html(value){
+            this.elem.innerHTML = value;
+            return this
+		}
+		attr(attribute, value){
+            this.elem.setAttribute(attribute, value)
+			return this;
+		}
+	}
+
+	let element = new Element('#dop');
+    element.html('Hello').attr('class', 'random').attr('id', 'outer').attr('id', 'out')
 	
 </script>
 </body>
