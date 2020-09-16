@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>DOM rectangle</title>
+</head>
+<body>
+<div id="out">Out element</div>
+<div id="dop">Dop element</div>
+
+
+<script>
+
+    class Rectangle{
+        constructor(width, height, color){
+        	this.div = document.createElement('div');
+        	
+            this.setWidth(width);
+            this.setHeight(height);
+            this.div.style.border = `3px solid ${color}`;
+            
+        	document.querySelector('#out').appendChild(this.div);
+        }
+        setWidth(value){
+            this.div.style.width = value + 'px';
+		}
+		getWidth(){
+            this.div.style.textAlign = 'center'
+            this.div.innerHTML +=  parseInt(this.div.style.width)
+		}
+        setHeight(value){
+            this.div.style.height = value + 'px';
+        }
+        getHeight(){
+            this.div.innerHTML += '&nbsp;&nbsp;&nbsp;&nbsp;' + parseInt(this.div.style.height)
+        }
+    }
+	
+    let rect1 = new Rectangle(50, 50, 'red')
+    let rect2 = new Rectangle(25, 25, 'blue')
+
+    rect1.setWidth(70)
+    rect1.setHeight(20)
+    rect2.setWidth(70)
+    rect2.setHeight(50)
+	
+	rect1.getWidth()
+	rect2.getWidth()
+
+    rect1.getHeight()
+    rect2.getHeight()
+	
+	
+	class Elem{
+        constructor(selector) {
+            this.elem = document.querySelector(selector);
+        }
+        html(value){
+            this.elem.innerHTML = value;
+            return this;
+		}
+		append(value){
+            this.elem.innerHTML = value + this.elem.innerHTML
+			return this;
+		}
+		prepend(value){
+            this.elem.innerHTML = this.elem.innerHTML + value
+            return this;
+		}
+		attr(attribute, value){
+            this.elem.setAttribute(attribute, value)
+			return this;
+		}
+	}
+
+    let elem = new Elem('#dop');
+
+    elem.html('value'); //запишет в текст элемента '!'
+    elem.append('!'); //запишет в начало элемента '!'
+    elem.prepend('!'); //запишет в конец элемента '!'
+    elem.attr('class', 'www'); //запишет в атрибут class значение www
+
+    //Должны работать цепочки методов:
+    elem.html('hello').append('!').prepend('!');
+    elem.attr('class', 'www').attr('title', 'hello');
+	
+</script>
+</body>
+</html>
