@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Work With DOM</title>
+</head>
+<body>
+<div id="out"></div>
+
+
+<script>
+    const out = document.getElementById('out');
+    
+    class Elem{
+        constructor(elem){
+            this._elem = document.createElement(elem);
+            out.appendChild(this._elem);
+		}
+		html(value){
+            this._elem.innerHTML = value
+		}
+		attr(tag, val){
+            this.tag = document.createElement(tag);
+            this.tag.innerHTML = val;
+            this._elem.appendChild(this.tag)
+		}
+	}
+	
+	let div = new Elem('ol');
+    div.html('Hooray! It is works!')
+	div.attr('li', 'Hello!')
+	
+	
+</script>
+</body>
+</html>
