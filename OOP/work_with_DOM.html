@@ -5,31 +5,33 @@
 	<title>Work With DOM</title>
 </head>
 <body>
-<div id="out"></div>
+<div id="out">Out element</div>
 
 
 <script>
-    const out = document.getElementById('out');
-    
+	
     class Elem{
-        constructor(elem){
+        constructor(elem, parent){
             this._elem = document.createElement(elem);
-            out.appendChild(this._elem);
+            document.querySelector(parent).appendChild(this._elem);
 		}
 		html(value){
             this._elem.innerHTML = value
 		}
-		attr(tag, val){
-            this.tag = document.createElement(tag);
-            this.tag.innerHTML = val;
-            this._elem.appendChild(this.tag)
+		attr(attribute, value){
+            this._elem.setAttribute(attribute, value)
+		}
+		add(element, value){
+            this.element = document.createElement(element);
+            this.element.innerHTML = value;
+            this._elem.appendChild(this.element)
 		}
 	}
 	
-	let div = new Elem('ol');
+	let div = new Elem('ol', '#out');
     div.html('Hooray! It is works!')
-	div.attr('li', 'Hello!')
-	
+	div.attr('id', 'inter')
+	div.add('li', 'Hello!')
 	
 </script>
 </body>
