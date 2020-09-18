@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<canvas id="myCanvas" width="480" height="320"></canvas>
+<canvas id="myCanvas" width="900" height="620"></canvas>
 
 <script>
     let canvas = document.getElementById("myCanvas");
@@ -19,11 +19,11 @@
     let dy = -2;
     let paddleHeight = 10;
     let paddleWidth = 75;
-    let paddleX = (canvas.width-paddleWidth)/2;
+    let paddleX = (canvas.width - paddleWidth)/2;
     let rightPressed = false;
     let leftPressed = false;
-    let brickRowCount = 5;
-    let brickColumnCount = 3;
+    let brickRowCount = Math.floor(canvas.width/90);
+    let brickColumnCount = Math.floor(canvas.height * 0.1/12);
     let brickWidth = 75;
     let brickHeight = 20;
     let brickPadding = 10;
@@ -87,14 +87,14 @@
     function drawBall() {
         ctx.beginPath();
         ctx.arc(x, y, ballRadius, 0, Math.PI*2);
-        ctx.fillStyle = "#0095DD";
+        ctx.fillStyle = "#00d2dd";
         ctx.fill();
         ctx.closePath();
     }
     function drawPaddle() {
         ctx.beginPath();
         ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth, paddleHeight);
-        ctx.fillStyle = "#0095DD";
+        ctx.fillStyle = "#00d2dd";
         ctx.fill();
         ctx.closePath();
     }
@@ -108,7 +108,7 @@
                     bricks[i][j].y = brickY;
                     ctx.beginPath();
                     ctx.rect(brickX, brickY, brickWidth, brickHeight);
-                    ctx.fillStyle = "#0095DD";
+                    ctx.fillStyle = "#00d2dd";
                     ctx.fill();
                     ctx.closePath();
                 }
