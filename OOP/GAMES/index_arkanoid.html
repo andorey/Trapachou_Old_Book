@@ -28,9 +28,9 @@
     let y = canvas.height - 30;
     let dx = 3;
     let dy = -3;
-    let paddleHeight = 10;										// size a platform
-    let paddleWidth = 105;										// size a platform
-    let paddleX = (canvas.width - paddleWidth)/2;
+    let platformHei = 10;										// size a platform
+    let platformWid = 105;										// size a platform
+    let paddleX = (canvas.width - platformWid)/2;
     let rightPressed = false;
     let leftPressed = false;
     let numberBricks = Math.floor(canvas.width/90);				// number of bricks
@@ -51,11 +51,11 @@
         }
     }
 
-    document.addEventListener("keydown", keyDownHandler, false);
-    document.addEventListener("keyup", keyUpHandler, false);
-    document.addEventListener("mousemove", mouseMoveHandler, false);
+    document.addEventListener("keydown", keyDown, false);
+    document.addEventListener("keyup", keyUp, false);
+    document.addEventListener("mousemove", mouseMove, false);
 
-    function keyDownHandler(el) {
+    function keyDown(el) {
         if(el.key === "ArrowRight") {
             rightPressed = true;
         }
@@ -64,7 +64,7 @@
         }
     }
     
-    function keyUpHandler(el) {
+    function keyUp(el) {
         if(el.key === "ArrowRight") {
             rightPressed = false;
         }
@@ -73,19 +73,19 @@
         }
     }
     
-    function mouseMoveHandler(el) {
+    function mouseMove(el) {
         let relativeX = el.clientX - canvas.offsetLeft;
         if(relativeX > 0 && relativeX < canvas.width) {
-            paddleX = relativeX - paddleWidth/2;
+            paddleX = relativeX - platformWid/2;
         }
     }
     
-    function collisionDetection() {
+    function collision() {
         for(let i = 0; i < numberLines; i++) {
             for(let j = 0; j < numberBricks; j++) {
                 let b = bricks[i][j];
                 if(b.status === 1) {
-                    if(x > b.x && x < b.x+brickWidth && y > b.y && y < b.y+brickHeight) {
+                    if(x > b.x && x < b.x + brickWidth && y > b.y && y < b.y + brickHeight) {
                         dy = -dy;
                         b.status = 0;
                         score++;
@@ -99,9 +99,9 @@
         }
     }
 
-    function drawBall() {
+    function ball() {
         ctx.beginPath();
-        ctx.arc(x, y, ballRadius, 0, Math.PI*2);
+        ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
         ctx.fillStyle = "#f1039a";
         ctx.fill();
         ctx.closePath();
@@ -109,13 +109,13 @@
     
     function platform() {
         ctx.beginPath();
-        ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth, paddleHeight);
+        ctx.rect(paddleX, canvas.height - platformHei, platformWid, platformHei);
         ctx.fillStyle = "#006cba";
         ctx.fill();
         ctx.closePath();
     }
     
-    function drawBricks() {
+    function boxes() {
         for(let i = 0; i < numberLines; i++) {
             for(let j = 0; j < numberBricks; j++) {
                 if(bricks[i][j].status === 1) {
@@ -139,22 +139,22 @@
         ctx.fillText("Score: " + score, 420, 20);
     }
 
-    function draw() {
+    function action() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        drawBricks();
-        drawBall();
+        boxes();
+        ball();
         platform();
         counter();
-        collisionDetection();
+        collision();
 
-        if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
+        if(x + dx > canvas.width - ballRadius || x + dx < ballRadius) {
             dx = -dx;
         }
         if(y + dy < ballRadius) {
             dy = -dy;
         }
-        else if(y + dy > canvas.height-ballRadius) {
-            if(x > paddleX && x < paddleX + paddleWidth) {
+        else if(y + dy > canvas.height - ballRadius) {
+            if(x > paddleX && x < paddleX + platformWid) {
                 dy = -dy;
             }
             else {
@@ -163,18 +163,18 @@
             }
         }
 
-        if(rightPressed && paddleX < canvas.width-paddleWidth) {
-            paddleX += 7;
+        if(rightPressed && paddleX < canvas.width - platformWid) {
+            paddleX += 7;			// platform speed
         }
         else if(leftPressed && paddleX > 0) {
-            paddleX -= 7;
+            paddleX -= 7;			// platform speed
         }
 
         x += dx;
         y += dy;
     }
 
-    setInterval(draw, 10);
+    setInterval(action, 10);
 </script>
 
 </body>
