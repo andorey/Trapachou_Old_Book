@@ -47,10 +47,10 @@
     for(let i = 0; i < numberLines; i++) {
         bricks[i] = [];
         for(let j = 0; j < numberBricks; j++) {
-            bricks[i][j] = { x: 0, y: 0, status: 1 };
+            bricks[i][j] = { x: 0, y: 0, exist: true };
         }
     }
-
+    
     document.addEventListener("keydown", keyDown, false);
     document.addEventListener("keyup", keyUp, false);
     document.addEventListener("mousemove", mouseMove, false);
@@ -84,10 +84,10 @@
         for(let i = 0; i < numberLines; i++) {
             for(let j = 0; j < numberBricks; j++) {
                 let b = bricks[i][j];
-                if(b.status === 1) {
+                if(b.exist) {
                     if(x > b.x && x < b.x + brickWidth && y > b.y && y < b.y + brickHeight) {
                         dy = -dy;
-                        b.status = 0;
+                        b.exist = false;
                         score++;
                         if(score === numberBricks * numberLines) {
                             alert("YOU WIN, CONGRATS!");
@@ -118,7 +118,7 @@
     function boxes() {
         for(let i = 0; i < numberLines; i++) {
             for(let j = 0; j < numberBricks; j++) {
-                if(bricks[i][j].status === 1) {
+                if(bricks[i][j].exist) {
                     let brickX = (j * (brickWidth+brickPadding)) + brickOffsetLeft;
                     let brickY = (i * (brickHeight+brickPadding)) + brickOffsetTop;
                     bricks[i][j].x = brickX;
