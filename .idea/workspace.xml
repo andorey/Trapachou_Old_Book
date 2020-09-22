@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="74023db5-c1bb-4577-96dc-080e17d9e9bb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/OOP/GAMES/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/animation_js/roundabout.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -53,16 +53,17 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/drag&amp;drop/images" />
-      <recent name="$PROJECT_DIR$/local_storage" />
-      <recent name="$PROJECT_DIR$/local_noteBooke" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/OOP" />
       <recent name="$PROJECT_DIR$/drag&amp;drop" />
       <recent name="$PROJECT_DIR$/canvas_JS" />
       <recent name="$PROJECT_DIR$/animation_js" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/animation_js" />
+      <recent name="$PROJECT_DIR$/drag&amp;drop/images" />
+      <recent name="$PROJECT_DIR$/local_storage" />
+      <recent name="$PROJECT_DIR$/local_noteBooke" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -137,7 +138,7 @@
       <workItem from="1600624069398" duration="1846000" />
       <workItem from="1600633256883" duration="408000" />
       <workItem from="1600707641911" duration="5270000" />
-      <workItem from="1600787813288" duration="2873000" />
+      <workItem from="1600787813288" duration="4087000" />
     </task>
     <servers />
   </component>

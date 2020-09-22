@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>carousel</title>
+	<style>
+        @keyframes block {
+            from {
+                transform: rotateY(0deg);
+            }
+            to {
+                transform: rotateY(-360deg);
+            }
+        }
+        #wrap {
+            width: 1000px;
+            margin: 110px auto;
+        }
+        .wrapper {
+            position: relative;
+            float: right;
+            width: 500px;
+            height: 300px;
+            transform-style: preserve-3d;
+            transform-origin: left;
+            animation: block 15s infinite linear;
+        }
+        .wrapper > div {
+            position: absolute;
+            width: 500px;
+            height: 300px;
+            color: white;
+            font-size: 30px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 2.5;
+            transform-origin: left;
+        }
+        .extender {
+            float: left;
+            width: 198px;
+            height: 100%;
+        }
+        .infoblock {
+            float: left;
+            width: 300px;
+            height: 100%;
+            border: 1px solid black;
+        }
+        .block1 {
+            transform: rotateY(0deg);
+        }
+        .block2 {
+            transform: rotateY(60deg);
+        }
+        .block3 {
+            transform: rotateY(120deg);
+        }
+        .block4 {
+            transform: rotateY(180deg);
+        }
+        .block5 {
+            transform: rotateY(240deg);
+        }
+        .block6 {
+            transform: rotateY(300deg);
+        }
+        .block1 > .infoblock {
+            background-color: #6565ff;
+        }
+        .block2 > .infoblock {
+            background-color: #c65252;
+        }
+        .block3 > .infoblock {
+            background-color: #68cc04;
+        }
+        .block4 > .infoblock {
+            background-color: #ff860a;
+        }
+        .block5 > .infoblock {
+            background-color: #a701bb;
+        }
+        .block6 > .infoblock {
+            background-color: #04a4b0;
+        }
+	</style>
+</head>
+<body>
+<div id="wrap">
+	<div class="wrapper">
+		<div class="block1">
+			<div class="extender"></div>
+			<div class="infoblock">I like my study</div>
+		</div>
+		<div class="block2">
+			<div class="extender"></div>
+			<div class="infoblock">By</div>
+		</div>
+		<div class="block3">
+			<div class="extender"></div>
+			<div class="infoblock">JavaScript</div>
+		</div>
+		<div class="block4">
+			<div class="extender"></div>
+			<div class="infoblock">React</div>
+		</div>
+		<div class="block5">
+			<div class="extender"></div>
+			<div class="infoblock">Python</div>
+		</div>
+		<div class="block6">
+			<div class="extender"></div>
+			<div class="infoblock">I am freelancer<br> I am happy!!!</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>
