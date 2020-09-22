@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="74023db5-c1bb-4577-96dc-080e17d9e9bb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/animation_js/roundabout.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/animation_js/horisontal_route.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -138,7 +138,7 @@
       <workItem from="1600624069398" duration="1846000" />
       <workItem from="1600633256883" duration="408000" />
       <workItem from="1600707641911" duration="5270000" />
-      <workItem from="1600787813288" duration="4087000" />
+      <workItem from="1600787813288" duration="4701000" />
     </task>
     <servers />
   </component>

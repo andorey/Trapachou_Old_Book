@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style>
+        @keyframes block {
+            from {
+                transform: rotateY(0);
+            }
+            to {
+                transform: rotateY(360deg);
+            }
+        }
+        .wrapper {
+            position: relative;
+            width: 200px;
+            height: 300px;
+            margin: 110px auto;
+            transform-style: preserve-3d;
+            transform-origin: center;
+            animation: block 10s infinite linear;
+        }
+        .wrapper > div {
+            position: absolute;
+            width: 300px;
+            height: 100%;
+            color: white;
+            font-size: 30px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 10;
+            backface-visibility: hidden;
+        }
+        .block3 {
+            background-color: #fb0354;
+            transform: translateZ(300px);
+        }
+        .block4 {
+            background-color: #aa05e8;
+            transform: translateZ(-300px) rotateY(180deg);
+        }
+        .block5 {
+            background-color: #025ef3;
+            transform: translateX(300px) rotateY(90deg);
+        }
+        .block6 {
+            background-color: #04dd04;
+            transform: translateX(-300px) rotateY(-90deg);
+        }
+	</style>
+</head>
+
+<body>
+<div class="wrapper">
+	<div class="block3">
+		JavaScript
+	</div>
+	<div class="block4">
+		React
+	</div>
+	<div class="block5">
+		HTML
+	</div>
+	<div class="block6">
+		SCC
+	</div>
+</div>
+</body>
+</html>
