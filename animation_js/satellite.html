@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>satellite</title>
+	<style>
+        @keyframes satellite {
+            from {
+                transform: rotate(0);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        @keyframes satellite2 {
+            0% {
+                background-color: red;
+            }
+            25% {
+                background-color: white;
+            }
+			50% {
+                background-color: white;
+            }
+            100% {
+                background-color: red;
+            }
+        }
+        #land {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            margin: 150px auto;
+            border: 1px solid red;
+            border-radius: 50%;
+            animation: satellite 5s linear infinite;
+        }
+        #satellite {
+            position: absolute;
+            top: -70px;
+            left: -70px;
+            width: 50px;
+            height: 50px;
+            border: 1px solid red;
+            border-radius: 50%;
+            animation: satellite2 5s 2.5s linear infinite;
+        }
+	</style>
+</head>
+<body>
+<div id="land">
+	<div id="satellite"></div>
+</div>
+
+<script>
+
+</script>
+</body>
+</html>
