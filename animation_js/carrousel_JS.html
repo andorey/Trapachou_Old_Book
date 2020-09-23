@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style>
+        #wrapper {
+            text-align: center;
+        }
+        input {
+            width: 200px;
+        }
+		img{
+			width: 100px;
+		}
+	</style>
+</head>
+<body>
+<div id="wrapper">
+	<img alt="" src="https://avatarko.ru/img/kartinka/2/cherep_kapyushon_uzhasy_1606.jpg" id="img1">
+	<img alt="" src="https://i.pinimg.com/originals/f5/33/f5/f533f5c1adff152ba5c6fadff9e062a3.jpg" id="img2">
+	<img alt="" src="https://i.pinimg.com/originals/8d/f7/5a/8df75aafeba868fd226bc6c478be1dcb.jpg" id="img3">
+	<img alt="" src="https://99px.ru/sstorage/53/2018/02/tmb_220220_697563.jpg" id="img4">
+	<img alt="" src="https://i.pinimg.com/originals/a3/02/2a/a3022aba85d510f5a72ed06a6c55f442.jpg" id="img5">
+	<img alt="" src="https://thumbs.dreamstime.com/b/skull-head-red-eyes-black-background-45650875.jpg" id="img6">
+	<img alt="" src="https://img2.goodfon.com/wallpaper/nbig/1/15/terminator-terminator-robot-5562.jpg" id="img7">
+	<p>
+		<input type="submit" value="Запустить карусель!" id="go">
+		<input type="submit" value="Остановить карусель!" id="stop" disabled>
+	</p>
+</div>
+<script>
+    function go() {
+        window.timerId = setInterval(timer, 1000);
+        document.getElementById('go').disabled = true;
+        document.getElementById('stop').disabled = false;
+    }
+    
+    function stop() {
+        window.clearInterval(timerId);
+        document.getElementById('go').disabled = false;
+        document.getElementById('stop').disabled = true;
+    }
+    
+    function timer() {
+        let img1 = document.getElementById('img1'),
+            img2 = document.getElementById('img2'),
+            img3 = document.getElementById('img3'),
+            img4 = document.getElementById('img4'),
+            img5 = document.getElementById('img5'),
+            img6 = document.getElementById('img6'),
+            img7 = document.getElementById('img7'),
+            tmp = img1.src;
+        img1.src = img2.src;
+        img2.src = img3.src;
+        img3.src = img4.src;
+        img4.src = img5.src;
+        img5.src = img6.src;
+        img6.src = img7.src;
+        img7.src = tmp;
+    }
+    
+    document.getElementById('go').addEventListener('click', go)
+    document.getElementById('stop').addEventListener('click', stop)
+</script>
+</body>
+</html>
