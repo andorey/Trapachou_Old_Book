@@ -63,7 +63,7 @@
     let current;
 
     elems.forEach(function (el, indx) {
-        el.addEventListener('dragstart', function (event) {
+        el.addEventListener('dragstart', function () {
             current = this;
             current.dataset.text = indx;
         })
@@ -76,7 +76,7 @@
     })
 
     lend.forEach(function (el) {
-        el.addEventListener('drop', function (event) {
+        el.addEventListener('drop', function () {
             this.appendChild(current)
             let elem = el.querySelector('div');
 			if(elem.innerText === '444'){

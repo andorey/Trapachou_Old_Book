@@ -2,72 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="74023db5-c1bb-4577-96dc-080e17d9e9bb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/OOP/GAMES/Alchemy/Index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OOP/GAMES/Alchemy/background/sky.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OOP/GAMES/Alchemy/background/starsfon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OOP/GAMES/Alchemy/images/space.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OOP/GAMES/Alchemy/images/бактерии.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OOP/GAMES/Alchemy/images/ветер.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OOP/GAMES/Alchemy/images/вода.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OOP/GAMES/Alchemy/images/дерево.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OOP/GAMES/Alchemy/images/животные.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OOP/GAMES/Alchemy/images/земля.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OOP/GAMES/Alchemy/images/молния.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OOP/GAMES/Alchemy/images/облако.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OOP/GAMES/Alchemy/images/огонь.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OOP/GAMES/Alchemy/images/планктон.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OOP/GAMES/Alchemy/images/птица.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OOP/GAMES/Alchemy/images/рыба.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OOP/GAMES/Alchemy/images/солнце.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OOP/GAMES/Alchemy/images/трава.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OOP/GAMES/Alchemy/images/туман.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OOP/GAMES/Alchemy/images/туча.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OOP/GAMES/Alchemy/images/червь.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OOP/GAMES/Alchemy/images/шашлык.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OOP/GAMES/img/ветер.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OOP/GAMES/img/животные.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OOP/GAMES/img/птица.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OOP/GAMES/img/трава.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OOP/GAMES/img/туча.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OOP/GAMES/img/шашлык.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OOP/GAMES/Alchemy/images/space.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OOP/GAMES/Alchemy/images/корзина.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OOP/GAMES/Alchemy/Index.html" beforeDir="false" afterPath="$PROJECT_DIR$/OOP/GAMES/Alchemy/Index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OOP/GAMES/alchemy_game.html" beforeDir="false" afterPath="$PROJECT_DIR$/OOP/GAMES/alchemy_game.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOP/GAMES/img/????.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOP/GAMES/img/бабочка.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOP/GAMES/img/бактерии.png" beforeDir="false" afterPath="$PROJECT_DIR$/OOP/GAMES/img/бактерии.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOP/GAMES/img/буря.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOP/GAMES/img/вода.png" beforeDir="false" afterPath="$PROJECT_DIR$/OOP/GAMES/img/вода.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOP/GAMES/img/водоросли.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOP/GAMES/img/воздух.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOP/GAMES/img/глина.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOP/GAMES/img/грязь.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOP/GAMES/img/дерево.png" beforeDir="false" afterPath="$PROJECT_DIR$/OOP/GAMES/img/дерево.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOP/GAMES/img/жизнь.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOP/GAMES/img/жук.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOP/GAMES/img/земля.png" beforeDir="false" afterPath="$PROJECT_DIR$/OOP/GAMES/img/земля.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOP/GAMES/img/змея.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOP/GAMES/img/камень.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOP/GAMES/img/кирпич.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOP/GAMES/img/кит.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOP/GAMES/img/лёд.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOP/GAMES/img/молния.png" beforeDir="false" afterPath="$PROJECT_DIR$/OOP/GAMES/img/молния.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOP/GAMES/img/облако.png" beforeDir="false" afterPath="$PROJECT_DIR$/OOP/GAMES/img/облако.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOP/GAMES/img/огонь.png" beforeDir="false" afterPath="$PROJECT_DIR$/OOP/GAMES/img/огонь.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOP/GAMES/img/пар.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOP/GAMES/img/пепел.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOP/GAMES/img/песок.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOP/GAMES/img/планктон.png" beforeDir="false" afterPath="$PROJECT_DIR$/OOP/GAMES/img/планктон.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOP/GAMES/img/пыль.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOP/GAMES/img/ракушки.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOP/GAMES/img/рыба.png" beforeDir="false" afterPath="$PROJECT_DIR$/OOP/GAMES/img/рыба.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOP/GAMES/img/скорпион.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOP/GAMES/img/солнце.png" beforeDir="false" afterPath="$PROJECT_DIR$/OOP/GAMES/img/солнце.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOP/GAMES/img/стекло.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOP/GAMES/img/туман.png" beforeDir="false" afterPath="$PROJECT_DIR$/OOP/GAMES/img/туман.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOP/GAMES/img/уголь.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOP/GAMES/img/червь.png" beforeDir="false" afterPath="$PROJECT_DIR$/OOP/GAMES/img/червь.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOP/GAMES/img/яйцо.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/drag&amp;drop/multiple_dragged_objects.html" beforeDir="false" afterPath="$PROJECT_DIR$/drag&amp;drop/multiple_dragged_objects.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -214,7 +154,7 @@
       <workItem from="1600633256883" duration="408000" />
       <workItem from="1600707641911" duration="5270000" />
       <workItem from="1600787813288" duration="5144000" />
-      <workItem from="1600882232927" duration="20444000" />
+      <workItem from="1600882232927" duration="45147000" />
     </task>
     <servers />
   </component>

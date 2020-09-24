@@ -51,16 +51,195 @@
             animation:move-twink-back 200s linear infinite;
             z-index:1;
         }
-	
+		
+		#rules{
+			position: absolute;
+			right: 10px;
+            top: 20px;
+			width: 20%;
+			padding: 15px;
+			border: 2px solid lightcyan;
+			background: #044998;
+			border-radius: 10px;
+			color: white;
+			font-size: 1.2em;
+			z-index: 5;
+		}
+		#basket{
+			position: absolute;
+			width: 16%;
+			right: 20px;
+			bottom: 20px;
+			margin: 20px;
+			z-index: 5;
+		}
+
+        #elementPlace{
+			top: 20px;
+			left: 10px;
+			display: flex;
+			flex-wrap: wrap;
+			position: absolute;
+            float: left;
+            max-height: 680px;
+			max-width: 25%;
+            overflow : auto;
+            border: 2px solid #f1f4f9;
+			border-radius: 12px;
+            background-color: rgba(20, 100, 265, 0.2);
+            padding:20px;
+			color: cyan;
+			z-index: 5;
+        }
+		
+		#elementPlace>div{
+			text-align: center;
+			font-size: 1.2em;
+            margin: 10px;
+            width: 110px;
+            height: 110px;
+		}
+		
+        #workSpace{
+			position: relative;
+			display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            left: 35%;
+            width:400px;
+			height: 400px;
+			background-image: url('images/space.png');
+            z-index: 5;
+        }
+		
+		#workSpace>div{
+            text-align: center;
+            font-size: 1.2em;
+			color: greenyellow;
+            margin: 10px;
+            width: 110px;
+            height: 110px;
+        }
+		
+		#popUp{
+			position: absolute;
+			top: 0;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+			width: 100%;
+			height: 100%;
+			font-size: 1.5em;
+			background-color: rgba(0, 0, 0, 0.4);
+			color:cyan;
+			z-index: 10;
+		}
+		button{
+			position: relative;
+			margin: 20px;
+			padding: 10px;
+			border-radius: 10px 20px;
+            font-size: 1em;
+			background-color: darkblue;
+			color: cyan;
+			z-index: 11;
+		}
 	</style>
 </head>
 <body>
 <div id="sky"></div>
 <div id="stars"></div>
+<aside id="rules">
+	1. Выберите по очереди 2 элемента и поместите их в поле для превращения <br><br>
+	2. Для преобразования элементов, в поле можно помещать ТОЛЬКО 2 элемента!<br><br>
+	3. Чтобы удалить элемент из поля превращения, нажмите на крест, внизу под данными правилами
+</aside>
+<img src="images/корзина.png" alt="" id="basket">
+
+<div id = 'elementPlace'></div>
+<div id ='workSpace'></div>
 
 
 <script>
+    let setElements = ['вода', 'солнце', 'ветер', 'земля'];
+    let basket = document.getElementById('basket');
+    let elementPlace = document.getElementById('elementPlace');
+    let workSpace = document.getElementById('workSpace');
+    let workWithElements = [];
+    let current;
+    
+    function mixElements() {
+		let span = document.createElement('span');
+		let button1 = document.createElement('button')
+		let button2 = document.createElement('button')
+		button1.innerText = 'YES!'
+		button2.innerText = 'NO!'
+		span.id = 'popUp';
+		span.innerHTML = 'Вы готовы смешать элементы?'
+  
+		workSpace.appendChild(span)
+        span.appendChild(button1)
+        span.appendChild(button2)
+		
+		button2.addEventListener('click', function (el) {
+			this.parentElement.remove();
+        })
+		
+    }
+	
+	for (let el of setElements){
+	    let div = document.createElement('div');
+	    div.style.backgroundImage = "url(images/" + el + ".png)"
+		div.innerHTML = el;
+	    div.draggable = true;
+	    elementPlace.appendChild(div)
+	}
+	
+	elementPlace.addEventListener('dragstart', function (event) {
+            current = event.target;
+    })
 
+    workSpace.addEventListener('dragover', function (event) {
+        event.preventDefault();
+    })
+	
+	workSpace.addEventListener('drop', function () {
+	    let el = current.innerHTML;
+        let div = document.createElement('div');
+        div.style.backgroundImage = "url(images/" + el + ".png)"
+        div.innerHTML = el;
+        div.draggable = true;
+		workSpace.appendChild(div)
+        workWithElements.push(el)
+		if(workWithElements.length === 2){
+		    mixElements()
+		}else if(workWithElements.length > 2){
+		    alert('Для превращения вы можете использовать только 2 элемента!!!')
+            workSpace.innerHTML = '';
+            workWithElements = [];
+		}
+		
+    })
+	
+	workSpace.addEventListener('dragstart', function (event) {
+		current = event.target
+    })
+	
+	basket.addEventListener('dragover', function (event) {
+		event.preventDefault();
+    })
+	
+	basket.addEventListener('drop', function () {
+        let el = current.innerHTML;
+        let index = workWithElements.indexOf(el);
+        workWithElements.splice(index, 1)
+		workSpace.removeChild(current)
+		console.log(workWithElements)
+    })
+ 
+	
 </script>
 </body>
 </html>
