@@ -100,7 +100,7 @@
             width: 50%;
             position: static;
         }
-
+	
         #basket{
             display: block;
             width: 50%;
@@ -112,6 +112,7 @@
             position: static;
         }
     }
+	
 </style>
 <body>
 
@@ -166,35 +167,21 @@
         synthesizeNewElement(){
             const elements = this.workFieldElements;
             if(elements.length === 2){
-                this.addNewElement('земля','вода','грязь');
-                this.addNewElement('воздух','огонь','молния');
-                this.addNewElement('воздух','камень','песок');
-                this.addNewElement('воздух','вода','туман');
-                this.addNewElement('воздух','туман','облако');
-                this.addNewElement('камень','огонь','кирпич');
-                this.addNewElement('земля','огонь','камень');
-                this.addNewElement('вода','огонь','пар');
-                this.addNewElement('вода','туман','лёд');
-                this.addNewElement('молния','огонь','солнце');
-                this.addNewElement('воздух','земля','пыль');
-                this.addNewElement('дерево','огонь','уголь');
-                this.addNewElement('пыль','огонь','пепел');
-                this.addNewElement('грязь','песок','глина');
-                this.addNewElement('молния','воздух','буря');
-                this.addNewElement('песок','огонь','стекло');
-                this.addNewElement('молния','грязь','жизнь');
-                this.addNewElement('грязь','жизнь','бактерии');
-                this.addNewElement('вода','жизнь','водоросли');
+                this.addNewElement('вода','солнце','туман');
+                this.addNewElement('ветер','туман','облако');
+                this.addNewElement('облако','ветер','туча');
+                this.addNewElement('туча','ветер','молния');
+                this.addNewElement('молния','земля','бактерии');
+                this.addNewElement('бактерии','земля','трава');
+                this.addNewElement('трава','солнце','дерево');
+                this.addNewElement('дерево','солнце','огонь');
                 this.addNewElement('бактерии','вода','планктон');
                 this.addNewElement('бактерии','планктон','рыба');
-                this.addNewElement('камень','планктон','ракушки');
-                this.addNewElement('планктон','рыба','кит');
+                this.addNewElement('рыба','ветер','птица');
                 this.addNewElement('земля','планктон','червь');
-                this.addNewElement('воздух','червь','бабочка');
-                this.addNewElement('земля','червь','жук');
-                this.addNewElement('жук','песок','скорпион');
-                this.addNewElement('грязь','червь','змея');
-                this.addNewElement('жизнь','камень','яйцо');
+                this.addNewElement('птица','земля','животные');
+                this.addNewElement('рыба','земля','животные');
+                this.addNewElement('животные','огонь','шашлык');
             }
             else{
                 alert('Для превращения можно использовать только 2 элемента за раз!');
