@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Alchemy game</title>
+</head>
+
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    #parent {
+        font-family: 'Comfortaa', cursive;
+        font-size: 18px;
+        text-align:center;
+        width: 100%;
+        margin: 0 auto;
+        background-image: url('img/background.png');
+        min-height: 750px;
+    }
+
+    .element{
+        border-radius: 10px;
+        background-color: #5b6d66;
+        height: 50px;
+        line-height: 50px;
+        margin-bottom: 10px;
+    }
+
+    .element div{
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    .elementImg{
+        float: left;
+        width: 40%;
+    }
+    .elementName{
+        float: right;
+        width: 60%;
+    }
+
+    .elementImg img{
+        height: 50px;
+    }
+
+    .clear{
+        clear: both;
+    }
+
+    #elementsPanel{
+        float: left;
+        width: 25%;
+        max-height: 700px;
+        overflow : auto;
+        border: 1px solid #f1f4f9;
+        background-color: #878a88;
+        padding:20px;
+    }
+
+    #workField{
+        float: left;
+        padding : 20px;
+        width: 56%;
+        background-image: url('img/background.png');
+    }
+
+    #basket{
+        right: 10%;
+        float: right;
+        width: 19%;
+        background-image: url('img/background.png');
+    }
+    .workFieldImgs{
+        width: 100px;
+        position: absolute;
+    }
+
+    #rulse{
+        display: block;
+        width:50%;
+        margin: 0 auto;
+        color: white;
+        text-align: justify;
+        background-color : red;
+        padding: 20px;
+        margin-top: 20px;
+        border: 5px solid white;
+        border-radius: 10px;
+    }
+
+    @media screen and (max-width:870px)
+    {
+        #elementsPanel{
+            display: block;
+            width: 50%;
+            position: static;
+        }
+
+        #basket{
+            display: block;
+            width: 50%;
+            position: static;
+        }
+        #workField{
+            display: block;
+            width: 50%;
+            position: static;
+        }
+    }
+</style>
+<body>
+
+<div id = 'parent'>
+	<div id = 'elementsPanel'></div>
+	<div id = 'workField'></div>
+	<div id = 'basket'></div>
+	<div class = 'clear'></div>
+	<div id = 'rulse'></div>
+</div>
+
+<script>
+
+    class GameApp{
+
+        constructor(){
+            this.panelElements = ['вода', 'огонь', 'воздух', 'земля', 'камень', 'дерево'];
+            this.workFieldElements = [];
+            this.currentDragElement = '';
+            this.render = new Render(this);
+
+        }
+
+        dragStartHandler(element, event){
+            this.currentDragElement = element;
+        }
+
+        dropHandler(event){
+            this.workFieldElements.push({'name' : this.currentDragElement,
+                'x': event.pageX,
+                'y': event.pageY
+            });
+        }
+
+        dragOverHandler(event){
+            event.preventDefault();
+        }
+
+        addNewElement(element1, element2, element){
+            const elements = this.workFieldElements;
+            if(elements.length === 2){
+                if( (elements[0]['name'] === element1 && elements[1]['name'] === element2) ||
+                    (elements[1]['name'] === element1 && elements[0]['name'] === element2) ){
+                    this.panelElements.push(element);
+                    this.workFieldElements = [{name:element, x:'400', y:'100'}];
+                    this.render.renderElementsPanel();
+                    this.render.renderWorkField();
+                }
+            }
+        }
+
+        synthesizeNewElement(){
+            const elements = this.workFieldElements;
+            if(elements.length === 2){
+                this.addNewElement('земля','вода','грязь');
+                this.addNewElement('воздух','огонь','молния');
+                this.addNewElement('воздух','камень','песок');
+                this.addNewElement('воздух','вода','туман');
+                this.addNewElement('воздух','туман','облако');
+                this.addNewElement('камень','огонь','кирпич');
+                this.addNewElement('земля','огонь','камень');
+                this.addNewElement('вода','огонь','пар');
+                this.addNewElement('вода','туман','лёд');
+                this.addNewElement('молния','огонь','солнце');
+                this.addNewElement('воздух','земля','пыль');
+                this.addNewElement('дерево','огонь','уголь');
+                this.addNewElement('пыль','огонь','пепел');
+                this.addNewElement('грязь','песок','глина');
+                this.addNewElement('молния','воздух','буря');
+                this.addNewElement('песок','огонь','стекло');
+                this.addNewElement('молния','грязь','жизнь');
+                this.addNewElement('грязь','жизнь','бактерии');
+                this.addNewElement('вода','жизнь','водоросли');
+                this.addNewElement('бактерии','вода','планктон');
+                this.addNewElement('бактерии','планктон','рыба');
+                this.addNewElement('камень','планктон','ракушки');
+                this.addNewElement('планктон','рыба','кит');
+                this.addNewElement('земля','планктон','червь');
+                this.addNewElement('воздух','червь','бабочка');
+                this.addNewElement('земля','червь','жук');
+                this.addNewElement('жук','песок','скорпион');
+                this.addNewElement('грязь','червь','змея');
+                this.addNewElement('жизнь','камень','яйцо');
+            }
+            else{
+                alert('Для превращения можно использовать только 2 элемента за раз!');
+            }
+        }
+
+        deleteElement(){
+            for(let i = 0; i < this.workFieldElements.length; i++){
+                if(this.workFieldElements[i]['name'] === this.currentDragElement){
+                    this.workFieldElements.splice(i,1);
+                    this.render.renderWorkField();
+                }
+            }
+        }
+
+    }
+
+    class Element{
+
+        constructor(gameApp, name){
+
+            this.gameApp = gameApp;
+            return this.render(name);
+        }
+
+        render(name){
+            this.gameApp.render.renderElement(name);
+        }
+    }
+
+    class ElementsPanel{
+
+        constructor(gameApp){
+            this.gameApp = gameApp;
+            this.render();
+        }
+
+        render(){
+            this.gameApp.render.renderElementsPanel();
+        }
+    }
+
+    class WorkField{
+        constructor(gameApp){
+            this.gameApp = gameApp;
+            this.render();
+        }
+
+        render(){
+            this.gameApp.render.renderWorkField();
+        }
+    }
+
+    class Rulse{
+        constructor(){
+            this.render();
+        }
+
+        render(){
+
+            let div = document.createElement('div');
+            let p1 = document.createElement('p');
+            let p2 = document.createElement('p');
+            let p3 = document.createElement('p');
+
+            p1.innerHTML = "1. Перетащите 2 элемента на поле и кликните по полю для превращения";
+            p2.innerHTML = "2. Чтобы удалить элемент, перетащите его в корзину(дыру в правой части экрана)";
+            p3.innerHTML = "3. Для одного превращения нужно использовать только 2 элемента";
+
+
+            div.appendChild(p1);
+            div.appendChild(p2);
+            div.appendChild(p3);
+            rulse.appendChild(div);
+        }
+    }
+
+    class Basket{
+
+        constructor(gameApp){
+            this.gameApp = gameApp;
+            this.render();
+        }
+
+        render(){
+            let parent = document.getElementById('parent');
+            let div = document.createElement('div');
+            //basket.id = 'basket';
+            div.addEventListener('dragover', (event) => {this.gameApp.dragOverHandler(event)});
+            div.addEventListener('drop', (event) => {this.gameApp.deleteElement(event)});
+            let img = document.createElement('img');
+            img.src = 'img/корзина.png';
+            div.appendChild(img);
+            basket.appendChild(div);
+        }
+    }
+
+    class GameField{
+
+        constructor(gameApp){
+
+            this.gameApp = gameApp;
+
+            this._elementsPanel = new ElementsPanel(gameApp);
+            this._basket = new Basket(gameApp);
+            this._workField = new WorkField(gameApp);
+            this._rulse = new Rulse();
+        }
+    }
+
+    class Render{
+
+        constructor(gameApp){
+
+            this.gameApp = gameApp;
+        }
+
+        renderElement(name){
+
+            let element = document.createElement('div');
+            element.className = 'element';
+
+            let wrapper = document.createElement('div');
+
+            let elementImg = document.createElement('div');
+            elementImg.draggable = true;
+            elementImg.className = 'elementImg';
+            elementImg.addEventListener('dragstart', (event)=>{this.gameApp.dragStartHandler(name, event)});
+
+            let img = document.createElement('img');
+            img.src = 'img/' + name + '.png';
+
+            elementImg.appendChild(img);
+
+            let elementName = document.createElement('div');
+            elementName.innerHTML = name;
+            elementName.className = 'elementName';
+
+            let divClearFix = document.createElement('div');
+            divClearFix.className = 'clear';
+
+            wrapper.appendChild(elementImg);
+            wrapper.appendChild(elementName);
+            element.appendChild(wrapper);
+            element.appendChild(divClearFix);
+            return element;
+        }
+
+        renderElementsPanel(){
+            let elementsPanel = document.getElementById('elementsPanel');
+            elementsPanel.innerHTML = '';
+            let panel = document.createElement('div');
+
+            for(let elem of this.gameApp.panelElements){
+                let element = this.renderElement(elem);
+                panel.appendChild(element);
+            }
+            elementsPanel.appendChild(panel);
+        }
+
+        renderWorkField(){
+            let workField = document.getElementById('workField');
+            workField.innerHTML = '';
+            let div = document.createElement('div');
+            div.addEventListener('dragover', (event) => {this.gameApp.dragOverHandler(event)});
+            div.addEventListener('drop', (event) => {
+                this.gameApp.dropHandler(event);
+                this.renderWorkField();
+            });
+
+            let img = document.createElement('img');
+            img.id = 'workFieldImg';
+            img.src = 'img/поле.png';
+            img.addEventListener('click', () => {this.gameApp.synthesizeNewElement()});
+            div.appendChild(img);
+
+            for(let elem of this.gameApp.workFieldElements){
+                let img = document.createElement('img');
+                img.addEventListener('dragstart', (event)=>{this.gameApp.dragStartHandler(elem.name, event)});
+                img.src = 'img/' + elem.name + '.png';
+                img.className = 'workFieldImgs';
+                img.style.cssText = "left:"+elem.x+"px; top:"+elem.y+"px;";
+                div.appendChild(img);
+            }
+            workField.appendChild(div);
+        }
+    }
+
+    new GameField(new GameApp);
+</script>
+
+</body>
+</html>
+
