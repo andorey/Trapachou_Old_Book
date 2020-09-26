@@ -89,12 +89,13 @@
             background-color: rgba(20, 100, 265, 0.2);
             padding:20px;
 			color: cyan;
+			text-shadow: black 2px 4px 5px;
 			z-index: 5;
         }
 		
 		#elementPlace>div{
 			text-align: center;
-			font-size: 1.2em;
+			font-size: 1.3em;
             margin: 10px;
             width: 110px;
             height: 110px;
@@ -115,8 +116,9 @@
 		
 		#workSpace>div{
             text-align: center;
-            font-size: 1.2em;
-			color: greenyellow;
+            font-size: 1.3em;
+            text-shadow: black 2px 4px 5px;
+			color: lawngreen;
             margin: 10px;
             width: 110px;
             height: 110px;
@@ -163,7 +165,7 @@
 
 
 <script>
-    let setElements = ['вода', 'солнце', 'ветер', 'земля'];
+    let setElements = new Set(['вода', 'солнце', 'ветер', 'земля']);
     let basket = document.getElementById('basket');
     let elementPlace = document.getElementById('elementPlace');
     let workSpace = document.getElementById('workSpace');
@@ -173,6 +175,7 @@
         ['вода','солнце','туман'],
 		['ветер','туман','облако'],
 		['облако','туман','туча'],
+		['облако','ветер','туча'],
 		['солнце','грязь','облако'],
 		['туча','ветер','молния'],
 		['земля','вода','грязь'],
@@ -214,6 +217,14 @@
 		}
     }
     
+    function createElement(el) {
+        let div = document.createElement('div');
+        div.style.backgroundImage = "url(images/" + el + ".png)"
+        div.innerHTML = el;
+        div.draggable = true;
+        workSpace.appendChild(div)
+    }
+    
     function mixElements() {
 		let span = document.createElement('span');
 		let button1 = document.createElement('button')
@@ -236,13 +247,9 @@
             let element = findElement(workWithElements)
 			if(element){
                 workSpace.innerHTML = '';
-                setElements.push(element)
+                setElements.add(element)
 				workWithElements = [element]
-                let div = document.createElement('div');
-                div.style.backgroundImage = "url(images/" + element + ".png)"
-                div.innerHTML = element;
-                div.draggable = true;
-                workSpace.appendChild(div)
+				createElement(element)
 			}
             drawElementBar()
         })
@@ -259,11 +266,7 @@
 	
 	workSpace.addEventListener('drop', function () {
 	    let el = current.innerHTML;
-        let div = document.createElement('div');
-        div.style.backgroundImage = "url(images/" + el + ".png)"
-        div.innerHTML = el;
-        div.draggable = true;
-		workSpace.appendChild(div)
+		createElement(el)
         workWithElements.push(el)
 		if(workWithElements.length === 2){
 		    mixElements()

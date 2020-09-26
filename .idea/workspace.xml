@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="74023db5-c1bb-4577-96dc-080e17d9e9bb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/OOP/GAMES/Alchemy/images/грязь.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OOP/GAMES/Alchemy/Index.html" beforeDir="false" afterPath="$PROJECT_DIR$/OOP/GAMES/Alchemy/Index.html" afterDir="false" />
     </list>
@@ -152,7 +151,7 @@
       <workItem from="1600707641911" duration="5270000" />
       <workItem from="1600787813288" duration="5144000" />
       <workItem from="1600882232927" duration="45452000" />
-      <workItem from="1601055175664" duration="3878000" />
+      <workItem from="1601055175664" duration="4974000" />
     </task>
     <servers />
   </component>
@@ -163,10 +162,10 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="270" y="83" key="#Inspections" timestamp="1600449952221">
+    <state x="270" y="83" key="#Inspections" timestamp="1601150538897">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state x="270" y="83" key="#Inspections/0.23.1280.777@0.23.1280.777" timestamp="1600449952221" />
+    <state x="270" y="83" key="#Inspections/0.23.1280.777@0.23.1280.777" timestamp="1601150538897" />
     <state x="347" y="203" key="#Notifications" timestamp="1600108677378">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
