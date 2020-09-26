@@ -154,7 +154,7 @@
 <aside id="rules">
 	1. Выберите по очереди 2 элемента и поместите их в поле для превращения <br><br>
 	2. Для преобразования элементов, в поле можно помещать ТОЛЬКО 2 элемента!<br><br>
-	3. Чтобы удалить элемент из поля превращения, нажмите на крест, внизу под данными правилами
+	3. Чтобы удалить элемент, перетяните его на крест, внизу под данными правилами
 </aside>
 <img src="images/корзина.png" alt="" id="basket">
 
@@ -172,10 +172,15 @@
     const setElementsMix = [
         ['вода','солнце','туман'],
 		['ветер','туман','облако'],
-		['облако','ветер','туча'],
+		['облако','туман','туча'],
+		['солнце','грязь','облако'],
 		['туча','ветер','молния'],
+		['земля','вода','грязь'],
+		['молния','грязь','бактерии'],
+		['молния', 'дерево', 'огонь'],
 		['молния','земля','бактерии'],
 		['бактерии','земля','трава'],
+		['бактерии','грязь','трава'],
 		['трава','солнце','дерево'],
 		['дерево','солнце','огонь'],
 		['бактерии','вода','планктон'],
@@ -184,6 +189,7 @@
 		['земля','планктон','червь'],
 		['птица','земля','животные'],
 		['рыба','земля','животные'],
+		['рыба','грязь','животные'],
 		['животные','огонь','шашлык']
 	];
 
@@ -228,9 +234,16 @@
 		button1.addEventListener('click', function (el) {
             this.parentElement.remove();
             let element = findElement(workWithElements)
-			element ? setElements.push(element) : setElements;
-            workSpace.innerHTML = '';
-            workWithElements = [];
+			if(element){
+                workSpace.innerHTML = '';
+                setElements.push(element)
+				workWithElements = [element]
+                let div = document.createElement('div');
+                div.style.backgroundImage = "url(images/" + element + ".png)"
+                div.innerHTML = element;
+                div.draggable = true;
+                workSpace.appendChild(div)
+			}
             drawElementBar()
         })
 		
@@ -275,9 +288,7 @@
         let index = workWithElements.indexOf(el);
         workWithElements.splice(index, 1)
 		workSpace.removeChild(current)
-		console.log(workWithElements)
     })
- 
 	
 </script>
 </body>
