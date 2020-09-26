@@ -169,6 +169,44 @@
     let workSpace = document.getElementById('workSpace');
     let workWithElements = [];
     let current;
+    const setElementsMix = [
+        ['вода','солнце','туман'],
+		['ветер','туман','облако'],
+		['облако','ветер','туча'],
+		['туча','ветер','молния'],
+		['молния','земля','бактерии'],
+		['бактерии','земля','трава'],
+		['трава','солнце','дерево'],
+		['дерево','солнце','огонь'],
+		['бактерии','вода','планктон'],
+		['бактерии','планктон','рыба'],
+		['рыба','ветер','птица'],
+		['земля','планктон','червь'],
+		['птица','земля','животные'],
+		['рыба','земля','животные'],
+		['животные','огонь','шашлык']
+	];
+
+    function drawElementBar() {
+        elementPlace.innerHTML = '';
+        for (let el of setElements){
+            let div = document.createElement('div');
+            div.style.backgroundImage = "url(images/" + el + ".png)"
+            div.innerHTML = el;
+            div.draggable = true;
+            elementPlace.appendChild(div)
+        }
+    }
+    
+    drawElementBar();
+    
+    function findElement([name1, name2]) {
+		for (let i of setElementsMix){
+		    if(i[0] === name1 && i[1] === name2 || i[1] === name1 && i[0] === name2){
+		        return i[2]
+			}
+		}
+    }
     
     function mixElements() {
 		let span = document.createElement('span');
@@ -187,15 +225,16 @@
 			this.parentElement.remove();
         })
 		
+		button1.addEventListener('click', function (el) {
+            this.parentElement.remove();
+            let element = findElement(workWithElements)
+			element ? setElements.push(element) : setElements;
+            workSpace.innerHTML = '';
+            workWithElements = [];
+            drawElementBar()
+        })
+		
     }
-	
-	for (let el of setElements){
-	    let div = document.createElement('div');
-	    div.style.backgroundImage = "url(images/" + el + ".png)"
-		div.innerHTML = el;
-	    div.draggable = true;
-	    elementPlace.appendChild(div)
-	}
 	
 	elementPlace.addEventListener('dragstart', function (event) {
             current = event.target;
