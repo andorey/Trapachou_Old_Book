@@ -68,9 +68,8 @@
 		#basket{
 			position: absolute;
 			width: 16%;
-			right: 20px;
+			right: 40%;
 			bottom: 20px;
-			margin: 20px;
 			z-index: 5;
 		}
 
@@ -79,6 +78,8 @@
 			left: 10px;
 			display: flex;
 			flex-wrap: wrap;
+            align-items: center;
+            justify-content: flex-start;
 			position: absolute;
             float: left;
             max-height: 680px;
@@ -87,18 +88,18 @@
             border: 2px solid #f1f4f9;
 			border-radius: 12px;
             background-color: rgba(20, 100, 265, 0.2);
-            padding:20px;
+            padding:10px;
 			color: cyan;
-			text-shadow: black 2px 4px 5px;
+			text-shadow: black 3px 1px 3px;
 			z-index: 5;
         }
 		
 		#elementPlace>div{
 			text-align: center;
-			font-size: 1.3em;
-            margin: 10px;
-            width: 110px;
-            height: 110px;
+			font-size: 1.2em;
+            margin: 5px;
+            width: 83px;
+            height: 83px;
 		}
 		
         #workSpace{
@@ -117,7 +118,7 @@
 		#workSpace>div{
             text-align: center;
             font-size: 1.3em;
-            text-shadow: black 2px 4px 5px;
+            text-shadow: black 3px 1px 3px;
 			color: lawngreen;
             margin: 10px;
             width: 110px;
@@ -156,9 +157,9 @@
 <aside id="rules">
 	1. Выберите по очереди 2 элемента и поместите их в поле для превращения <br><br>
 	2. Для преобразования элементов, в поле можно помещать ТОЛЬКО 2 элемента!<br><br>
-	3. Чтобы удалить элемент, перетяните его на крест, внизу под данными правилами
+	3. Чтобы удалить элемент, перетяните его в корзину, внизу.
 </aside>
-<img src="images/корзина.png" alt="" id="basket">
+<img src="images/basket.png" alt="" id="basket">
 
 <div id = 'elementPlace'></div>
 <div id ='workSpace'></div>
@@ -193,6 +194,7 @@
 		['птица','земля','животные'],
 		['рыба','земля','животные'],
 		['рыба','грязь','животные'],
+		['рыба','огонь','закуска'],
 		['животные','огонь','шашлык']
 	];
 
@@ -224,7 +226,7 @@
         div.draggable = true;
         workSpace.appendChild(div)
     }
-    
+	
     function mixElements() {
 		let span = document.createElement('span');
 		let button1 = document.createElement('button')
@@ -271,7 +273,7 @@
 		if(workWithElements.length === 2){
 		    mixElements()
 		}else if(workWithElements.length > 2){
-		    alert('Для превращения вы можете использовать только 2 элемента!!!')
+		    alert('Для превращения необходимо ВСЕГО 2 (ДВА) элемента!')
             workSpace.innerHTML = '';
             workWithElements = [];
 		}

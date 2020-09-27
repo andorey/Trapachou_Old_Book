@@ -167,21 +167,29 @@
         synthesizeNewElement(){
             const elements = this.workFieldElements;
             if(elements.length === 2){
-                this.addNewElement('вода','солнце','туман');
-                this.addNewElement('ветер','туман','облако');
-                this.addNewElement('облако','ветер','туча');
-                this.addNewElement('туча','ветер','молния');
-                this.addNewElement('молния','земля','бактерии');
-                this.addNewElement('бактерии','земля','трава');
-                this.addNewElement('трава','солнце','дерево');
-                this.addNewElement('дерево','солнце','огонь');
-                this.addNewElement('бактерии','вода','планктон');
-                this.addNewElement('бактерии','планктон','рыба');
-                this.addNewElement('рыба','ветер','птица');
-                this.addNewElement('земля','планктон','червь');
-                this.addNewElement('птица','земля','животные');
-                this.addNewElement('рыба','земля','животные');
-                this.addNewElement('животные','огонь','шашлык');
+				this.addNewElement('вода','солнце','туман');
+				this.addNewElement('ветер','туман','облако');
+				this.addNewElement('облако','туман','туча');
+				this.addNewElement('облако','ветер','туча');
+				this.addNewElement('солнце','грязь','облако');
+				this.addNewElement('туча','ветер','молния');
+				this.addNewElement('земля','вода','грязь');
+				this.addNewElement('молния','грязь','бактерии');
+				this.addNewElement('молния', 'дерево', 'огонь');
+				this.addNewElement('молния','земля','бактерии');
+				this.addNewElement('бактерии','земля','трава');
+				this.addNewElement('бактерии','грязь','трава');
+				this.addNewElement('трава','солнце','дерево');
+				this.addNewElement('дерево','солнце','огонь');
+				this.addNewElement('бактерии','вода','планктон');
+				this.addNewElement('бактерии','планктон','рыба');
+				this.addNewElement('рыба','ветер','птица');
+				this.addNewElement('земля','планктон','червь');
+				this.addNewElement('птица','земля','животные');
+				this.addNewElement('рыба','земля','животные');
+				this.addNewElement('рыба','грязь','животные');
+				this.addNewElement('рыба','огонь','закуска');
+				this.addNewElement('животные','огонь','шашлык');
             }
             else{
                 alert('Для превращения можно использовать только 2 элемента за раз!');
