@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="74023db5-c1bb-4577-96dc-080e17d9e9bb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/OOP/GAMES/Alchemy/images/закуска.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OOP/GAMES/img/грязь.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OOP/GAMES/img/закуска.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOP/GAMES/Alchemy/Index.html" beforeDir="false" afterPath="$PROJECT_DIR$/OOP/GAMES/Alchemy/Index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOP/GAMES/Alchemy/images/space.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOP/GAMES/Alchemy/images/корзина.png" beforeDir="false" afterPath="$PROJECT_DIR$/OOP/GAMES/Alchemy/images/basket.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOP/GAMES/alchemy_game.html" beforeDir="false" afterPath="$PROJECT_DIR$/OOP/GAMES/alchemy_game.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,7 +150,7 @@
       <workItem from="1600707641911" duration="5270000" />
       <workItem from="1600787813288" duration="5144000" />
       <workItem from="1600882232927" duration="45452000" />
-      <workItem from="1601055175664" duration="10094000" />
+      <workItem from="1601055175664" duration="12773000" />
     </task>
     <servers />
   </component>
