@@ -39,11 +39,11 @@
             y: 83,          // Y position
             width: 0,       // Width, gets calculated
             height: 0,      // Height, gets calculated
-            columns: 15,    // Number of tile columns
-            rows: 14,       // Number of tile rows
+            columns: 17,    // Number of tile columns
+            rows: 15,       // Number of tile rows
             tilewidth: 40,  // Visual width of a tile
             tileheight: 40, // Visual height of a tile
-            rowheight: 34,  // Height of a row
+            rowheight: 35,  // Height of a row
             radius: 20,     // Bubble collision radius
             tiles: []       // The two-dimensional tile array
         };
@@ -87,7 +87,7 @@
             [[1, 0], [1, 1], [0, 1], [-1, 0], [0, -1], [1, -1]]];  // Odd row tiles
 
         // Number of different colors
-        var bubblecolors = 7;
+        var bubblecolors = 5;
 
         // Game states
         var gamestates = { init: 0, ready: 1, shootbubble: 2, removecluster: 3, gameover: 4 };
@@ -919,7 +919,7 @@
                         var newtile = randRange(0, bubblecolors-1);
 
                         // Make sure the new tile is different from the previous tile
-                        if (newtile == randomtile) {
+                        if (newtile === randomtile) {
                             newtile = (newtile + 1) % bubblecolors;
                         }
                         randomtile = newtile;
@@ -1043,9 +1043,9 @@
             // Get the mouse position
             var pos = getMousePos(canvas, e);
 
-            if (gamestate == gamestates.ready) {
+            if (gamestate === gamestates.ready) {
                 shootBubble();
-            } else if (gamestate == gamestates.gameover) {
+            } else if (gamestate === gamestates.gameover) {
                 newGame();
             }
         }

@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="74023db5-c1bb-4577-96dc-080e17d9e9bb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/OOP/GAMES/Alchemy/Alchemy_game.emmx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OOP/GAMES/bubble_game/bubble-shooter.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OOP/GAMES/bubble_game/bubble-sprites.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOP/index_game.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OOP/GAMES/bubble_game/bubble-shooter.html" beforeDir="false" afterPath="$PROJECT_DIR$/OOP/GAMES/bubble_game/bubble-shooter.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,7 +152,7 @@
       <workItem from="1600787813288" duration="5144000" />
       <workItem from="1600882232927" duration="45452000" />
       <workItem from="1601055175664" duration="12773000" />
-      <workItem from="1601309174195" duration="3932000" />
+      <workItem from="1601309174195" duration="5752000" />
     </task>
     <servers />
   </component>
