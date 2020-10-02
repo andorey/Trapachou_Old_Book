@@ -1,0 +1,327 @@
+/*@font-face {
+    font-family: AtariBold;
+    src: url("fonts/atari_bold.ttf");
+}*/
+
+#game_window {
+    width: 800px;
+    height: 600px;
+    position: relative;
+    overflow: hidden;
+    background: /*#19c385*/ darkcyan url("images/background.png");
+}
+.cards {
+    width: 131px;
+    height: 190px;
+    background-image: url("images/cards_190.png");
+}
+.cards_played {
+    display: none;
+    position: absolute;
+    left: -50px;
+    top: -130px;
+    transform: rotate(-30deg);
+}
+.cards_new {
+    display: none;
+    position: absolute;
+    right: -50px;
+    top: -130px;
+    transform: rotate(30deg);
+}
+#dealer_line {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 800px;
+    height: 600px;
+}
+#dealer_line .main_hand {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+#player_line {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 800px;
+    height: 600px;
+}
+#player_line .main_hand {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+#player_line_spl {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 800px;
+    height: 600px;
+}
+#player_line_spl .main_hand {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.in_game {
+    position: absolute;
+}
+#buttons_wrapper {
+    position: absolute;
+    text-align: right;
+    bottom: 20px;
+    right: 40px;
+    width: 600px;
+}
+.buttons {
+    display: none;
+    position: relative;
+    font-family: AtariBold, sans-serif;
+    width: 150px;
+    height: 27px;
+    box-sizing: border-box;
+    background: rgba(256, 256, 256, 0.3);
+    border: 1px solid white;
+    text-shadow: black 0 0 1px;
+    border-radius: 15px;
+    font-size: 18px;
+    vertical-align: bottom;
+    padding: 5px 0 0;
+    text-align: center;
+    text-transform: uppercase;
+    color: rgba(256, 256, 256, 1);
+    cursor: pointer;
+}
+.buttons:not(.btn_disable):hover {
+    box-shadow: white 0 0 5px 3px;
+    /*color: white;*/
+}
+.btn_disable {
+    background: rgba(0, 0, 0, 0.3);
+    color: black;
+    text-shadow: white 0 0 1px;
+    border: 1px solid black;
+}
+.counter {
+    /*font-family: AtariBold, sans-serif;*/
+    display: none;
+    position: absolute;
+    z-index: 10;
+    height: 80px;
+    width: 80px;
+    background: rgba(0, 0, 0, 0.5);
+    top: 55px;
+    left: 30px;
+    /*right: -80px;*/
+    border-radius: 50%;
+    border: black 2px solid;
+    text-align: center;
+    color: white;
+    font-size: 25px;
+    vertical-align: middle;
+    padding: 0;
+}
+
+#dealer_line .counter {
+    top: 75px;
+    left: 330px;
+}
+#player_line .counter {
+    top: 325px;
+    left: 380px;
+}
+#player_line_spl .counter {
+    top: 325px;
+    left: 410px;
+}
+
+#player_line .hand_pot {
+    position: absolute;
+    top: 465px;
+    left: 335px;
+}
+#player_line .ins_pot {
+    position: absolute;
+    top: 490px;
+    left: 335px;
+}
+#player_line_spl .hand_pot {
+    position: absolute;
+    top: 465px;
+    left: 365px;
+}
+
+#table_ins_border {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+#money {
+    position: absolute;
+    bottom: -20px;
+    left: 40px;
+    font-family: AtariBold, sans-serif;
+    text-shadow: black 0 0 1px;
+    font-size: 18px;
+    text-transform: uppercase;
+    color: rgba(256, 256, 256, 1);
+    padding: 0 0 5px;
+    text-align: center;
+}
+#chips_wrapper {
+    position: absolute;
+    width: 673px;
+    height: 119px;
+    bottom: 45px;
+    left: 63px;
+    overflow: hidden;
+}
+#chips {
+    position: relative;
+    width: 1900px;
+    height: 119px;
+    top: 0;
+    /*bottom: 45px;*/
+    left: 0;
+    transition: left 140ms;
+    /*overflow: hidden;*/
+}
+.chip {
+    position: absolute;
+    display: inline-block;
+    /*float: left;*/
+    background-image: url("images/chips_74.png");
+    top: 30px;
+    width: 74px;
+    height: 74px;
+    font-family: AtariBold, sans-serif;
+    text-align: center;
+    color: black;
+    font-size: 15.5px;
+    vertical-align: middle;
+    padding-top: 31px;
+    box-sizing: border-box;
+    word-spacing: -8px;
+    text-transform: lowercase;
+    /*margin: 0 10px;*/
+    cursor: pointer;
+    border-radius: 37px;
+    transition: top 100ms;
+}
+.chip:hover {
+    box-shadow: white 0 0 20px 7px;
+    top: 25px;
+}
+#summary_wrapper {
+    display: none;
+    position: absolute;
+    top: 215px;
+    color: white;
+    text-shadow: black 0 0 1px;
+    font-family: AtariBold, sans-serif;
+    font-size: 28px;
+    text-transform: lowercase;
+    word-spacing: -5px;
+    text-align: center;
+    width: 800px;
+    border-top: white 2px solid;
+    border-bottom: white 2px solid;
+    background: rgba(0, 0, 0, 0.8);
+}
+#summary_text {
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 7px 0 5px;
+}
+.hand_pot, .ins_pot {
+    color: red;
+    text-shadow: white 0 0 15px, white 0 0 35px, white 0 0 5px;
+    font-family: AtariBold, sans-serif;
+    font-size: 18px;
+    letter-spacing: 3px;
+    margin-left: 25px;
+    /*text-align: center;*/
+}
+.hand_pot_positive {
+    color: green;
+}
+#gradient_effect {
+    width: 800px;
+    height: 600px;
+    position: absolute;
+
+    background: -webkit-radial-gradient(0 -300px, ellipse cover, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 45%),
+    -webkit-radial-gradient(800px -300px, ellipse cover, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 45%),
+    -webkit-linear-gradient(top, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 10%);
+
+    background: -moz-radial-gradient(0 -300px, ellipse cover, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 45%),
+    -moz-radial-gradient(800px -300px, ellipse cover, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 45%),
+    -moz-linear-gradient(top, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 10%);
+
+    background: -o-radial-gradient(0 -300px, ellipse cover, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 45%),
+    -o-radial-gradient(800px -300px, ellipse cover, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 45%),
+    -o-linear-gradient(top, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 10%);
+
+    background: -ms-radial-gradient(0 -300px, ellipse cover, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 45%),
+    -ms-radial-gradient(800px -300px, ellipse cover, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 45%),
+    -ms-linear-gradient(top, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 10%);
+
+    background: radial-gradient(0 -300px, ellipse cover, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 45%),
+    radial-gradient(800px -300px, ellipse cover, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 45%),
+    linear-gradient(top, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 10%);
+}
+.slider_btn {
+    box-sizing: border-box;
+    height: 74px;
+    position: relative;
+    font-family: Arial, sans-serif;
+
+
+    text-shadow: black 0 0 1px;
+    border-radius: 3px;
+    font-size: 18px;
+    text-align: center;
+    text-transform: uppercase;
+    color: rgba(256, 256, 256, 0.7);
+    cursor: pointer;
+    letter-spacing: -3px;
+    text-align: center;
+
+    /*background: rgba(256, 256, 256, 0.3);*/
+
+}
+
+.slider_btn:hover {
+    background: rgba(256, 256, 256, 0.3);
+    color: rgba(256, 256, 256, 1);
+    /*border: 1px solid white;*/
+}
+.slider {
+    position: absolute;
+    bottom: 60px;
+    display: none;
+}
+.slider_btn {
+    display: inline-block;
+    padding: 25px 7px 25px 3px;
+}
+.slider_btn_2 {
+    width: 25px;
+}
+.slider_btn_1 {
+    width: 15px;
+}
+#prev {
+    left: 10px;
+}
+#next {
+    right: 10px;
+}
+#prev1 {
+    margin-left: 3px;
+}
+#next1 {
+    margin-right: 3px;
+}

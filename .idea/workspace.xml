@@ -2,6 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="74023db5-c1bb-4577-96dc-080e17d9e9bb" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/OOP/GAMES/ооп/3D_tetris-master Влад Евстигнеев проверено/3D_tetris-master/css.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OOP/GAMES/ооп/3D_tetris-master Влад Евстигнеев проверено/3D_tetris-master/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OOP/GAMES/ооп/3D_tetris-master Влад Евстигнеев проверено/3D_tetris-master/lib.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OOP/GAMES/ооп/3D_tetris-master Влад Евстигнеев проверено/3D_tetris-master/normalize.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OOP/GAMES/ооп/3D_tetris-master Влад Евстигнеев проверено/3D_tetris-master/script.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OOP/GAMES/ооп/BlackJack_2.0/.idea/BlackJack.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OOP/GAMES/ооп/BlackJack_2.0/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OOP/GAMES/ооп/BlackJack_2.0/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OOP/GAMES/ооп/BlackJack_2.0/bj.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OOP/GAMES/ооп/BlackJack_2.0/bj_curves.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OOP/GAMES/ооп/BlackJack_2.0/bj_script.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OOP/GAMES/ооп/BlackJack_2.0/bj_styles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OOP/GAMES/ооп/BlackJack_2.0/fonts/atari_bold.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OOP/GAMES/ооп/BlackJack_2.0/images/background.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OOP/GAMES/ооп/BlackJack_2.0/images/cards_190.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OOP/GAMES/ооп/BlackJack_2.0/images/chips_74.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OOP/GAMES/ооп/BlackJack_2.0/libraries_and_plugins/anime.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OOP/GAMES/ооп/BlackJack_2.0/libraries_and_plugins/eliptext.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OOP/GAMES/ооп/BlackJack_2.0/libraries_and_plugins/jquery-3.3.1.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OOP/GAMES/ооп/BlackJack_2.0/libraries_and_plugins/jquery-ui.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OOP/GAMES/ооп/BlackJack_2.0/libraries_and_plugins/jquery.lettering.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OOP/GAMES/ооп/seabattle35.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OOP/GAMES/bubble_game/bubble-shooter.html" beforeDir="false" afterPath="$PROJECT_DIR$/OOP/GAMES/bubble_game/bubble-shooter.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -152,7 +175,8 @@
       <workItem from="1600882232927" duration="45452000" />
       <workItem from="1601055175664" duration="12773000" />
       <workItem from="1601309174195" duration="6776000" />
-      <workItem from="1601568573003" duration="1099000" />
+      <workItem from="1601568573003" duration="1903000" />
+      <workItem from="1601622835128" duration="857000" />
     </task>
     <servers />
   </component>

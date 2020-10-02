@@ -1,0 +1,245 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 13px;
+}
+
+body {
+  background: rgb(51, 80, 16);
+}
+
+.field, .side {
+  transform-style: preserve-3d;
+}
+
+.container {
+  position: relative;
+  width: 300px;
+  height: 600px;
+  margin: auto;
+  margin-top: 50px;
+  perspective: 600px;
+}
+
+.field {
+  width: inherit;
+  height: inherit;
+  margin: auto;
+  transform: rotateX(40deg) rotateY(-180deg);
+}
+
+.side {
+  position: absolute;
+  width: inherit;
+  height: inherit;
+}
+
+.bottom {
+  height: 300px;
+  transform: rotateX(-90deg) translateZ(450px);
+}
+
+.left {
+  transform: rotateY(90deg) translate3d(0px, 0px, 150px);
+}
+
+.right {
+  transform: rotateY(-90deg) translate3d(0px, 0px, 150px);
+}
+
+.back {
+  transform: rotateX(0deg) translate3d(0px, 0px, -150px);
+}
+
+.row {
+  margin: 0;
+  padding: 0;
+  height: 30px;
+  display: flex;
+}
+
+.cell {
+  width: 30px;
+  height: 30px;
+  margin: 0;
+  padding: 0;
+  outline: 1px solid white;
+}
+
+.level {
+  height: 300px;
+  border: none;
+  outline: none;
+}
+
+/* селекторы для куба */
+.cube {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  transform-style: preserve-3d;
+  transform-origin: center center;
+}
+
+.cube_side {
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  outline: 1px solid black;
+}
+
+.cube_bottom {
+  transform: translate3d(0px, 0px, 0px);
+}
+
+.cube_top {
+  transform: translate3d(0px, 0px, -30px);
+}
+
+.cube_front {
+  transform: rotateX(-90deg) translate3d(0px, 15px, -15px);
+}
+
+.cube_back {
+  transform: rotateX(90deg) translate3d(0px, -15px, -15px);
+}
+
+.cube_left {
+  transform: rotateY(-90deg) translate3d(-15px, 0px, 15px);
+}
+
+.cube_right {
+  transform: rotateY(90deg) translate3d(15px, 0px, 15px);
+}
+
+.T {
+  background: rgb(252, 0, 44)
+}
+
+.Q {
+  background: rgb(126, 90, 17)
+}
+
+.Z {
+  background: rgb(4, 74, 187)
+}
+
+.S {
+  background: rgb(22, 219, 233)
+}
+
+.L {
+  background: rgb(50, 147, 249)
+}
+
+.J {
+  background: rgb(178, 232, 42)
+}
+
+.I {
+  background: rgb(141, 134, 145)
+}
+
+/* table Info */
+.containerInfo, .containerNextFigure, .containerControls, .containerMenu {
+  position: absolute;
+  width: 300px;
+  height: 500px;
+  perspective: 500px;
+}
+
+.infoData, .next, .controls, .menu {
+  position: relative;
+  width: inherit;
+  height: 200px;
+  background: black;
+  color: yellow;
+  outline: 1px solid white;
+  transform-style: preserve-3d;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.containerInfo {
+  top: 0;
+  left: 0;
+}
+
+.containerNextFigure {
+  top: 0;
+  right: 0;
+}
+
+.containerControls {
+  height: 200px;
+  top: 300px;
+  right: 0;
+}
+
+.containerMenu {
+  height: 200px;
+  top: 300px;
+  left: 0;
+}
+
+.infoData {
+  transform: rotateY(10deg) translate3d(70px, 80px, 120px);
+}
+
+.next {
+  transform-style: preserve-3d;
+  transform: rotateY(-10deg) translate3d(-70px, 80px, 120px);
+}
+
+.nextFigure {
+  width: 120px;
+  height: 120px;
+  transform: rotateY(-180deg) translate3d(0px, 0px, -1px);
+}
+
+.next p {
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+
+.menu {
+  height: 200px;
+  transform: rotateY(10deg) translate3d(70px, 80px, 120px);
+}
+
+.controls {
+  height: 200px;
+  transform: rotateY(-10deg) translate3d(-70px, 80px, 120px);
+}
+
+.controls p, .menu p {
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+
+.score {
+  display: flex;
+}
+
+#gameOver {
+  font-size: 60px;
+  color: yellow;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  width: 600px;
+  top: -567px;
+  left: 210px;
+  z-index: 99999;
+  display: none;
+  text-align: center;
+}
+
+#main {
+  width: 1000px;
+  height: 600px;
+  padding: 0;
+  margin: auto;
+}

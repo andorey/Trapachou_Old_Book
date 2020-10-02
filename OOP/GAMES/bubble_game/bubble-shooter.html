@@ -16,7 +16,7 @@
 
 <body>
 <div>
-<canvas id="viewport" height="700" width="700"></canvas>
+<canvas id="viewport" height="720" width="700"></canvas>
 </div>
 
 <script>
@@ -40,7 +40,7 @@
             width: 0,       // Width, gets calculated
             height: 0,      // Height, gets calculated
             columns: 17,    // Number of tile columns
-            rows: 15,       // Number of tile rows
+            rows: 16,       // Number of tile rows
             tilewidth: 40,  // Visual width of a tile
             tileheight: 40, // Visual height of a tile
             rowheight: 35,  // Height of a row
@@ -912,7 +912,7 @@
         // Create a random level
         function createLevel() {
             // Create a level with random tiles
-            for (let j=0; j<level.rows; j++) {
+            for (let j = 0; j < level.rows; j++) {
                 let randomtile = randRange(0, bubblecolors-1);
                 let count = 0;
                 for (let i=0; i<level.columns; i++) {
@@ -968,7 +968,7 @@
 
         // Get a random int between low and high, inclusive
         function randRange(low, high) {
-            return Math.floor(low + Math.random()*(high-low+1));
+            return Math.floor(low + Math.random() * (high - low + 1));
         }
 
         // Shoot the bubble

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>3D Tetris</title>
+  <link rel="stylesheet" href="css.css">
+  <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+</head>
+
+<body onmousedown="return false">
+  <div id="main">
+    <div class="containerInfo">
+      <div class="infoData">
+        <div class="score">
+          <p id="textScore">Score:</p>
+          <p id="score">0</p>
+        </div>
+        <div class="score">
+          <p id="texthighScore">High Score:</p>
+          <p id="highScore">0</p>
+        </div>
+        <div class="score">
+          <p id="textLevel">Level:</p>
+          <p id="level">0</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="field">
+        <div id="back" class="side back"></div>
+      </div>
+    </div>
+
+    <div class="containerNextFigure">
+      <div class="next">
+        <p id="next">Next Figure</p>
+        <div class="nextFigure"></div>
+      </div>
+    </div>
+    <div class="containerMenu">
+      <div class="menu">
+        <p id="reset">Reset</p>
+        <p id="start">Start</p>
+        <p id="save">Save</p>
+        <p id="lastSave">Load</p>
+        <p id="changeLang">RU</p>
+      </div>
+    </div>
+
+    <div class="containerControls">
+      <div class="controls">
+        <p id="rotate"><i class="fas fa-arrow-up"></i> - rotate</p>
+        <p id="left"><i class="fas fa-arrow-left"></i> - move left</p>
+        <p id="right"><i class="fas fa-arrow-right"></i> - move right</p>
+        <p id="down"><i class="fas fa-arrow-down"></i> - move down</p>
+        <p id="space">space - pause</p>
+      </div>
+    </div>
+
+    <div id="gameOver">Game Over</div>
+  </div>
+  <script src="lib.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
