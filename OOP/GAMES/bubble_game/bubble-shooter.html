@@ -16,14 +16,14 @@
 
 <body>
 <div>
-<canvas id="viewport" height="720" width="700"></canvas>
+<canvas id="viewport" height="750" width="700"></canvas>
 </div>
 
 <script>
     window.onload = function() {
         // Get the canvas and context
         let canvas = document.getElementById("viewport");
-        let context = canvas.getContext("2d");
+        let cxt = canvas.getContext("2d");
 
         // Timing and frames per second
         let lastframe = 0;
@@ -40,7 +40,7 @@
             width: 0,       // Width, gets calculated
             height: 0,      // Height, gets calculated
             columns: 17,    // Number of tile columns
-            rows: 16,       // Number of tile rows
+            rows: 17,       // Number of tile rows
             tilewidth: 40,  // Visual width of a tile
             tileheight: 40, // Visual height of a tile
             rowheight: 35,  // Height of a row
@@ -199,24 +199,24 @@
                 // Preloader
 
                 // Clear the canvas
-                context.clearRect(0, 0, canvas.width, canvas.height);
+                cxt.clearRect(0, 0, canvas.width, canvas.height);
 
                 // Draw the frame
                 drawFrame();
 
                 // Draw a progress bar
                 let loadpercentage = loadcount/loadtotal;
-                context.strokeStyle = "#ff8080";
-                context.lineWidth=3;
-                context.strokeRect(18.5, 0.5 + canvas.height - 51, canvas.width-37, 32);
-                context.fillStyle = "#ff8080";
-                context.fillRect(18.5, 0.5 + canvas.height - 51, loadpercentage*(canvas.width-37), 32);
+                cxt.strokeStyle = "#ff8080";
+                cxt.lineWidth=3;
+                cxt.strokeRect(18.5, 0.5 + canvas.height - 51, canvas.width-37, 32);
+                cxt.fillStyle = "#ff8080";
+                cxt.fillRect(18.5, 0.5 + canvas.height - 51, loadpercentage*(canvas.width-37), 32);
 
                 // Draw the progress text
                 let loadtext = "Loaded " + loadcount + "/" + loadtotal + " images";
-                context.fillStyle = "#000000";
-                context.font = "16px Verdana";
-                context.fillText(loadtext, 18, 0.5 + canvas.height - 63);
+                cxt.fillStyle = "#000000";
+                cxt.font = "16px Verdana";
+                cxt.fillText(loadtext, 18, 0.5 + canvas.height - 63);
 
                 if (preloaded) {
                     // Add a delay for demonstration purposes
@@ -702,8 +702,8 @@
 
         // Draw text that is centered
         function drawCenterText(text, x, y, width) {
-            let textdim = context.measureText(text);
-            context.fillText(text, x + (width-textdim.width)/2, y);
+            let textdim = cxt.measureText(text);
+            cxt.fillText(text, x + (width-textdim.width)/2, y);
         }
 
         // Render the game
@@ -714,23 +714,23 @@
             let yoffset =  level.tileheight/2;
 
             // Draw level background
-            context.fillStyle = "#8c8c8c";
-            context.fillRect(level.x - 4, level.y - 4, level.width + 8, level.height + 4 - yoffset);
+            cxt.fillStyle = "#8c8c8c";
+            cxt.fillRect(level.x - 4, level.y - 4, level.width + 8, level.height + 4 - yoffset);
 
             // Render tiles
             renderTiles();
 
             // Draw level bottom
-            context.fillStyle = "#656565";
-            context.fillRect(level.x - 4, level.y - 4 + level.height + 4 - yoffset, level.width + 8, 2*level.tileheight + 3);
+            cxt.fillStyle = "#656565";
+            cxt.fillRect(level.x - 4, level.y - 4 + level.height + 4 - yoffset, level.width + 8, 2*level.tileheight + 3);
 
             // Draw score
-            context.fillStyle = "#ffffff";
-            context.font = "18px Verdana";
+            cxt.fillStyle = "#ffffff";
+            cxt.font = "18px Verdana";
             let scorex = level.x + level.width - 150;
             let scorey = level.y+level.height + level.tileheight - yoffset - 8;
             drawCenterText("Score:", scorex, scorey, 150);
-            context.font = "24px Verdana";
+            cxt.font = "24px Verdana";
             drawCenterText(score, scorex, scorey+30, 150);
 
             // Render cluster
@@ -749,11 +749,11 @@
 
             // Game Over overlay
             if (gamestate === gamestates.gameover) {
-                context.fillStyle = "rgba(0, 0, 0, 0.8)";
-                context.fillRect(level.x - 4, level.y - 4, level.width + 8, level.height + 2 * level.tileheight + 8 - yoffset);
+                cxt.fillStyle = "rgba(0, 0, 0, 0.8)";
+                cxt.fillRect(level.x - 4, level.y - 4, level.width + 8, level.height + 2 * level.tileheight + 8 - yoffset);
 
-                context.fillStyle = "#ffffff";
-                context.font = "24px Verdana";
+                cxt.fillStyle = "#ffffff";
+                cxt.font = "24px Verdana";
                 drawCenterText("Game Over!", level.x, level.y + level.height / 2 + 10, level.width);
                 drawCenterText("Click to start", level.x, level.y + level.height / 2 + 40, level.width);
             }
@@ -762,22 +762,22 @@
         // Draw a frame around the game
         function drawFrame() {
             // Draw background
-            context.fillStyle = "#e8eaec";
-            context.fillRect(0, 0, canvas.width, canvas.height);
+            cxt.fillStyle = "#e8eaec";
+            cxt.fillRect(0, 0, canvas.width, canvas.height);
 
             // Draw header
-            context.fillStyle = "#303030";
-            context.fillRect(0, 0, canvas.width, 79);
+            cxt.fillStyle = "#303030";
+            cxt.fillRect(0, 0, canvas.width, 79);
 
             // Draw title
-            context.fillStyle = "#ffffff";
-            context.font = "24px Verdana";
-            context.fillText("Bubble Shooter Example - Rembound.com", 10, 37);
+            cxt.fillStyle = "#ffffff";
+            cxt.font = "24px Verdana";
+            cxt.fillText("Bubble Shooter Example - Rembound.com", 10, 37);
 
             // Display fps
-            context.fillStyle = "#ffffff";
-            context.font = "12px Verdana";
-            context.fillText("Fps: " + fps, 13, 57);
+            cxt.fillStyle = "#ffffff";
+            cxt.font = "12px Verdana";
+            cxt.fillText("Fps: " + fps, 13, 57);
         }
 
         // Render tiles
@@ -797,13 +797,13 @@
                     // Check if there is a tile present
                     if (tile.type >= 0) {
                         // Support transparency
-                        context.save();
-                        context.globalAlpha = tile.alpha;
+                        cxt.save();
+                        cxt.globalAlpha = tile.alpha;
 
                         // Draw the tile using the color
                         drawBubble(coord.tilex, coord.tiley + shift, tile.type);
 
-                        context.restore();
+                        cxt.restore();
                     }
                 }
             }
@@ -816,8 +816,8 @@
                 let coord = getTileCoordinate(cluster[i].x, cluster[i].y);
 
                 // Draw the tile using the color
-                context.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
-                context.fillRect(coord.tilex+level.tilewidth/4, coord.tiley+level.tileheight/4, level.tilewidth/2, level.tileheight/2);
+                cxt.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
+                cxt.fillRect(coord.tilex+level.tilewidth/4, coord.tiley+level.tileheight/4, level.tilewidth/2, level.tileheight/2);
             }
         }
 
@@ -827,21 +827,21 @@
             let centery = player.y + level.tileheight/2;
 
             // Draw player background circle
-            context.fillStyle = "#7a7a7a";
-            context.beginPath();
-            context.arc(centerx, centery, level.radius+12, 0, 2*Math.PI, false);
-            context.fill();
-            context.lineWidth = 2;
-            context.strokeStyle = "#8c8c8c";
-            context.stroke();
+            cxt.fillStyle = "#7a7a7a";
+            cxt.beginPath();
+            cxt.arc(centerx, centery, level.radius+12, 0, 2*Math.PI, false);
+            cxt.fill();
+            cxt.lineWidth = 2;
+            cxt.strokeStyle = "#8c8c8c";
+            cxt.stroke();
 
             // Draw the angle
-            context.lineWidth = 2;
-            context.strokeStyle = "#0000ff";
-            context.beginPath();
-            context.moveTo(centerx, centery);
-            context.lineTo(centerx + 1.5*level.tilewidth * Math.cos(degToRad(player.angle)), centery - 1.5*level.tileheight * Math.sin(degToRad(player.angle)));
-            context.stroke();
+            cxt.lineWidth = 2;
+            cxt.strokeStyle = "#0000ff";
+            cxt.beginPath();
+            cxt.moveTo(centerx, centery);
+            cxt.lineTo(centerx + 1.5*level.tilewidth * Math.cos(degToRad(player.angle)), centery - 1.5*level.tileheight * Math.sin(degToRad(player.angle)));
+            cxt.stroke();
 
             // Draw the next bubble
             drawBubble(player.nextbubble.x, player.nextbubble.y, player.nextbubble.tiletype);
@@ -887,7 +887,7 @@
                 return;
 
             // Draw the bubble sprite
-            context.drawImage(bubbleimage, index * 40, 0, 40, 40, x, y, level.tilewidth, level.tileheight);
+            cxt.drawImage(bubbleimage, index * 40, 0, 40, 40, x, y, level.tilewidth, level.tileheight);
         }
 
         // Start a new game
@@ -953,7 +953,7 @@
 
         // Get a random existing color
         function getExistingColor() {
-            existingcolors = findColors();
+            let existingcolors = findColors();
 
             let bubbletype = 0;
             if (existingcolors.length > 0) {
