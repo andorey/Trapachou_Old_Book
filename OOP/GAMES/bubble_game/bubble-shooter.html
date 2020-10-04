@@ -128,7 +128,7 @@
 
             // Load the images
             let loadedimages = [];
-            for (let i=0; i<imagefiles.length; i++) {
+            for (let i = 0; i < imagefiles.length; i++) {
                 // Create the image object
                 let image = new Image();
 
@@ -855,7 +855,7 @@
 
         // Get the tile coordinate
         function getTileCoordinate(column, row) {
-            var tilex = level.x + column * level.tilewidth;
+            let tilex = level.x + column * level.tilewidth;
 
             // X offset for odd or even rows
             if ((row + rowoffset) % 2) {
@@ -947,11 +947,8 @@
             player.bubble.y = player.y;
             player.bubble.visible = true;
 
-            // Get a random type from the existing colors
-            let nextcolor = getExistingColor();
-
-            // Set the next bubble
-            player.nextbubble.tiletype = nextcolor;
+            // Set the next bubble		// Get a random type from the existing colors
+            player.nextbubble.tiletype = getExistingColor();
         }
 
         // Get a random existing color
@@ -990,12 +987,7 @@
             let dy = y1 - y2;
             let len = Math.sqrt(dx * dx + dy * dy);
 
-            if ( len < r1 + r2 ) {
-                // Circles intersect
-                return true;
-            }
-
-            return false;
+            return len < (r1 + r2);
         }
 
         // Convert radians to degrees
@@ -1041,10 +1033,7 @@
         }
 
         // On mouse button click
-        function onMouseDown(e) {
-            // Get the mouse position
-            let pos = getMousePos(canvas, e);
-
+        function onMouseDown() {
             if (gamestate === gamestates.ready) {
                 shootBubble();
             } else if (gamestate === gamestates.gameover) {
