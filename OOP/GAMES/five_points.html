@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>five_point</title>
+	<style>
+		#game{
+			width: 100%;
+			height: 100%;
+			box-sizing: border-box;
+			table-layout: fixed;
+		}
+		#game>div{
+			display: flex;
+		}
+		#game>div>div{
+			width: 20px;
+			height: 20px;
+			padding: 0;
+			border: 1px solid gray;
+		}
+		
+	</style>
+</head>
+<body>
+<div id="game"></div>
+
+<script>
+	const game = document.getElementById('game');
+	
+	let columnNum = Math.floor(window.innerWidth/22);
+	let rowsNum = Math.floor(window.innerHeight/22)
+	
+	const fillField = function (game, columnNum, rowsNum) {
+		for (let i = 0; i < rowsNum; i++){
+		    let div = document.createElement('div');
+		    for(let j = 0; j < columnNum; j++){
+		    	let div2 = document.createElement('div');
+		    	div.appendChild(div2)
+			}
+		    game.appendChild(div)
+		}
+    }
+
+    fillField(game, columnNum, rowsNum)
+	
+	
+</script>
+</body>
+</html>

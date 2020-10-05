@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="74023db5-c1bb-4577-96dc-080e17d9e9bb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOP/GAMES/Alchemy/Index.html" beforeDir="false" afterPath="$PROJECT_DIR$/OOP/GAMES/Alchemy/Index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OOP/five_points.html" beforeDir="false" afterPath="$PROJECT_DIR$/OOP/GAMES/five_points.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,18 +53,18 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/OOP" />
+      <recent name="$PROJECT_DIR$/drag&amp;drop" />
+      <recent name="$PROJECT_DIR$/canvas_JS" />
+      <recent name="$PROJECT_DIR$/animation_js" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/OOP/GAMES" />
       <recent name="$PROJECT_DIR$/animation_js" />
       <recent name="$PROJECT_DIR$/drag&amp;drop/images" />
       <recent name="$PROJECT_DIR$/local_storage" />
       <recent name="$PROJECT_DIR$/local_noteBooke" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/OOP" />
-      <recent name="$PROJECT_DIR$/drag&amp;drop" />
-      <recent name="$PROJECT_DIR$/canvas_JS" />
-      <recent name="$PROJECT_DIR$/animation_js" />
     </key>
   </component>
   <component name="RunManager">
@@ -157,7 +157,7 @@
       <workItem from="1601622835128" duration="3395000" />
       <workItem from="1601748142106" duration="37000" />
       <workItem from="1601801947212" duration="2244000" />
-      <workItem from="1601918448526" duration="1742000" />
+      <workItem from="1601918448526" duration="4814000" />
     </task>
     <servers />
   </component>
