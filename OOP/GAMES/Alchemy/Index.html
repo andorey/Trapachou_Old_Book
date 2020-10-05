@@ -82,7 +82,7 @@
             justify-content: flex-start;
 			position: absolute;
             float: left;
-            max-height: 680px;
+            max-height: 99%;
 			max-width: 25%;
             overflow : auto;
             border: 2px solid #f1f4f9;
@@ -96,10 +96,11 @@
 		
 		#elementPlace>div{
 			text-align: center;
-			font-size: 1.2em;
+			font-size: 1.05em;
             margin: 5px;
             width: 83px;
             height: 83px;
+			background-size: cover;
 		}
 		
         #workSpace{
@@ -155,6 +156,7 @@
 <div id="sky"></div>
 <div id="stars"></div>
 <aside id="rules">
+	Вам дано 4 стихии из них, путем превращения, можно получить другие элементы, для этого: <br><br>
 	1. Выберите по очереди 2 элемента и поместите их в поле для превращения <br><br>
 	2. Для преобразования элементов, в поле можно помещать ТОЛЬКО 2 элемента!<br><br>
 	3. Чтобы удалить элемент, перетяните его в корзину, внизу.
@@ -213,7 +215,8 @@
     
     function findElement([name1, name2]) {
 		for (let i of setElementsMix){
-		    if(i[0] === name1 && i[1] === name2 || i[1] === name1 && i[0] === name2){
+		    if(i[0] === name1 && i[1] === name2 ||
+				i[1] === name1 && i[0] === name2){
 		        return i[2]
 			}
 		}
@@ -240,11 +243,11 @@
         span.appendChild(button1)
         span.appendChild(button2)
 		
-		button2.addEventListener('click', function (el) {
+		button2.addEventListener('click', function () {
 			this.parentElement.remove();
         })
 		
-		button1.addEventListener('click', function (el) {
+		button1.addEventListener('click', function () {
             this.parentElement.remove();
             let element = findElement(workWithElements)
 			if(element){
