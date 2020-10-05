@@ -19,6 +19,14 @@
 			padding: 0;
 			border: 1px solid gray;
 		}
+		.player1{
+			background: red;
+            border-radius: 50%;
+		}
+		.player2{
+			background: cornflowerblue;
+            border-radius: 50%;
+		}
 		
 	</style>
 </head>
@@ -27,15 +35,27 @@
 
 <script>
 	const game = document.getElementById('game');
-	
-	let columnNum = Math.floor(window.innerWidth/22);
-	let rowsNum = Math.floor(window.innerHeight/22)
+	let columnNum = Math.floor( window.innerWidth / 22 );
+	let rowsNum = Math.floor( window.innerHeight / 22 );
+	let color = 0;
 	
 	const fillField = function (game, columnNum, rowsNum) {
 		for (let i = 0; i < rowsNum; i++){
 		    let div = document.createElement('div');
 		    for(let j = 0; j < columnNum; j++){
 		    	let div2 = document.createElement('div');
+		    	div2.addEventListener('click', function (event) {
+		    	    if(!color && this.className === ''){
+                        this.className = 'player1';
+                        color = 1;
+					}else if(color && this.className === ''){
+                        this.className = 'player2';
+                        color = 0;
+					}else if(this.className && event.shiftKey){
+		    	        this.className = '';
+		    	        color = !color;
+					}
+                })
 		    	div.appendChild(div2)
 			}
 		    game.appendChild(div)
