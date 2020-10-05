@@ -16,7 +16,7 @@
 
 <body>
 <div>
-<canvas id="viewport" height="750" width="700"></canvas>
+<canvas id="viewport" height="760" width="700"></canvas>
 </div>
 
 <script>
@@ -40,7 +40,7 @@
             width: 0,       // Width, gets calculated
             height: 0,      // Height, gets calculated
             columns: 17,    // Number of tile columns
-            rows: 17,       // Number of tile rows
+            rows: 18,       // Number of tile rows
             tilewidth: 40,  // Visual width of a tile
             tileheight: 40, // Visual height of a tile
             rowheight: 35,  // Height of a row
@@ -732,7 +732,7 @@
             drawCenterText("Score:", scorex, scorey, 150);
             cxt.font = "24px Verdana";
             drawCenterText(score, scorex, scorey+30, 150);
-
+			
             // Render cluster
             if (showcluster) {
                 renderCluster(cluster, 255, 128, 128);
