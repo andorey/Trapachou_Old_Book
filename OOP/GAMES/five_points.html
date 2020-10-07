@@ -41,12 +41,16 @@
     let columnNum = Math.floor(window.innerWidth / 22);
     let rowsNum = Math.floor(window.innerHeight / 22);
     let nextGamer = 0;
+    let lineCheck =[];
+    let lines;
 
     const fillField = function (game, columnNum, rowsNum) {
         for (let i = 0; i < rowsNum; i++) {
+            lineCheck[i] = [0]
             let div = document.createElement('div');
             for (let j = 0; j < columnNum; j++) {
                 let div2 = document.createElement('div');
+                lineCheck[i][j] = div2.className ? 1 : 0;
                 div2.addEventListener('click', function (event) {
                     if (!nextGamer && this.className === '') {
                         this.className = 'player1';
@@ -58,6 +62,10 @@
                         this.className = '';
                         nextGamer = !nextGamer;
                     }
+                    lineCheck[i][j] = div2.className === 'player1' ? 3 : div2.className === 'player2' ? 5 : 0;
+                    lineRow(lineCheck);
+                    lineColumn(lineCheck);
+                    diagonalLeft(lineCheck)
                 })
                 div.appendChild(div2)
             }
@@ -66,6 +74,35 @@
     }
 
     fillField(game, columnNum, rowsNum)
+	
+	function lineRow(arr) {
+		for (let i of arr){
+			if(i.join('').includes('33333')){ alert('Player1 is WIN!!!'); location.reload() }
+			if(i.join('').includes('55555')){ alert('Player2 is WIN!!!'); location.reload() }
+		}
+    }
+    
+    function lineColumn(arr) {
+        let column = [];
+		for(let i = 0; i < arr.length; i++){
+		    column[i] = []
+		    for(let j = 0; j < arr[j].length; j++){
+		        column[i][j] = arr[j][i]
+			}
+            lineRow(column)
+		}
+    }
+    
+    // function diagonalLeft(arr) {
+	// 	let diagonal = []
+	// 	for ( let i = 0; i < arr[i].length; i++){
+	// 	    diagonal[i] = [];
+	// 	    for (let j = i; j > -1; j--){
+	// 	        diagonal[i][j] = arr[i+j][j]
+	// 		}
+	// 	    console.log(diagonal)
+	// 	}
+    // }
 	
 </script>
 </body>
