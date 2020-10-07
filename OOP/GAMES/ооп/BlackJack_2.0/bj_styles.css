@@ -96,7 +96,7 @@
 }
 .buttons:not(.btn_disable):hover {
     box-shadow: white 0 0 5px 3px;
-    /*color: white;*/
+    /*nextGamer: white;*/
 }
 .btn_disable {
     background: rgba(0, 0, 0, 0.3);

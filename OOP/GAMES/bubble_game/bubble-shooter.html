@@ -800,7 +800,7 @@
                         cxt.save();
                         cxt.globalAlpha = tile.alpha;
 
-                        // Draw the tile using the color
+                        // Draw the tile using the nextGamer
                         drawBubble(coord.tilex, coord.tiley + shift, tile.type);
 
                         cxt.restore();
@@ -815,7 +815,7 @@
                 // Calculate the tile coordinates
                 let coord = getTileCoordinate(cluster[i].x, cluster[i].y);
 
-                // Draw the tile using the color
+                // Draw the tile using the nextGamer
                 cxt.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
                 cxt.fillRect(coord.tilex+level.tilewidth/4, coord.tiley+level.tileheight/4, level.tilewidth/2, level.tileheight/2);
             }
@@ -951,7 +951,7 @@
             player.nextbubble.tiletype = getExistingColor();
         }
 
-        // Get a random existing color
+        // Get a random existing nextGamer
         function getExistingColor() {
             let existingcolors = findColors();
 
