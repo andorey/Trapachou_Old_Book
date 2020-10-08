@@ -41,15 +41,17 @@
     let columnNum = Math.floor(window.innerWidth / 22);
     let rowsNum = Math.floor(window.innerHeight / 22);
     let nextGamer = 0;
-    let lineCheck =[];
+    let lineCheck = [];
+    
 
     const fillField = function (game, columnNum, rowsNum) {
         for (let i = 0; i < rowsNum; i++) {
             lineCheck[i] = []
             let div = document.createElement('div');
+            
             for (let j = 0; j < columnNum; j++) {
                 let div2 = document.createElement('div');
-                lineCheck[i][j] = div2.className ? 1 : 0;
+                
                 div2.addEventListener('click', function (event) {
                     if (!nextGamer && this.className === '') {
                         this.className = 'player1';
@@ -61,11 +63,12 @@
                         this.className = '';
                         nextGamer = !nextGamer;
                     }
+                    
                     lineCheck[i][j] = div2.className === 'player1' ? 3 : div2.className === 'player2' ? 5 : 0;
                     lineRow(lineCheck);
                     lineColumn(lineCheck);
                     diagonalLeft(lineCheck);
-                    //diagonalRight(lineCheck)
+                    diagonalRight(lineCheck)
                 })
                 div.appendChild(div2)
             }
@@ -75,50 +78,53 @@
 
     fillField(game, columnNum, rowsNum)
 	
-	function lineRow(arr) {
+	function whoWinner(str) {
         let winner = '';
-		for (let i of arr){
-			if(i.join('').includes('33333')){ winner = 'Player 1' }
-			if(i.join('').includes('55555')){ winner = 'Player 2' }
-		}
-		if(winner){
+        if(str.includes('33333')){ winner = 'Player 1' }
+        if(str.includes('55555')){ winner = 'Player 2' }
+        if(winner){
             alert('\f ' + winner + '\nis Winner!');
             location.reload()
+        }
+    }
+	
+	function lineRow(arr) {
+		for (let i of arr){
+			whoWinner(i.join(''))
 		}
     }
     
     function lineColumn(arr) {
-        let column = [];
+        let column = '';
 		for(let i = 0; i < columnNum; i++){
-		    column[i] = []
 		    for(let j = 0; j < rowsNum; j++){
-		        column[i][j] = arr[j][i]
+		        column = column.concat( arr[j][i] )
 			}
-            lineRow(column)
+            whoWinner(column)
 		}
     }
-    
+	
     function diagonalLeft(arr) {
-		let diagonal = []
-		for ( let i = 0; i < rowsNum; i++){
-		    diagonal[i] = [];
-		    for (let j = i; j >= 0; j--){
-				diagonal[i][j] = arr[i-j][j]
+        let diagonal = [];
+        for ( let i = 0; i < rowsNum; i++){
+            for (let j = 0; j < columnNum; j++){
+                diagonal[i + j] = diagonal[i + j] === undefined ? [] : diagonal[i + j];
+                diagonal[i + j].push(arr[i][j])
 			}
-            lineRow(diagonal)
-		}
+        }
+        lineRow(diagonal)
     }
 
-    // function diagonalRight(arr) {
-    //     let diagonal = []
-    //     for ( let i = arr.length - 1; i > -1;  i--){
-    //         diagonal[i] = [];
-    //         for (let j = 0; j < arr.length - 1 - i; j++){
-    //             diagonal[i][j] = arr[i][j]
-    //         }
-    //         console.log(diagonal)
-    //     }
-    // }
+    function diagonalRight(arr) {
+        let diagonal = []
+        for ( let i = 0; i < rowsNum; i++){
+            for (let j = columnNum - 1; j >= 0; j--){
+                diagonal[i] = diagonal[i] === undefined ? [] : diagonal[i];
+                diagonal[i].push(arr[i][j]);
+            }
+        }
+        diagonalLeft(diagonal)
+    }
 	
 </script>
 </body>
