@@ -18,17 +18,17 @@
         #game > div > div {
             width: 20px;
             height: 20px;
-            margin: 0.5px;
+            /*margin: 0.5px;*/
             border: 1px solid lightgray;
         }
 
         .player1 {
-            background: red;
+            background: tomato;
             border-radius: 50%;
         }
 
         .player2 {
-            background: #64edc8;
+            background: #02fbf7;
             border-radius: 50%;
         }
 		
@@ -68,8 +68,8 @@
 
 <script>
     const game = document.getElementById('game');
-    let columnNum = Math.floor(window.innerWidth / 23);
-    let rowsNum = Math.floor(window.innerHeight / 24);
+    let columnNum = Math.floor(window.innerWidth / 22);
+    let rowsNum = Math.floor(window.innerHeight / 23);
     let winner = '';
     let nextGamer = 0;
     let lineCheck = [];
