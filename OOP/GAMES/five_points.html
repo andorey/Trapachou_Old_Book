@@ -18,8 +18,8 @@
         #game > div > div {
             width: 20px;
             height: 20px;
-            padding: 0;
-            border: 1px solid darkgray;
+            margin: 0.5px;
+            border: 1px solid lightgray;
         }
 
         .player1 {
@@ -28,7 +28,7 @@
         }
 
         .player2 {
-            background: cornflowerblue;
+            background: #64edc8;
             border-radius: 50%;
         }
 		
@@ -47,14 +47,14 @@
 			width: 100%;
 			color: white;
 			font-size: 5em;
-			font-weight: bolder;
+			font-weight: bold;
 			background-color: rgba(1, 1, 1, 0.15)
 		}
 		
 		.button{
 			margin-bottom: 40px;
 			font-size: 18px;
-			background: #047e87;
+			background: #004351;
 			color: white;
 			text-shadow: black 4px 5px 2px;
 			padding: 10px 20px;
@@ -68,8 +68,8 @@
 
 <script>
     const game = document.getElementById('game');
-    let columnNum = Math.floor(window.innerWidth / 22);
-    let rowsNum = Math.floor(window.innerHeight / 22);
+    let columnNum = Math.floor(window.innerWidth / 23);
+    let rowsNum = Math.floor(window.innerHeight / 24);
     let winner = '';
     let nextGamer = 0;
     let lineCheck = [];
@@ -97,6 +97,7 @@
                     }
                     
                     lineCheck[i][j] = div2.className === 'player1' ? 3 : div2.className === 'player2' ? 5 : 0;
+                    
                     lineRow(lineCheck);
                     lineColumn(lineCheck);
                     diagonalLeft(lineCheck);
@@ -120,7 +121,7 @@
             restartGame()
         }
     }
-    
+	
     function lineColumn(arr) {
         let column = [];
 		for(let i = 0; i < columnNum; i++){
