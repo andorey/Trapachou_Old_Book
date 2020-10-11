@@ -42,13 +42,13 @@
             justify-content: space-between;
             align-content: space-around;
             align-items: center;
-			text-shadow: black 2px 3px 2px;
+			text-shadow: black -2px -3px 5px;
 			height: 100%;
 			width: 100%;
-			color: white;
+			color: rgb(255, 255, 255);
 			font-size: 5em;
 			font-weight: bold;
-			background-color: rgba(1, 1, 1, 0.15)
+			background-color: rgba(0, 0, 0, 0.10)
 		}
 		
 		.button{
@@ -97,7 +97,7 @@
                     }
                     
                     lineCheck[i][j] = div2.className === 'player1' ? 1 : div2.className === 'player2' ? 2 : 0;
-                    
+					
                     lineRow(lineCheck);
                     lineColumn(lineCheck);
                     diagonalLeft(lineCheck);
