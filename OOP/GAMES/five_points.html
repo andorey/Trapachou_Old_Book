@@ -82,7 +82,7 @@
             
             for (let j = 0; j < columnNum; j++) {
                 let div2 = document.createElement('div');
-                lineCheck[i][j] = div2.className ? 1 : 0;
+                lineCheck[i][j] = div2.className ? '0' : 0;
                 
                 div2.addEventListener('click', function (event) {
                     if (!nextGamer && this.className === '') {
@@ -96,7 +96,7 @@
                         nextGamer = !nextGamer;
                     }
                     
-                    lineCheck[i][j] = div2.className === 'player1' ? 3 : div2.className === 'player2' ? 5 : 0;
+                    lineCheck[i][j] = div2.className === 'player1' ? 1 : div2.className === 'player2' ? 2 : 0;
                     
                     lineRow(lineCheck);
                     lineColumn(lineCheck);
@@ -113,8 +113,8 @@
 	
 	function lineRow(arr) {
 		for (let i of arr){
-            if(i.join('').includes('33333')){ winner = 'Player 1' }
-            if(i.join('').includes('55555')){ winner = 'Player 2' }
+            if(i.join('').includes('11111')){ winner = 'Player 1' }
+            if(i.join('').includes('22222')){ winner = 'Player 2' }
 		}
         if(winner){
             alert('\f ' + winner + '\nis Winner!');
