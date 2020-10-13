@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>how move horse</title>
+	<style>
+		body{
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+		
+		.field{
+			width: 320px;
+			height: 320px;
+			border: solid 5px;
+		}
+		
+		.field>div{
+            display: flex;
+		}
+		
+		.black{
+			background-color: black;
+			width: 40px;
+			height: 40px;
+		}
+		.white{
+			background-color: white;
+            width: 40px;
+            height: 40px;
+		}
+		
+		.red{
+			background-color: red;
+            width: 40px;
+            height: 40px;
+		}
+        .green{
+            background-color: #00f400;
+            width: 40px;
+            height: 40px;
+        }
+	</style>
+</head>
+<body>
+<div id="field">
+	<div class="field"></div>
+</div>
+
+<label >
+	<input class="npt" type="text">
+</label>
+<button class="in">GO</button>
+<div class="out" style="font-size: 3em"></div>
+
+<script>
+	let desk = document.querySelector('.field')
+	
+	function horse ([x,y]) {
+        let possible = [[x + 2, y + 1], [x + 2, y - 1], [x - 2, y + 1], [x - 2, y - 1], [x + 1, y + 2], [x + 1, y - 2], [x - 1, y + 2], [x - 1, y - 2]];
+
+        possible.forEach(([xx,yy])=>{
+            if(xx>=0 && xx<8 && yy>=0 && yy<8){
+                document.querySelector(`span[data-arr = '${xx},${yy}']`).classList.add('green')
+            }
+        });
+    }
+    
+	function buildDesk() {
+        for (let i = 0; i < 8; i++) {
+            let div = document.createElement('div')
+            for (let j = 0; j < 8; j++) {
+                let span = document.createElement('span')
+				span.dataset.arr = [i, j]
+                if ((i + j) % 2 === 0) {
+                    span.classList.add('black');
+                } else {
+                    span.classList.add('white');
+                }
+                div.appendChild(span)
+            }
+            desk.appendChild(div)
+        }
+    }
+    
+    buildDesk()
+	
+	let allBox = document.querySelectorAll('span')
+	allBox.forEach(function (el) {
+		el.addEventListener('click', function () {
+            allBox.forEach(el => el.classList.remove('green'))
+            allBox.forEach(el => el.classList.remove('red'))
+		    
+			this.classList.add('red');
+			horse(this.dataset.arr.split(',').map(el=> parseInt(el)))
+        })
+    })
+	
+	let npt = document.querySelector('.npt')
+	document.querySelector('.in').addEventListener('click', function () {
+		document.querySelector('.out').innerHTML += npt.value + '<br>'
+    })
+</script>
+</body>
+</html>

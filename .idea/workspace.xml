@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="74023db5-c1bb-4577-96dc-080e17d9e9bb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOP/GAMES/five_points.html" beforeDir="false" afterPath="$PROJECT_DIR$/OOP/GAMES/five_points.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OOP/GAMES/five_oop.html" beforeDir="false" afterPath="$PROJECT_DIR$/OOP/GAMES/five_oop.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +49,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.editor" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -161,7 +161,13 @@
       <workItem from="1602041124004" duration="731000" />
       <workItem from="1602046492068" duration="864000" />
       <workItem from="1602071735631" duration="47288000" />
-      <workItem from="1602431188000" duration="1752000" />
+      <workItem from="1602431188000" duration="2036000" />
+      <workItem from="1602517912552" duration="33000" />
+      <workItem from="1602517958261" duration="258000" />
+      <workItem from="1602532951438" duration="1260000" />
+      <workItem from="1602537390362" duration="416000" />
+      <workItem from="1602538025547" duration="478000" />
+      <workItem from="1602538545114" duration="8082000" />
     </task>
     <servers />
   </component>
@@ -208,10 +214,10 @@
       <screen x="0" y="23" width="1280" height="777" />
     </state>
     <state x="365" y="57" key="Github.UntrackedFilesDialog/0.23.1280.777@0.23.1280.777" timestamp="1596052690085" />
-    <state x="32" y="23" key="SettingsEditor" timestamp="1597678009093">
+    <state x="32" y="23" key="SettingsEditor" timestamp="1602517943202">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state x="32" y="23" key="SettingsEditor/0.23.1280.777@0.23.1280.777" timestamp="1597678009093" />
+    <state x="32" y="23" key="SettingsEditor/0.23.1280.777@0.23.1280.777" timestamp="1602517943202" />
     <state x="144" y="88" key="Vcs.Push.Dialog.v2" timestamp="1598210646173">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
