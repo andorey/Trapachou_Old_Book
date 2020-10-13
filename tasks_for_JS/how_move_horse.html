@@ -49,17 +49,20 @@
 	<div class="field"></div>
 </div>
 
-<label >
-	<input class="npt" type="text">
-</label>
-<button class="in">GO</button>
-<div class="out" style="font-size: 3em"></div>
-
 <script>
 	let desk = document.querySelector('.field')
 	
 	function horse ([x,y]) {
-        let possible = [[x + 2, y + 1], [x + 2, y - 1], [x - 2, y + 1], [x - 2, y - 1], [x + 1, y + 2], [x + 1, y - 2], [x - 1, y + 2], [x - 1, y - 2]];
+        let possible = [
+            [x + 2, y + 1],
+			[x + 2, y - 1],
+			[x - 2, y + 1],
+			[x - 2, y - 1],
+			[x + 1, y + 2],
+			[x + 1, y - 2],
+			[x - 1, y + 2],
+			[x - 1, y - 2]
+		];
 
         possible.forEach(([xx,yy])=>{
             if(xx>=0 && xx<8 && yy>=0 && yy<8){
@@ -94,14 +97,10 @@
             allBox.forEach(el => el.classList.remove('red'))
 		    
 			this.classList.add('red');
-			horse(this.dataset.arr.split(',').map(el=> parseInt(el)))
+			horse(this.dataset.arr.split(',').map(el => parseInt(el)))
         })
     })
 	
-	let npt = document.querySelector('.npt')
-	document.querySelector('.in').addEventListener('click', function () {
-		document.querySelector('.out').innerHTML += npt.value + '<br>'
-    })
 </script>
 </body>
 </html>

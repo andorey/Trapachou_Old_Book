@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="74023db5-c1bb-4577-96dc-080e17d9e9bb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOP/GAMES/five_oop.html" beforeDir="false" afterPath="$PROJECT_DIR$/OOP/GAMES/five_oop.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tasks_for_JS/how_move_horse.html" beforeDir="false" afterPath="$PROJECT_DIR$/tasks_for_JS/how_move_horse.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,18 +52,18 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/OOP/GAMES" />
-      <recent name="$PROJECT_DIR$/OOP/GAMES/ооп" />
-      <recent name="$PROJECT_DIR$/animation_js" />
-      <recent name="$PROJECT_DIR$/drag&amp;drop/images" />
-      <recent name="$PROJECT_DIR$/local_storage" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/OOP" />
       <recent name="$PROJECT_DIR$/drag&amp;drop" />
       <recent name="$PROJECT_DIR$/canvas_JS" />
       <recent name="$PROJECT_DIR$/animation_js" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tasks_for_JS" />
+      <recent name="$PROJECT_DIR$/OOP/GAMES" />
+      <recent name="$PROJECT_DIR$/OOP/GAMES/ооп" />
+      <recent name="$PROJECT_DIR$/animation_js" />
+      <recent name="$PROJECT_DIR$/drag&amp;drop/images" />
     </key>
   </component>
   <component name="RunManager">
@@ -167,7 +166,7 @@
       <workItem from="1602532951438" duration="1260000" />
       <workItem from="1602537390362" duration="416000" />
       <workItem from="1602538025547" duration="478000" />
-      <workItem from="1602538545114" duration="8082000" />
+      <workItem from="1602538545114" duration="8403000" />
     </task>
     <servers />
   </component>
