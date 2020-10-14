@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="74023db5-c1bb-4577-96dc-080e17d9e9bb" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/tasks_for_JS/how_move_elephant.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OOP/GAMES/five_points.html" beforeDir="false" afterPath="$PROJECT_DIR$/OOP/GAMES/five_points.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tasks_for_JS/how_move_horse.html" beforeDir="false" afterPath="$PROJECT_DIR$/tasks_for_JS/how_move_horse.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -40,7 +43,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/OOP" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/tasks_for_JS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -53,6 +56,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tasks_for_JS" />
       <recent name="$PROJECT_DIR$/OOP" />
       <recent name="$PROJECT_DIR$/drag&amp;drop" />
       <recent name="$PROJECT_DIR$/canvas_JS" />
@@ -166,7 +170,7 @@
       <workItem from="1602532951438" duration="1260000" />
       <workItem from="1602537390362" duration="416000" />
       <workItem from="1602538025547" duration="478000" />
-      <workItem from="1602538545114" duration="8403000" />
+      <workItem from="1602538545114" duration="13046000" />
     </task>
     <servers />
   </component>
@@ -181,6 +185,10 @@
       <screen x="0" y="23" width="1280" height="777" />
     </state>
     <state x="270" y="83" key="#Inspections/0.23.1280.777@0.23.1280.777" timestamp="1601150538897" />
+    <state x="129" y="23" key="#Intentions" timestamp="1602617885567">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="129" y="23" key="#Intentions/0.23.1280.777@0.23.1280.777" timestamp="1602617885567" />
     <state x="347" y="203" key="#Notifications" timestamp="1600108677378">
       <screen x="0" y="23" width="1280" height="777" />
     </state>

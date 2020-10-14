@@ -19,7 +19,7 @@
             width: 20px;
             height: 20px;
             /*margin: 0.5px;*/
-            border: 1px solid lightgray;
+            border: 1px solid #edecec;
         }
 
         .player1 {
@@ -72,17 +72,18 @@
     let rowsNum = Math.floor(window.innerHeight / 23);
     let winner = '';
     let nextGamer = 0;
-    let lineCheck = [];
+    //let lineCheck = [];
+    let lineCheck = Array.from({length: rowsNum}, () => Array.from({length: columnNum}, () => 0));
     
 
     const fillField = function (game, columnNum, rowsNum) {
         for (let i = 0; i < rowsNum; i++) {
-            lineCheck[i] = []
+            //lineCheck[i] = []
             let div = document.createElement('div');
             
             for (let j = 0; j < columnNum; j++) {
                 let div2 = document.createElement('div');
-                lineCheck[i][j] = div2.className ? '0' : 0;
+                // lineCheck[i][j] = div2.className ? '0' : 0;
                 
                 div2.addEventListener('click', function (event) {
                     if (!nextGamer && this.className === '') {
@@ -117,7 +118,7 @@
             if(i.join('').includes('22222')){ winner = 'Player 2' }
 		}
         if(winner){
-            alert('\f ' + winner + '\nis Winner!');
+            alert('\f ' + winner + '\n is Winner!');
             restartGame()
         }
     }
@@ -160,7 +161,7 @@
 		let body = document.querySelector('body')
 		let div = document.createElement('div')
 		div.className = 'field';
-		div.innerText = 'GAME OVER\n\f' + winner + ' wins!';
+		div.innerText = 'GAME OVER\n' + winner + ' wins !';
 		body.appendChild(div)
 		let button = document.createElement('button')
 		button.innerHTML = 'RESTART'

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>how to move a elephant</title>
+	<title>how to move an alephant</title>
 	<style>
 		body{
 			display: flex;
@@ -34,7 +34,7 @@
 		}
 		
 		.red{
-			background-color: #d67204;
+			background-color: red;
 		}
         .green{
             background-color: #00f400;
@@ -42,7 +42,7 @@
 	</style>
 </head>
 <body>
-<div id="field">
+<div>
 	<div class="field"></div>
 </div>
 
@@ -51,16 +51,22 @@
 
     buildDesk();
 	
-	function horse ([x,y]) {
+	function elephant ([x,y]) {
         let steps = [
-            [x + 2, y + 1],
-			[x + 2, y - 1],
-			[x - 2, y + 1],
-			[x - 2, y - 1],
-			[x + 1, y + 2],
-			[x + 1, y - 2],
-			[x - 1, y + 2],
-			[x - 1, y - 2]
+            [x + 1, y + 1], [x - 1, y + 1],
+			[x - 1, y - 1], [x - 2, y + 2],
+			[x + 2, y + 2], [x - 3, y + 3],
+			[x - 2, y - 2], [x - 4, y + 4],
+			[x + 3, y + 3], [x - 5, y + 5],
+			[x - 3, y - 3], [x - 6, y + 6],
+			[x + 4, y + 4], [x - 7, y + 7],
+			[x - 4, y - 4], [x + 1, y - 1],
+			[x + 5, y + 5], [x + 2, y - 2],
+			[x - 5, y - 5], [x + 3, y - 3],
+			[x + 6, y + 6], [x + 4, y - 4],
+			[x - 6, y - 6], [x + 5, y - 5],
+			[x + 7, y + 7], [x + 6, y - 6],
+			[x - 7, y - 7], [x + 7, y - 7]
 		];
 
         steps.forEach(( [a, b] )=>{
@@ -77,6 +83,7 @@
             for (let j = 0; j < 8; j++) {
                 let span = document.createElement('span')
 				span.dataset.xy = `${i},${j}`;
+                
                 if ((i + j) % 2 === 0) {
                     span.classList.add('black');
                 } else {
@@ -97,7 +104,7 @@
             allBoxes.forEach(el => el.classList.remove('red'))
 		    
 			this.classList.add('red');
-			horse(this.dataset.xy.split(',').map(el => parseInt(el)))
+			elephant(this.dataset.xy.split(',').map(el => parseInt(el)))
         })
     })
 	
