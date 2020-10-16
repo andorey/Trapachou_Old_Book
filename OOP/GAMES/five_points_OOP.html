@@ -2,9 +2,88 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>$Title$</title>
+  <title>five points OOP</title>
+  <style>
+    *{
+      margin: 0 auto;
+    }
+    .space{
+      display: flex;
+      flex-direction: column;
+      height: 320px;
+      width: 320px;
+      border: brown 10px double;
+    }
+    .row{
+      display: inherit;
+      flex-direction: row;
+    }
+    .black{
+      width: 40px;
+      height: 40px;
+      background-color: lightslategray;
+    }
+    .white{
+      width: 40px;
+      height: 40px;
+      background-color: aliceblue;
+    }
+    .flesh{
+      width: 40px;
+      height: 40px;
+      background-color: cornflowerblue;
+    }
+    .position{
+      width: 40px;
+      height: 40px;
+      background-color: lawngreen;
+    }
+  </style>
 </head>
 <body>
-$END$
+<div id="field">
+  <div class="space"></div>
+</div>
+
+<script>
+  let space = document.querySelector('.space');
+  
+  for (let i = 0; i < 8; i++){
+    let div = document.createElement('div');
+    div.classList.add('row')
+    for (let j = 0; j < 8; j++){
+      let span = document.createElement('span')
+      span.dataset.xy = `${i}, ${j}`;
+      
+      if ((i + j) % 2 === 0){ span.classList.add('black') }
+      else { span.classList.add('white') }
+      
+      div.appendChild(span)
+    }
+    space.appendChild(div)
+  }
+
+  let field = document.querySelectorAll('span');
+  
+  field.forEach(function (element) {
+    element.addEventListener('click', function () {
+      this.classList.add('flesh')
+      let coordinates = this.dataset.xy.split(',').map(el => parseInt(el))
+      
+    })
+  })
+  
+  function horse([x,y]) {
+    const position = [
+            [x+1, y+2], [x+1, y-2], [x-1, x+2], [x-1, y-2],
+            [x+2, y+1], [x+2, y-1], [x-2, x+1], [x-2, y-1]
+    ]
+    position.forEach(([a, b])=>{
+      if(a >= 0 && a < 8 && b >= 0 && b < 8){
+        document.querySelector(`span[data-xy = '${a}, ${b}']`).classList.add('position')
+      }
+    })
+  }
+</script>
 </body>
 </html>
