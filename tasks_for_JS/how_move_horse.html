@@ -92,13 +92,19 @@
 	let allBoxes = document.querySelectorAll('span')
 	
 	allBoxes.forEach(function (el) {
-		el.addEventListener('click', function () {
+		el.addEventListener('mousedown', function () {
             allBoxes.forEach(el => el.classList.remove('green'))
             allBoxes.forEach(el => el.classList.remove('red'))
 		    
 			this.classList.add('red');
 			horse(this.dataset.xy.split(',').map(el => parseInt(el)))
         })
+        
+      //el.addEventListener('mouseup', function () {
+      	//allBoxes.forEach(el => el.classList.remove('green'))
+        //allBoxes.forEach(el => el.classList.remove('red'))
+      //})
+      
     })
 	
 </script>

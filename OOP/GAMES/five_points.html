@@ -33,22 +33,21 @@
         }
 		
 		.field{
-			position: absolute;
-			top: 0;
-			left: 0;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
             display: flex;
-			flex-direction: column;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-content: space-around;
+            flex-direction: column;
+            justify-content: space-around;
+            text-align: center;
             align-items: center;
 			text-shadow: black -2px -3px 5px;
-			height: 100%;
-			width: 100%;
 			color: rgb(255, 255, 255);
 			font-size: 5em;
 			font-weight: bold;
-			background-color: rgba(0, 0, 0, 0.10)
+			background-color: rgba(0, 0, 0, 0.27)
 		}
 		
 		.button{
@@ -59,7 +58,11 @@
 			text-shadow: black 4px 5px 2px;
 			padding: 10px 20px;
 			border-radius: 9px;
-			box-shadow: black 0 0 5px;
+			box-shadow: white 0 0 15px;
+		}
+		
+		.button:hover{
+            background: #04e69f;
 		}
 	</style>
 </head>
@@ -67,109 +70,111 @@
 <div id="game"></div>
 
 <script>
-    const game = document.getElementById('game');
-    let columnNum = Math.floor(window.innerWidth / 22);
-    let rowsNum = Math.floor(window.innerHeight / 23);
-    let winner = '';
-    let nextGamer = 0;
-    //let lineCheck = [];
-    let lineCheck = Array.from({length: rowsNum}, () => Array.from({length: columnNum}, () => 0));
-    
+	(function() {
+        const game = document.getElementById('game');
+        let columnNum = Math.floor(window.innerWidth / 22);
+        let rowsNum = Math.floor(window.innerHeight / 23);
+        let winner = '';
+        let nextGamer = 0;
+        let lineCheck = Array.from({length: rowsNum}, () => Array.from({length: columnNum}, () => 0));
 
-    const fillField = function (game, columnNum, rowsNum) {
-        for (let i = 0; i < rowsNum; i++) {
-            //lineCheck[i] = []
-            let div = document.createElement('div');
-            
-            for (let j = 0; j < columnNum; j++) {
-                let div2 = document.createElement('div');
-                // lineCheck[i][j] = div2.className ? '0' : 0;
-                
-                div2.addEventListener('click', function (event) {
-                    if (!nextGamer && this.className === '') {
-                        this.className = 'player1';
-                        nextGamer = 1;
-                    } else if (nextGamer && this.className === '') {
-                        this.className = 'player2';
-                        nextGamer = 0;
-                    } else if (this.className && event.shiftKey) {
-                        this.className = '';
-                        nextGamer = !nextGamer;
-                    }
-                    
-                    lineCheck[i][j] = div2.className === 'player1' ? 1 : div2.className === 'player2' ? 2 : 0;
-					
-                    lineRow(lineCheck);
-                    lineColumn(lineCheck);
-                    diagonalLeft(lineCheck);
-                    diagonalRight(lineCheck)
-                })
-                div.appendChild(div2)
-            }
-            game.appendChild(div)
-        }
-    }
 
-    fillField(game, columnNum, rowsNum)
-	
-	function lineRow(arr) {
-		for (let i of arr){
-            if(i.join('').includes('11111')){ winner = 'Player 1' }
-            if(i.join('').includes('22222')){ winner = 'Player 2' }
-		}
-        if(winner){
-            alert('\f ' + winner + '\n is Winner!');
-            restartGame()
-        }
-    }
-	
-    function lineColumn(arr) {
-        let column = [];
-		for(let i = 0; i < columnNum; i++){
-		    column[i] = [];
-		    for(let j = 0; j < rowsNum; j++){
-		        column[i][j] = arr[j][i] ? arr[j][i] : 0;
-			}
-		}
-        console.log(column)
-        lineRow(column)
-    }
-	
-    function diagonalLeft(arr) {
-        let diagonal = [];
-        for ( let i = 0; i < rowsNum; i++){
-            for (let j = 0; j < columnNum; j++){
-                diagonal[i + j] = diagonal[i + j] === undefined ? [] : diagonal[i + j];
-                diagonal[i + j].push(arr[i][j])
-			}
-        }
-        lineRow(diagonal)
-    }
+        const fillField = function (game, columnNum, rowsNum) {
+            for (let i = 0; i < rowsNum; i++) {
+                //lineCheck[i] = []
+                let div = document.createElement('div');
 
-    function diagonalRight(arr) {
-        let diagonal = []
-        for ( let i = 0; i < rowsNum; i++){
-            for (let j = columnNum - 1; j >= 0; j--){
-                diagonal[i] = diagonal[i] === undefined ? [] : diagonal[i];
-                diagonal[i].push(arr[i][j]);
+                for (let j = 0; j < columnNum; j++) {
+                    let div2 = document.createElement('div');
+                    // lineCheck[i][j] = div2.className ? '0' : 0;
+
+                    div2.addEventListener('click', function (event) {
+                        if (!nextGamer && this.className === '') {
+                            this.className = 'player1';
+                            nextGamer = 1;
+                        } else if (nextGamer && this.className === '') {
+                            this.className = 'player2';
+                            nextGamer = 0;
+                        } else if (this.className && event.shiftKey) {
+                            this.className = '';
+                            nextGamer = !nextGamer;
+                        }
+
+                        lineCheck[i][j] = div2.className === 'player1' ? 1 : div2.className === 'player2' ? 2 : 0;
+
+                        lineRow(lineCheck);
+                        lineColumn(lineCheck);
+                        diagonalLeft(lineCheck);
+                        diagonalRight(lineCheck)
+                    })
+                    div.appendChild(div2)
+                }
+                game.appendChild(div)
             }
         }
-        diagonalLeft(diagonal)
-    }
-    
-    function restartGame() {
-		let body = document.querySelector('body')
-		let div = document.createElement('div')
-		div.className = 'field';
-		div.innerText = 'GAME OVER\n' + winner + ' wins !';
-		body.appendChild(div)
-		let button = document.createElement('button')
-		button.innerHTML = 'RESTART'
-		button.className = 'button'
-		div.appendChild(button)
-		button.addEventListener('click', () => location.reload())
-    }
-	
+
+        fillField(game, columnNum, rowsNum)
+
+        function lineRow(arr) {
+            for (let i of arr) {
+                if (i.join('').includes('11111')) {
+                    winner = 'Red Player'
+                }
+                if (i.join('').includes('22222')) {
+                    winner = 'Cyan Player'
+                }
+            }
+            if (winner) {
+                restartGame()
+            }
+        }
+
+        function lineColumn(arr) {
+            let column = [];
+            for (let i = 0; i < columnNum; i++) {
+                column[i] = [];
+                for (let j = 0; j < rowsNum; j++) {
+                    column[i][j] = arr[j][i] ? arr[j][i] : 0;
+                }
+            }
+            lineRow(column)
+        }
+
+        function diagonalLeft(arr) {
+            let diagonal = [];
+            for (let i = 0; i < rowsNum; i++) {
+                for (let j = 0; j < columnNum; j++) {
+                    diagonal[i + j] = diagonal[i + j] === undefined ? [] : diagonal[i + j];
+                    diagonal[i + j].push(arr[i][j])
+                }
+            }
+            lineRow(diagonal)
+        }
+
+        function diagonalRight(arr) {
+            let diagonal = []
+            for (let i = 0; i < rowsNum; i++) {
+                for (let j = columnNum - 1; j >= 0; j--) {
+                    diagonal[i] = diagonal[i] === undefined ? [] : diagonal[i];
+                    diagonal[i].push(arr[i][j]);
+                }
+            }
+            diagonalLeft(diagonal)
+        }
+
+        function restartGame() {
+            let body = document.querySelector('body')
+            let div = document.createElement('div')
+            div.className = 'field';
+            div.innerText = 'GAME OVER\n' + winner + ' wins !';
+            body.appendChild(div)
+            let button = document.createElement('button')
+            button.innerHTML = 'RESTART'
+            button.className = 'button'
+            div.appendChild(button)
+            button.addEventListener('click', () => location.reload())
+        }
+    })()
 </script>
 </body>
 </html>

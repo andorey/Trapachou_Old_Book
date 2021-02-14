@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Koch Curve</title>
+	<style>
+		*{
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+<canvas id="canvas" width="600" height="600"></canvas>
+
+<script>
+    let canvas = document.getElementById("canvas");
+    let ctx = canvas.getContext("2d");
+    let p0 = {  //координаты снежинки
+            x: 20,
+            y: 400
+        },
+        p1 = {
+            x: 200,
+            y: 20
+        },
+        p2 = {
+            x: 400,
+            y: 400
+        };
+
+    function drawLine(p0, p1) {
+        ctx.beginPath();
+        ctx.moveTo(p0.x, p0.y);
+        ctx.lineTo(p1.x, p1.y);
+        ctx.stroke();
+    }
+    
+    function drawKoch(p0, p1, limit) { //лимит -  глубина рекурсии
+        let dx = p1.x - p0.x,
+            dy = p1.y - p0.y,
+            dist = Math.sqrt(dx * dx + dy * dy ), //рассчитываем расстояние между точками p0 и p1 для того чтобы разделить отрезок на три равные части
+            unit = dist / 3, //длина каждого части
+            angle = Math.atan2(dy,dx),//угол поворота линии
+            pA = {  // координаты треугольника
+                x: p0.x + dx / 3,
+                y: p0.y + dy / 3
+            },
+            pB = { //вершина треугольника
+                x: pA.x + Math.cos(angle - Math.PI / 3) * unit,
+                y: pA.y + Math.sin(angle - Math.PI / 3) * unit
+            },
+            pC = {
+                x: p1.x - dx / 3,
+                y: p1.y - dy / 3
+            };
+        if (limit > 0) { //рекурсивный вызов функции
+            drawKoch(p0, pA, limit - 1);
+            drawKoch(pA, pB, limit - 1);
+            drawKoch(pB, pC, limit - 1);
+            drawKoch(pC, p1, limit - 1);
+        } else {
+            drawLine(p0, pA);
+            drawLine(pA, pB);
+            drawLine(pB, pC);
+            drawLine(pC, p1);
+        }
+    }
+    
+    drawKoch(p0, p1, 4);
+    drawKoch(p1, p2, 4);
+    drawKoch(p2, p0, 4);
+</script>
+</body>
+</html>

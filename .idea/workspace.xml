@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="74023db5-c1bb-4577-96dc-080e17d9e9bb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OOP/GAMES/five_points.html" beforeDir="false" afterPath="$PROJECT_DIR$/OOP/GAMES/five_points.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OOP/GAMES/five_points_OOP.html" beforeDir="false" afterPath="$PROJECT_DIR$/OOP/GAMES/five_points_OOP.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tasks_for_JS/how_move_horse.html" beforeDir="false" afterPath="$PROJECT_DIR$/tasks_for_JS/how_move_horse.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -175,6 +177,15 @@
       <workItem from="1602768203506" duration="271000" />
       <workItem from="1602875765174" duration="1667000" />
       <workItem from="1602878031572" duration="135000" />
+      <workItem from="1602935702053" duration="207000" />
+      <workItem from="1605806272613" duration="1000" />
+      <workItem from="1609176490339" duration="1000" />
+      <workItem from="1609951718870" duration="985000" />
+      <workItem from="1609955587279" duration="268000" />
+      <workItem from="1610987137803" duration="1550000" />
+      <workItem from="1613242626914" duration="1141000" />
+      <workItem from="1613247558276" duration="6075000" />
+      <workItem from="1613333327919" duration="39000" />
     </task>
     <servers />
   </component>
@@ -183,67 +194,5 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="270" y="83" key="#Inspections" timestamp="1601150538897">
-      <screen x="0" y="23" width="1280" height="777" />
-    </state>
-    <state x="270" y="83" key="#Inspections/0.23.1280.777@0.23.1280.777" timestamp="1601150538897" />
-    <state x="129" y="23" key="#Intentions" timestamp="1602617885567">
-      <screen x="0" y="23" width="1280" height="777" />
-    </state>
-    <state x="129" y="23" key="#Intentions/0.23.1280.777@0.23.1280.777" timestamp="1602617885567" />
-    <state x="347" y="203" key="#Notifications" timestamp="1602875829554">
-      <screen x="0" y="23" width="1280" height="777" />
-    </state>
-    <state x="347" y="203" key="#Notifications/0.23.1280.777@0.23.1280.777" timestamp="1602875829554" />
-    <state x="140" y="23" key="#Plugins" timestamp="1600108667007">
-      <screen x="0" y="23" width="1280" height="777" />
-    </state>
-    <state x="140" y="23" key="#Plugins/0.23.1280.777@0.23.1280.777" timestamp="1600108667007" />
-    <state x="407" y="148" key="#Web_Browsers" timestamp="1600713991015">
-      <screen x="0" y="23" width="1280" height="777" />
-    </state>
-    <state x="407" y="148" key="#Web_Browsers/0.23.1280.777@0.23.1280.777" timestamp="1600713991015" />
-    <state x="315" y="205" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1601654058975">
-      <screen x="0" y="23" width="1280" height="777" />
-    </state>
-    <state x="315" y="205" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1280.777@0.23.1280.777" timestamp="1601654058975" />
-    <state x="317" y="108" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1598213736379">
-      <screen x="0" y="23" width="1280" height="777" />
-    </state>
-    <state x="317" y="108" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1280.777@0.23.1280.777" timestamp="1598213736379" />
-    <state x="424" y="321" key="Github.CreateGistDialog" timestamp="1596052535854">
-      <screen x="0" y="23" width="1280" height="777" />
-    </state>
-    <state x="424" y="321" key="Github.CreateGistDialog/0.23.1280.777@0.23.1280.777" timestamp="1596052535854" />
-    <state x="457" y="292" key="Github.ShareDialog" timestamp="1596052626263">
-      <screen x="0" y="23" width="1280" height="777" />
-    </state>
-    <state x="457" y="292" key="Github.ShareDialog/0.23.1280.777@0.23.1280.777" timestamp="1596052626263" />
-    <state x="365" y="57" key="Github.UntrackedFilesDialog" timestamp="1596052690085">
-      <screen x="0" y="23" width="1280" height="777" />
-    </state>
-    <state x="365" y="57" key="Github.UntrackedFilesDialog/0.23.1280.777@0.23.1280.777" timestamp="1596052690085" />
-    <state x="32" y="23" key="SettingsEditor" timestamp="1602517943202">
-      <screen x="0" y="23" width="1280" height="777" />
-    </state>
-    <state x="32" y="23" key="SettingsEditor/0.23.1280.777@0.23.1280.777" timestamp="1602517943202" />
-    <state x="144" y="88" key="Vcs.Push.Dialog.v2" timestamp="1598210646173">
-      <screen x="0" y="23" width="1280" height="777" />
-    </state>
-    <state x="144" y="88" key="Vcs.Push.Dialog.v2/0.23.1280.777@0.23.1280.777" timestamp="1598210646173" />
-    <state x="404" y="315" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1598210624995">
-      <screen x="0" y="23" width="1280" height="777" />
-    </state>
-    <state x="404" y="315" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1280.777@0.23.1280.777" timestamp="1598210624995" />
-    <state x="380" y="185" width="528" height="456" key="scopes" timestamp="1600530773768">
-      <screen x="0" y="23" width="1280" height="777" />
-    </state>
-    <state x="380" y="185" width="528" height="456" key="scopes/0.23.1280.777@0.23.1280.777" timestamp="1600530773768" />
-    <state x="221" y="23" width="838" height="1032" key="search.everywhere.popup" timestamp="1596546548349">
-      <screen x="0" y="23" width="1280" height="777" />
-    </state>
-    <state x="221" y="23" width="838" height="1032" key="search.everywhere.popup/0.23.1280.777@0.23.1280.777" timestamp="1596546548349" />
   </component>
 </project>
