@@ -2,18 +2,185 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>five points OOP</title>
 	<style>
- 
+        #game {
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            table-layout: fixed;
+        }
+
+        #game > div {
+            display: flex;
+        }
+
+        #game > div > div {
+            width: 20px;
+            height: 20px;
+            /*margin: 0.5px;*/
+            border: 1px solid #edecec;
+        }
+
+        .player1 {
+            background: tomato;
+            border-radius: 50%;
+        }
+
+        .player2 {
+            background: #02fbf7;
+            border-radius: 50%;
+        }
+
+        .field {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            text-align: center;
+            align-items: center;
+            text-shadow: black -2px -3px 5px;
+            color: rgb(255, 255, 255);
+            font-size: 5em;
+            font-weight: bold;
+            background-color: rgba(0, 0, 0, 0.27)
+        }
+
+        .button {
+            margin-bottom: 40px;
+            font-size: 18px;
+            background: #004351;
+            color: white;
+            text-shadow: black 4px 5px 2px;
+            padding: 10px 20px;
+            border-radius: 9px;
+            box-shadow: white 0 0 15px;
+        }
+
+        .button:hover {
+            background-color: #04e69f;
+			transition: background-color 1s;
+        }
 	</style>
+	<title>five points OOP</title>
 </head>
 <body>
-<div id="field">
-	<div class="space"></div>
-</div>
-
+<div id="game"></div>
 <script>
+    (function () {
 
+        class Game {
+            constructor() {
+                this.game = document.getElementById('game');
+                this.columnNum = Math.floor(window.innerWidth / 22);
+                this.rowsNum = Math.floor(window.innerHeight / 23);
+                this.winner = '';
+                this.nextGamer = 0;
+                this.lineCheck = Array.from({length: this.rowsNum}, () => Array.from({length: this.columnNum}, () => 0));
+            }
+
+            restartGame() {
+                let body = document.querySelector('body')
+                let div = document.createElement('div')
+                div.className = 'field';
+                div.innerText = 'GAME OVER\n' + this.winner + ' wins !';
+                body.appendChild(div)
+                let button = document.createElement('button')
+                button.innerHTML = 'RESTART'
+                button.className = 'button'
+                div.appendChild(button)
+                button.addEventListener('click', () => location.reload())
+            }
+
+            lineRow(arr) {
+                for (let i of arr) {
+                    if (i.join('').includes('11111')) {
+                        this.winner = 'Red Player';
+                    }
+                    if (i.join('').includes('22222')) {
+                        this.winner = 'Cyan Player';
+                    }
+                }
+                if (this.winner) {
+                    this.restartGame()
+                }
+            }
+
+            lineColumn(arr) {
+                let column = [];
+                for (let i = 0; i < this.columnNum; i++) {
+                    column[i] = [];
+                    for (let j = 0; j < this.rowsNum; j++) {
+                        column[i][j] = arr[j][i] ? arr[j][i] : 0;
+                    }
+                }
+                this.lineRow(column)
+            }
+
+            diagonalLeft(arr) {
+                let diagonal = [];
+                for (let i = 0; i < this.rowsNum; i++) {
+                    for (let j = 0; j < this.columnNum; j++) {
+                        diagonal[i + j] = diagonal[i + j] === undefined ? [] : diagonal[i + j];
+                        diagonal[i + j].push(arr[i][j])
+                    }
+                }
+                this.lineRow(diagonal)
+            }
+
+            diagonalRight(arr) {
+                let diagonal = []
+                for (let i = 0; i < this.rowsNum; i++) {
+                    for (let j = this.columnNum - 1; j >= 0; j--) {
+                        diagonal[i] = diagonal[i] === undefined ? [] : diagonal[i];
+                        diagonal[i].push(arr[i][j]);
+                    }
+                }
+                this.diagonalLeft(diagonal)
+            }
+
+            fillField() {
+                for (let i = 0; i < this.rowsNum; i++) {
+
+                    let div = document.createElement('div');
+
+                    for (let j = 0; j < this.columnNum; j++) {
+                        let div2 = document.createElement('div');
+
+                        div2.addEventListener('click', (el) => {
+                            console.log(el)
+                            if (!this.nextGamer && el.target.className === '') {
+                                el.target.className = 'player1';
+                                this.nextGamer = 1;
+                            } else if (this.nextGamer && el.target.className === '') {
+                                el.target.className = 'player2';
+                                this.nextGamer = 0;
+                            } else if (el.target.className && el.shiftKey) {
+                                el.target.className = '';
+                                this.nextGamer = !this.nextGamer;
+                            }
+                            console.log(div2.className)
+
+                            this.lineCheck[i][j] = div2.className === 'player1' ? 1 : div2.className === 'player2' ? 2 : 0;
+
+                            this.lineRow(this.lineCheck);
+                            this.lineColumn(this.lineCheck);
+                            this.diagonalLeft(this.lineCheck);
+                            this.diagonalRight(this.lineCheck);
+                        })
+                        div.appendChild(div2);
+                    }
+                    this.game.appendChild(div);
+                }
+            }
+        }
+
+        new Game().fillField()
+
+    })()
 </script>
 </body>
 </html>
