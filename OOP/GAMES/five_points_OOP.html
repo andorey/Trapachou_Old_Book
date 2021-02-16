@@ -61,8 +61,7 @@
         }
 
         .button:hover {
-            background-color: #04e69f;
-			transition: background-color 1s;
+            background: repeating-linear-gradient(203deg, #f42900, #5cf9f9 50%, rgb(249, 24, 0));
         }
 	</style>
 	<title>five points OOP</title>
@@ -83,16 +82,16 @@
             }
 
             restartGame() {
-                let body = document.querySelector('body')
-                let div = document.createElement('div')
+                let body = document.querySelector('body');
+                let div = document.createElement('div');
                 div.className = 'field';
                 div.innerText = 'GAME OVER\n' + this.winner + ' wins !';
-                body.appendChild(div)
-                let button = document.createElement('button')
-                button.innerHTML = 'RESTART'
-                button.className = 'button'
-                div.appendChild(button)
-                button.addEventListener('click', () => location.reload())
+                body.appendChild(div);
+                let button = document.createElement('button');
+                button.innerHTML = 'RESTART';
+                button.className = 'button';
+                div.appendChild(button);
+                button.addEventListener('click', () => location.reload());
             }
 
             lineRow(arr) {
@@ -105,7 +104,7 @@
                     }
                 }
                 if (this.winner) {
-                    this.restartGame()
+                    this.restartGame();
                 }
             }
 
@@ -117,7 +116,7 @@
                         column[i][j] = arr[j][i] ? arr[j][i] : 0;
                     }
                 }
-                this.lineRow(column)
+                this.lineRow(column);
             }
 
             diagonalLeft(arr) {
@@ -125,10 +124,10 @@
                 for (let i = 0; i < this.rowsNum; i++) {
                     for (let j = 0; j < this.columnNum; j++) {
                         diagonal[i + j] = diagonal[i + j] === undefined ? [] : diagonal[i + j];
-                        diagonal[i + j].push(arr[i][j])
+                        diagonal[i + j].push(arr[i][j]);
                     }
                 }
-                this.lineRow(diagonal)
+                this.lineRow(diagonal);
             }
 
             diagonalRight(arr) {
@@ -139,7 +138,7 @@
                         diagonal[i].push(arr[i][j]);
                     }
                 }
-                this.diagonalLeft(diagonal)
+                this.diagonalLeft(diagonal);
             }
 
             fillField() {
@@ -162,7 +161,6 @@
                                 el.target.className = '';
                                 this.nextGamer = !this.nextGamer;
                             }
-                            console.log(div2.className)
 
                             this.lineCheck[i][j] = div2.className === 'player1' ? 1 : div2.className === 'player2' ? 2 : 0;
 
@@ -178,7 +176,7 @@
             }
         }
 
-        new Game().fillField()
+        new Game().fillField();
 
     })()
 </script>
