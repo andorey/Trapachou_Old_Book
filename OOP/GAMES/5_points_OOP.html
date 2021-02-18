@@ -100,7 +100,6 @@
 	        this.field = new Field('#game');
 	        this.element = {};
 	        this.player = 'player1';
-	        //this.dot
 	        this.point();
         }
 
@@ -108,7 +107,7 @@
 	        this.field._dom.addEventListener('click', el=> {
 	            el.target.classList = this.player;
 	            this.element = el.target;
-                //this.dot = el.target.dataset.xy.split(',').map(Number)
+                new Checker(this.element);
         	});
 	    }
 	    
@@ -124,13 +123,16 @@
 	        this.rows = Array(9).fill([-4,0]).map(([x,y], i) => [x+i, y]);
 	        this.diagl = Array(9).fill([-4,-4]).map(([x,y], i) => [x+i, y+i]);
 	        this.diagr = Array(9).fill([4,-4]).map(([x,y], i) => [x-i, y+i]);
-	        //this.check();
 			this.coordinats = this.element.dataset.xy.split(',').map(Number);
 			this.player = this.element.classList[0]
-			this.out = [];
+			
+            this.check(this.clmn, this.player);
+            this.check(this.rows, this.player);
+            this.check(this.diagl, this.player);
+            this.check(this.diagr, this.player);
         }
 
-        createArr(arr) {
+        createArr(arr, player) {
             let xy = this.coordinats;
             const temp = []
             for(let i of arr){
@@ -138,21 +140,43 @@
                     temp.push([xy[0] - i[0], xy[1] - i[1]]);
 				}
 			}
-            return temp.map( ([x,y])=> document.querySelector(`[data-xy='${x},${y}']`).classList[0] || '$$$').join('').includes(this.player.repeat(5));
-            //return temp.map(([x,y]) => document.querySelector(`[data-xy='${y},${y}']`).classList[0] || '###').join('').includes(this.player.repeat(5))
+            return temp.map( ([x,y])=> document.querySelector(`[data-xy='${x},${y}']`).classList[0] || '$$$').join('').includes(player.repeat(5));
         }
         
-        check() {
-	        console.log(this.coordinats)
-			console.log(this.createArr(this.clmn))
-            // this.out = this.diagr.map(el => document.querySelector(`[data-xy='${xy[0] - el[0]},${xy[1] - el[1]}']`).classList[0] || '###').join('');
-            //
-            // console.log(this.out.includes(checking))
+        check(arr, player) {
+            if ( this.createArr(arr, player) ){
+                new Restart(player);
+			}
         }
     }
+    
+    
+    class Restart {
+	    constructor(winner) {
+	        this.body = document.querySelector('body');
+	        this.winner = winner;
+	        this.popUp();
+        }
+        
+        popUp(){
+            let div = document.createElement('div');
+            div.className = 'field';
+            div.innerText = 'GAME OVER\n' + this.winner + ' wins !';
+            this.body.appendChild(div);
+            let button = document.createElement('button');
+            button.innerHTML = 'RESTART';
+            button.className = 'button';
+            div.appendChild(button);
+            button.addEventListener('click', () => location.reload());
+		}
+    }
+    
+    
 	
-	let listen = new Listener();
-	setInterval(()=> console.log(new Checker(listen.element).check()), 3000);
+	new Listener().point();
+	
+ 
+	//setInterval(()=> console.log(new Checker(listen.element).check()), 3000);
 	
 	
 	
