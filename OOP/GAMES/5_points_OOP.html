@@ -99,13 +99,13 @@
 	    constructor() {
 	        this.field = new Field('#game');
 	        this.element = {};
-	        this.player = 'player1';
+	        this.player = new Players('player1','player2', 'player3');
 	        this.point();
         }
 
         point() {
 	        this.field._dom.addEventListener('click', el=> {
-	            el.target.classList = this.player;
+	            el.target.classList = this.player.getPlayers();
 	            this.element = el.target;
                 new Checker(this.element);
         	});
@@ -172,10 +172,37 @@
     }
     
     
+    class Players{
+	    constructor(...players) {
+	        this.data = players;
+	        this.count = new Counter(this.data.length-1)
+        }
+        
+        getPlayers(){
+	        return this.data[this.count.get()]
+		}
+	}
+	
+	class Counter{
+	    constructor(length) {
+	        this._length = length;
+	        this._counter = -1;
+        }
+        get(){
+	        if (this._counter < this._length){
+	            this._counter++;
+			}else{
+	            this._counter = 0;
+			}
+	        return this._counter
+		}
+	}
+    
 	
 	new Listener().point();
-	
- 
+	//let players = new Players('player1','player2', 'player3')
+
+    //setInterval(()=> console.log(new Players('player1','player2', 'player3').getPlayers()), 3000)
 	//setInterval(()=> console.log(new Checker(listen.element).check()), 3000);
 	
 	
