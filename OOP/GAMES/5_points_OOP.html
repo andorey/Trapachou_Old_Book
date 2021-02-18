@@ -118,28 +118,41 @@
 	class Checker {
 	    constructor(element) {
 	        this.element = element;
-	        this.maps = [
-	            [ [0, -1], [0, -2], [0, -3], [0, -4] ],
-	            [ [-1, -1], [-2, -2], [-3, -3], [-4, -4] ],
-	            [ [-1, 1], [-2, 2], [-3, 3], [-4, 4] ],
-	            [ [-1, 0], [-2, 0], [-3, 0], [-4, 0] ]
-			]
-			this.out = []
+	        this._columns = Math.floor(window.innerWidth / 22);
+	        this._rows = Math.floor(window.innerHeight / 23);
+	        this.clmn = Array(9).fill([0,-4]).map(([x,y], i) => [x, y+i]);
+	        this.rows = Array(9).fill([-4,0]).map(([x,y], i) => [x+i, y]);
+	        this.diagl = Array(9).fill([-4,-4]).map(([x,y], i) => [x+i, y+i]);
+	        this.diagr = Array(9).fill([4,-4]).map(([x,y], i) => [x-i, y+i]);
+	        //this.check();
+			this.coordinats = this.element.dataset.xy.split(',').map(Number);
+			this.player = this.element.classList[0]
+			this.out = [];
         }
 
-        check(){
-	        let xy = this.element.dataset.xy.split(',').map(Number);
-	        for (let level of this.maps) {
-                level.map(el =>
-					console.log(document.querySelector(`[data-xy='${xy[0] - el[0]},${xy[1] - el[1]}']`))
-                )
-            }
-		}
-
+        createArr(arr) {
+            let xy = this.coordinats;
+            const temp = []
+            for(let i of arr){
+                if(xy[0]- i[0] > - 1 && xy[1] - i[1] > - 1 && xy[0] - i[0] < this._columns && xy[1] - i[1] < this._rows){
+                    temp.push([xy[0] - i[0], xy[1] - i[1]]);
+				}
+			}
+            return temp.map( ([x,y])=> document.querySelector(`[data-xy='${x},${y}']`).classList[0] || '$$$').join('').includes(this.player.repeat(5));
+            //return temp.map(([x,y]) => document.querySelector(`[data-xy='${y},${y}']`).classList[0] || '###').join('').includes(this.player.repeat(5))
+        }
+        
+        check() {
+	        console.log(this.coordinats)
+			console.log(this.createArr(this.clmn))
+            // this.out = this.diagr.map(el => document.querySelector(`[data-xy='${xy[0] - el[0]},${xy[1] - el[1]}']`).classList[0] || '###').join('');
+            //
+            // console.log(this.out.includes(checking))
+        }
     }
 	
-	let listen = new Listener()
-	//setInterval(()=> console.log(new Checker(listen.element).check()), 3000);
+	let listen = new Listener();
+	setInterval(()=> console.log(new Checker(listen.element).check()), 3000);
 	
 	
 	
