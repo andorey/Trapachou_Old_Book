@@ -14,7 +14,7 @@
             display: flex;
         }
 
-        #game > div > div {
+        #game > div > span {
             width: 20px;
             height: 20px;
             /*margin: 0.5px;*/
@@ -69,148 +69,154 @@
 <body>
 <div id="game"></div>
 <script>
- 
-	class Field {
-	    constructor(dom) {
-	        this._dom = document.querySelector(dom);
-	        this._rNum = Math.floor(window.innerHeight / 23);
-	        this._cNum = Math.floor(window.innerWidth / 22);
-	        this._field = Array.from({length: this._rNum}, () => Array.from({length: this._cNum}, () => 0));
-	        this.draw();
-        }
-        
-        draw(){
-	        this._field.forEach((el, i) => {
-	            let div = document.createElement('div');
-	            el.forEach((e, k) => {
-	                let div2 = document.createElement('div');
-	                div2.dataset.xy = `${k},${i}`;
-	                div.appendChild(div2);
-				})
-				this._dom.appendChild(div);
-			})
-   
-		}
-		
-    }
-    
-    
-    class Listener {
-	    constructor() {
-	        this.field = new Field('#game');
-	        this.element = {};
-	        this.player = new Players('player1','player2', 'player3');
-	        this.point();
+	(function () {
+
+        class Field {
+            constructor(selector) {
+                this.selector = document.querySelector(selector);
+                this._rNum = Math.floor(window.innerHeight / 23);
+                this._cNum = Math.floor(window.innerWidth / 22);
+                this._field = Array.from({length: this._rNum}, () => Array.from({length: this._cNum}, () => 0));
+                this.draw();
+            }
+
+            draw() {
+                this._field.forEach((el, i) => {
+                    let div = document.createElement('div');
+
+                    el.forEach((e, k) => {
+                        let span = document.createElement('span');
+
+                        span.dataset.xy = `${k},${i}`;
+                        div.appendChild(span);
+                    })
+                    this.selector.appendChild(div);
+                })
+
+            }
+
         }
 
-        point() {
-	        this.field._dom.addEventListener('click', el=> {
-	            el.target.classList = this.player.getPlayers();
-	            this.element = el.target;
-                new Checker(this.element);
-        	});
-	    }
-	    
-	}
-	
-	
-	class Checker {
-	    constructor(element) {
-	        this.element = element;
-	        this._columns = Math.floor(window.innerWidth / 22);
-	        this._rows = Math.floor(window.innerHeight / 23);
-	        this.clmn = Array(9).fill([0,-4]).map(([x,y], i) => [x, y+i]);
-	        this.rows = Array(9).fill([-4,0]).map(([x,y], i) => [x+i, y]);
-	        this.diagl = Array(9).fill([-4,-4]).map(([x,y], i) => [x+i, y+i]);
-	        this.diagr = Array(9).fill([4,-4]).map(([x,y], i) => [x-i, y+i]);
-			this.coordinats = this.element.dataset.xy.split(',').map(Number);
-			this.player = this.element.classList[0]
-			
-            this.check(this.clmn, this.player);
-            this.check(this.rows, this.player);
-            this.check(this.diagl, this.player);
-            this.check(this.diagr, this.player);
+
+        class Listener {
+            constructor() {
+                this.allField = new Field('#game').selector;
+                this.field = this.allField.querySelectorAll('span');
+                this.element = {};
+                this.player = new Players('player1', 'player2');
+                this.point();
+                this.storage = true;
+                this.temp = '';
+            }
+
+            point() {
+                this.field.forEach(elem => {
+                    elem.addEventListener('click', el => {
+                        if (!el.target.className && this.storage) {
+                            el.target.className = this.player.getPlayers();
+                            this.element = el.target;
+                            new Checker(this.element);
+                        } else if (el.target.className && el.shiftKey) {
+                            this.storage = !this.storage;
+                            this.temp = el.target.className;
+                            el.target.className = '';
+                        } else if (!el.target.className && !this.storage) {
+                            el.target.className = this.temp;
+                            this.element = el.target;
+                            new Checker(this.element);
+                            this.temp = '';
+                            this.storage = !this.storage;
+                        }
+                    })
+                });
+            }
+
         }
 
-        createArr(arr, player) {
-            let xy = this.coordinats;
-            const temp = []
-            for(let i of arr){
-                if(xy[0]- i[0] > - 1 && xy[1] - i[1] > - 1 && xy[0] - i[0] < this._columns && xy[1] - i[1] < this._rows){
-                    temp.push([xy[0] - i[0], xy[1] - i[1]]);
-				}
-			}
-            return temp.map( ([x,y])=> document.querySelector(`[data-xy='${x},${y}']`).classList[0] || '$$$').join('').includes(player.repeat(5));
-        }
-        
-        check(arr, player) {
-            if ( this.createArr(arr, player) ){
-                new Restart(player);
-			}
-        }
-    }
-    
-    
-    class Restart {
-	    constructor(winner) {
-	        this.body = document.querySelector('body');
-	        this.winner = winner;
-	        this.popUp();
-        }
-        
-        popUp(){
-            let div = document.createElement('div');
-            div.className = 'field';
-            div.innerText = 'GAME OVER\n' + this.winner + ' wins !';
-            this.body.appendChild(div);
-            let button = document.createElement('button');
-            button.innerHTML = 'RESTART';
-            button.className = 'button';
-            div.appendChild(button);
-            button.addEventListener('click', () => location.reload());
-		}
-    }
-    
-    
-    class Players{
-	    constructor(...players) {
-	        this.data = players;
-	        this.count = new Counter(this.data.length-1)
-        }
-        
-        getPlayers(){
-	        return this.data[this.count.get()]
-		}
-	}
-	
-	class Counter{
-	    constructor(length) {
-	        this._length = length;
-	        this._counter = -1;
-        }
-        get(){
-	        if (this._counter < this._length){
-	            this._counter++;
-			}else{
-	            this._counter = 0;
-			}
-	        return this._counter
-		}
-	}
-    
-	
-	new Listener().point();
-	//let players = new Players('player1','player2', 'player3')
 
-    //setInterval(()=> console.log(new Players('player1','player2', 'player3').getPlayers()), 3000)
-	//setInterval(()=> console.log(new Checker(listen.element).check()), 3000);
-	
-	
-	
-	// game._dom.addEventListener('click', el=> {
-	//     console.log( el.target.dataset.xy.split(',').map(Number) )
-	// })
-	
+        class Checker {
+            constructor(element) {
+                this.element = element;
+                this._col = Math.floor(window.innerWidth / 22);
+                this._rows = Math.floor(window.innerHeight / 23);
+
+                this.columns = Array(9).fill([0, -4]).map(([x, y], i) => [x, y + i]);
+                this.allLine = Array(9).fill([-4, 0]).map(([x, y], i) => [x + i, y]);
+                this.diagonalLeft = Array(9).fill([-4, -4]).map(([x, y], i) => [x + i, y + i]);
+                this.diagonalRight = Array(9).fill([4, -4]).map(([x, y], i) => [x - i, y + i]);
+
+                this.coordinats = this.element.dataset.xy.split(',').map(Number);
+                this.player = this.element.className;
+
+                this.check(this.columns, this.player);
+                this.check(this.allLine, this.player);
+                this.check(this.diagonalLeft, this.player);
+                this.check(this.diagonalRight, this.player);
+            }
+
+            createArr(arr, player) {
+                let xy = this.coordinats;
+                const temp = []
+                for (let i of arr) {
+                    if (xy[0] - i[0] > -1 && xy[1] - i[1] > -1 && xy[0] - i[0] < this._col && xy[1] - i[1] < this._rows) {
+                        temp.push([xy[0] - i[0], xy[1] - i[1]]);
+                    }
+                }
+                return temp.map(([x, y]) => document.querySelector(`[data-xy='${x},${y}']`).className || '$$$').join('').includes(player.repeat(5));
+            }
+
+            check(arr, player) {
+                if (this.createArr(arr, player)) {
+                    new Restart(player);
+                }
+            }
+        }
+
+
+        class Restart {
+            constructor(winner) {
+                this.body = document.querySelector('body');
+                this.dict = {
+                    'player1': 'Reg Player',
+                    'player2': 'Cyan Player'
+                };
+                this.popUp(this.dict[winner]);
+            }
+
+            popUp(winner) {
+                let div = document.createElement('div');
+                div.className = 'field';
+                div.innerText = 'GAME OVER\n' + winner + ' wins !';
+                this.body.appendChild(div);
+                let button = document.createElement('button');
+                button.innerHTML = 'RESTART';
+                button.className = 'button';
+                div.appendChild(button);
+                button.addEventListener('click', () => location.reload());
+            }
+        }
+
+
+        class Players {
+            constructor(...players) {
+                this.data = players;
+                this.count = -1;
+            }
+
+            getPlayers() {
+                if (this.count < this.data.length - 1) {
+                    this.count++;
+                } else {
+                    this.count = 0;
+                }
+                return this.data[this.count]
+            }
+        }
+
+
+        new Listener();
+        
+    })()
 </script>
 </body>
 </html>
